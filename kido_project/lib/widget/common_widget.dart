@@ -74,3 +74,76 @@ TextStyle commonLargeFonts = GoogleFonts.roboto(
   color: Colors.white,
   fontSize: 20,
 );
+
+commonName(String textDisp, bool isRequired) {
+  GoogleFonts.roboto();
+
+  return Row(
+    children: [
+      Text('${textDisp}'),
+      Text(
+        isRequired ? ' *' : '',
+        style: TextStyle(
+          color: isRequired ? Colors.red : null,
+        ),
+      )
+    ],
+  );
+}
+
+commonTextFormField(String hintText) {
+  GoogleFonts.roboto();
+  return Padding(
+    padding: const EdgeInsets.all(10.0),
+    child: TextFormField(
+      decoration: InputDecoration(
+        hintText: hintText,
+        enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide(
+              color: Colors.black,
+            )),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(color: Colors.blue),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(
+            color: Colors.red,
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
+commonSubmitButton(double width, double height, String textbtn) {
+  return GestureDetector(
+    onTap: () {},
+    child: Container(
+      height: height,
+      width: 361,
+      child: Align(
+        alignment: Alignment.center,
+        child: Text(
+          textbtn,
+          style: commonMediumFonts.copyWith(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+      decoration: BoxDecoration(
+        color: Color(0xFF00356A),
+        borderRadius: BorderRadius.circular(27),
+      ),
+    ),
+  );
+}
+
+//String? gender = 'male';
+enum gender { male, female }
+
+
+

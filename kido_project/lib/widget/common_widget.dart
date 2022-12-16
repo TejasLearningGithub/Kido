@@ -144,6 +144,3 @@ commonSubmitButton(double width, double height, String textbtn) {
 
 //String? gender = 'male';
 enum gender { male, female }
-
-
-

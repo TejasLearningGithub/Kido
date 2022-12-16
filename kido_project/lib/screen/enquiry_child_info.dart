@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:kido_project/widget/common_widget.dart';
+import 'package:kido_project/widget/drop_down_common.dart';
+import 'package:kido_project/widget/radio_gender.dart';
 
 class EnqueryChildInfo extends StatefulWidget {
   const EnqueryChildInfo({super.key});
@@ -64,6 +66,24 @@ class _EnqueryChildInfoState extends State<EnqueryChildInfo> {
               height: 3,
             ),
             //commonSubmitButton(361, 57, 'Submit')
+            Padding(
+              padding: const EdgeInsets.only(left: 14.0, top: 0),
+              child: StatefulRadioGenderWidget(),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(
+                left: 14,
+                top: 0,
+              ),
+              child: Align(
+                alignment: Alignment.topLeft,
+                child: commonName('Category', true),
+              ),
+            ),
+            SizedBox(
+              height: 8,
+            ),
+            CommonWidgetDropDown()
           ],
         ),
       ),

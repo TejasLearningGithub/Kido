@@ -91,13 +91,33 @@ commonName(String textDisp, bool isRequired) {
   );
 }
 
-commonTextFormField(String hintText) {
+commonTextFormField(
+    {required String hintText,
+    required Color hintTextColor,
+    required TextEditingController myController,
+    required Color backgroundColor,
+    required Color textColor}) {
   GoogleFonts.roboto();
+
   return Padding(
     padding: const EdgeInsets.all(10.0),
     child: TextFormField(
+      validator: (value) {
+        if (value!.isEmpty) {
+          return 'please enter $hintText';
+        } else {
+          return null;
+        }
+      },
+      style: TextStyle(
+        color: textColor,
+      ),
+      controller: myController,
       decoration: InputDecoration(
+        filled: true,
+        fillColor: backgroundColor,
         hintText: hintText,
+        hintStyle: TextStyle(color: hintTextColor),
         enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: BorderSide(
@@ -118,12 +138,19 @@ commonTextFormField(String hintText) {
   );
 }
 
-commonSubmitButton(double width, double height, String textbtn) {
+commonSubmitButton({
+  required double width,
+  required double height,
+  required String textbtn,
+  required Color buttonBackgroundColor,
+  required double borderRadiusSize,
+  required GlobalKey globalKey,
+}) {
   return GestureDetector(
     onTap: () {},
     child: Container(
       height: height,
-      width: 361,
+      width: width,
       child: Align(
         alignment: Alignment.center,
         child: Text(
@@ -135,8 +162,8 @@ commonSubmitButton(double width, double height, String textbtn) {
         ),
       ),
       decoration: BoxDecoration(
-        color: Color(0xFF00356A),
-        borderRadius: BorderRadius.circular(27),
+        color: buttonBackgroundColor,
+        borderRadius: BorderRadius.circular(borderRadiusSize),
       ),
     ),
   );

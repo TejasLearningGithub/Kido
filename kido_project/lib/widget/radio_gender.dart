@@ -1,61 +1,57 @@
 import 'package:flutter/material.dart';
+import 'package:kido_project/widget/common_widget.dart';
 
-class RadioGender extends StatefulWidget {
-  const RadioGender({super.key});
+class StatefulRadioGenderWidget extends StatefulWidget {
+  const StatefulRadioGenderWidget({super.key});
 
   @override
-  State<RadioGender> createState() => _RadioGenderState();
+  State<StatefulRadioGenderWidget> createState() =>
+      _StatefulRadioGenderWidgetState();
 }
 
-enum gender { male, female }
+enum gender { Male, Female }
 
-var gValue = gender.male;
-
-class _RadioGenderState extends State<RadioGender> {
-  String? gender;
+class _StatefulRadioGenderWidgetState extends State<StatefulRadioGenderWidget> {
+  gender? _character = gender.Male;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Container(
+    return Container(
       child: Row(
-        children: [
-          SizedBox(
-            height: 100,
+        children: <Widget>[
+          commonName('Gender', true),
+          Container(
+            width: 140,
+            child: RadioListTile<gender>(
+              title: const Text('Male'),
+              value: gender.Male,
+              groupValue: _character,
+              onChanged: (gender? value) {
+                setState(() {
+                  _character = value;
+                });
+                ScaffoldMessenger.of(context)
+                    .showSnackBar(SnackBar(content: Text('Male Selected')));
+              },
+            ),
           ),
-          Text('Gender'),
-          Row(
-            children: [
-              Text('Male'),
-              Radio(
-                //title: Text("Male"),
-                value: "male",
-                groupValue: gValue,
-                onChanged: (value) {
-                  setState(() {
-                    gender = value.toString();
-                  });
-                },
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              Text('Female'),
-              Radio(
-                //title: Text("Male"),
-                value: "female",
-                groupValue: gValue,
-                onChanged: (value) {
-                  setState(() {
-                    gender = value.toString();
-                  });
-                },
-              ),
-            ],
+          Container(
+            width: 150,
+            child: RadioListTile<gender>(
+              title: const Text('Female'),
+              value: gender.Female,
+              groupValue: _character,
+              onChanged: (gender? value) {
+                setState(() {
+                  _character = value;
+                });
+                ScaffoldMessenger.of(context)
+                    .showSnackBar(SnackBar(content: Text('Female Selected')));
+              },
+            ),
           ),
         ],
       ),
-    ));
+    );
   }
 }

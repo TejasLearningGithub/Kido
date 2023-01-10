@@ -17,21 +17,23 @@ class CommonListCard extends StatelessWidget {
   final String ldDate;
   final String lastFollowUpDate;
   final String nextFollowUpDate;
+  //final Function(bool) isFavouriteSelected;
 
-  const CommonListCard(
-      {super.key,
-      required this.leadId,
-      required this.status,
-      required this.isFavourite,
-      required this.parentName,
-      required this.childName,
-      required this.gender,
-      required this.age,
-      required this.callStatus,
-      required this.socialMedicalCampaignInfo,
-      required this.ldDate,
-      required this.lastFollowUpDate,
-      required this.nextFollowUpDate});
+  const CommonListCard({
+    super.key,
+    required this.leadId,
+    required this.status,
+    required this.isFavourite,
+    required this.parentName,
+    required this.childName,
+    required this.gender,
+    required this.age,
+    required this.callStatus,
+    required this.socialMedicalCampaignInfo,
+    required this.ldDate,
+    required this.lastFollowUpDate,
+    required this.nextFollowUpDate,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -228,7 +230,7 @@ class CommonListCard extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            ldDate.toString(),
+                            ldDate,
                             style: commonSmallFonts.copyWith(
                               color: Colors.white,
                             ),

@@ -13,11 +13,14 @@ class EnqueryChildInfo extends StatefulWidget {
 }
 
 class _EnqueryChildInfoState extends State<EnqueryChildInfo> {
+  var _firstNameController = TextEditingController();
+  var _secondNameController = TextEditingController();
+  var _enqueryGolbalKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF00356A),
+        backgroundColor: Color.fromRGBO(0, 53, 107, 100),
         title: Row(
           children: [
             Icon(
@@ -32,59 +35,74 @@ class _EnqueryChildInfoState extends State<EnqueryChildInfo> {
         ),
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(
-                left: 14,
-                top: 18,
+        child: Form(
+          key: _enqueryGolbalKey,
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 14,
+                  top: 18,
+                ),
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: commonName('First Name', false),
+                ),
               ),
-              child: Align(
-                alignment: Alignment.topLeft,
-                child: commonName('First Name', false),
+              SizedBox(
+                height: 2,
               ),
-            ),
-            SizedBox(
-              height: 2,
-            ),
-            commonTextFormField('First Name'),
-            SizedBox(
-              height: 0,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                left: 14,
-                top: 8,
+              commonTextFormField(
+                textColor: Colors.black,
+                hintTextColor: Colors.black,
+                hintText: 'First Name',
+                myController: _firstNameController,
+                backgroundColor: Colors.white,
               ),
-              child: Align(
-                alignment: Alignment.topLeft,
-                child: commonName('Second Name', true),
+              SizedBox(
+                height: 0,
               ),
-            ),
-            commonTextFormField('Second Name'),
-            SizedBox(
-              height: 3,
-            ),
-            //commonSubmitButton(361, 57, 'Submit')
-            Padding(
-              padding: const EdgeInsets.only(left: 14.0, top: 0),
-              child: StatefulRadioGenderWidget(),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                left: 14,
-                top: 0,
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 14,
+                  top: 8,
+                ),
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: commonName('Second Name', true),
+                ),
               ),
-              child: Align(
-                alignment: Alignment.topLeft,
-                child: commonName('Category', true),
+              commonTextFormField(
+                textColor: Colors.black,
+                hintTextColor: Colors.black,
+                hintText: 'Second Name',
+                myController: _secondNameController,
+                backgroundColor: Colors.white,
               ),
-            ),
-            SizedBox(
-              height: 8,
-            ),
-            CommonWidgetDropDown()
-          ],
+              SizedBox(
+                height: 3,
+              ),
+              //commonSubmitButton(361, 57, 'Submit')
+              Padding(
+                padding: const EdgeInsets.only(left: 14.0, top: 0),
+                child: StatefulRadioGenderWidget(),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 14,
+                  top: 0,
+                ),
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: commonName('Category', true),
+                ),
+              ),
+              SizedBox(
+                height: 8,
+              ),
+              CommonWidgetDropDown()
+            ],
+          ),
         ),
       ),
     );

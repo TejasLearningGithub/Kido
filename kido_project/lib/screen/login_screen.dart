@@ -10,9 +10,9 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  var _globalKey = GlobalKey<FormState>();
-  var _userNameController = TextEditingController();
-  var _userPasswordController = TextEditingController();
+  final _globalKey = GlobalKey<FormState>();
+  final _userNameController = TextEditingController();
+  final _userPasswordController = TextEditingController();
   bool passVisible = true;
   @override
   Widget build(BuildContext context) {
@@ -27,30 +27,35 @@ class _LoginScreenState extends State<LoginScreen> {
             mainAxisSize: MainAxisSize.min,
             children: [
               const SizedBox(
-                height: 50,
+                height: 30,
               ),
               Align(
                 alignment: Alignment.topCenter,
-                child: Image.asset(
-                  'assets/images/logo_kido.png',
-                  width: 180,
-                  height: 180,
+                child: myImageWidget(
+                  imgUrl: 'assets/images/logo_kido.png',
+                  height: 260,
+                  width: 260,
                 ),
               ),
               commonTextFormField(
-                textColor: Colors.blue,
-                hintTextColor: Colors.blue,
+                topPadding: 30,
+                leftPadding: 30,
+                rightPadding: 30,
+                bottomPadding: 30,
+                textColor: Colors.black,
+                hintTextColor: Colors.black,
                 backgroundColor: Colors.white,
                 hintText: 'User Name',
                 myController: _userNameController,
               ),
               commonTextPasswordField(
-                textColor: Colors.blue,
+                hintTextColor: Colors.black,
+                textColor: Colors.black,
                 backgroundColor: Colors.white,
                 hintText: 'Password',
                 myController: _userPasswordController,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 90,
               ),
               commonSubmitButton(
@@ -59,26 +64,33 @@ class _LoginScreenState extends State<LoginScreen> {
                   width: 250,
                   textbtn: 'Sign In',
                   borderRadiusSize: 8,
-                  buttonBackgroundColor: Color.fromARGB(100, 189, 83, 25))
+                  buttonBackgroundColor: const Color.fromARGB(100, 189, 83, 25))
             ],
           ),
         ),
       ),
-      backgroundColor: Color.fromARGB(100, 0, 53, 107),
+      backgroundColor: const Color.fromARGB(100, 0, 53, 107),
     );
   }
 
-  commonTextPasswordField({
-    required String hintText,
-    required TextEditingController myController,
-    required Color backgroundColor,
-    required Color textColor,
-  }) {
+  commonTextPasswordField(
+      {required String hintText,
+      required TextEditingController myController,
+      required Color backgroundColor,
+      required Color textColor,
+      required Color hintTextColor}) {
     GoogleFonts.roboto();
 
     return Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding: const EdgeInsets.only(top: 0, left: 30, right: 30, bottom: 0),
       child: TextFormField(
+        validator: (value) {
+          if (value!.isEmpty) {
+            return 'please enter $hintText';
+          } else {
+            return null;
+          }
+        },
         style: TextStyle(
           color: textColor,
         ),
@@ -89,31 +101,36 @@ class _LoginScreenState extends State<LoginScreen> {
           fillColor: backgroundColor,
           hintText: hintText,
           hintStyle: TextStyle(
-            color: Colors.blue,
+            color: hintTextColor,
           ),
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(
+              borderSide: const BorderSide(
                 color: Colors.black,
               )),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
-            borderSide: BorderSide(color: Colors.blue),
+            borderSide: const BorderSide(color: Colors.blue),
           ),
           errorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
-            borderSide: BorderSide(
+            borderSide: const BorderSide(
               color: Colors.red,
             ),
           ),
+          focusedErrorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              borderSide: const BorderSide(
+                color: Colors.red,
+              )),
           suffixIcon: IconButton(
             onPressed: () {
               passVisible = !passVisible;
               setState(() {});
             },
             icon: passVisible
-                ? Icon(Icons.visibility_off)
-                : Icon(
+                ? const Icon(Icons.visibility_off)
+                : const Icon(
                     Icons.visibility,
                   ),
           ),

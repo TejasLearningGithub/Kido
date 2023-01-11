@@ -13,24 +13,42 @@ class DashboardTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(20),
+      padding:
+          //const EdgeInsets.all(20),
+          const EdgeInsets.only(
+        top: 17,
+        bottom: 10,
+        left: 22,
+        right: 10,
+      ),
       child: GestureDetector(
         onTap: () {},
         child: Column(
           children: [
             Row(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Container(
-                  width: 365,
-                  height: 145,
+                  width: MediaQuery.of(context).size.width / 1.099 - 11.1040,
+                  height: MediaQuery.of(context).size.height / 7,
                   decoration: BoxDecoration(
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.grey,
+                          blurRadius: 10,
+                          spreadRadius: 1,
+                          offset: Offset(
+                            5.0,
+                            5.0,
+                          ),
+                        ),
+                      ],
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(16),
                       border: Border.all(
-                        color: Colors.red,
+                        color: Color.fromARGB(100, 189, 83, 25),
                         width: 2,
                       )),
                   child: Padding(
@@ -41,7 +59,7 @@ class DashboardTile extends StatelessWidget {
                         Image.asset(imgUrl),
                         Text(
                           textString,
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: Color(0xFF00356A),
                               fontSize: 28,
                               fontWeight: FontWeight.bold,

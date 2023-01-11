@@ -21,9 +21,6 @@ class _CommonWidgetDropDownState extends State<CommonWidgetDropDown> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // SizedBox(
-        //   height: 230,
-        // ),
         Padding(
           padding: const EdgeInsets.only(
             left: 14.0,
@@ -32,7 +29,6 @@ class _CommonWidgetDropDownState extends State<CommonWidgetDropDown> {
           child: Container(
             width: 410,
             height: 65,
-            //color: Colors.blue,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               color: Colors.white,
@@ -40,7 +36,6 @@ class _CommonWidgetDropDownState extends State<CommonWidgetDropDown> {
                 width: 1,
               ),
             ),
-
             child: Padding(
               padding: const EdgeInsets.all(12.0),
               child: DropdownButtonHideUnderline(

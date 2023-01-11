@@ -20,7 +20,7 @@ class LeadsScreen extends StatelessWidget {
         itemCount: 9,
         itemBuilder: (context, index) {
           return Column(
-            children: [
+            children:  const [
               CommonListCard(
                 leadId: 'LD003171',
                 status: 'Lost',

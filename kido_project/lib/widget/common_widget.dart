@@ -80,7 +80,7 @@ commonName(String textDisp, bool isRequired) {
 
   return Row(
     children: [
-      Text('${textDisp}'),
+      Text(textDisp),
       Text(
         isRequired ? ' *' : '',
         style: TextStyle(
@@ -96,11 +96,19 @@ commonTextFormField(
     required Color hintTextColor,
     required TextEditingController myController,
     required Color backgroundColor,
-    required Color textColor}) {
+    required Color textColor,
+    required double topPadding,
+    required double bottomPadding,
+    required double rightPadding,
+    required double leftPadding}) {
   GoogleFonts.roboto();
 
   return Padding(
-    padding: const EdgeInsets.all(10.0),
+    padding: EdgeInsets.only(
+        top: topPadding,
+        bottom: bottomPadding,
+        left: leftPadding,
+        right: rightPadding),
     child: TextFormField(
       validator: (value) {
         if (value!.isEmpty) {
@@ -120,16 +128,22 @@ commonTextFormField(
         hintStyle: TextStyle(color: hintTextColor),
         enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
-            borderSide: BorderSide(
+            borderSide: const BorderSide(
               color: Colors.black,
             )),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(color: Colors.blue),
+          borderSide: const BorderSide(color: Colors.blue),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(
+          borderSide: const BorderSide(
+            color: Colors.red,
+          ),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: const BorderSide(
             color: Colors.red,
           ),
         ),
@@ -144,13 +158,19 @@ commonSubmitButton({
   required String textbtn,
   required Color buttonBackgroundColor,
   required double borderRadiusSize,
-  required GlobalKey globalKey,
+  required GlobalKey<FormState> globalKey,
 }) {
   return GestureDetector(
-    onTap: () {},
+    onTap: () {
+      if (globalKey.currentState!.validate()) {}
+    },
     child: Container(
       height: height,
       width: width,
+      decoration: BoxDecoration(
+        color: buttonBackgroundColor,
+        borderRadius: BorderRadius.circular(borderRadiusSize),
+      ),
       child: Align(
         alignment: Alignment.center,
         child: Text(
@@ -161,13 +181,104 @@ commonSubmitButton({
           ),
         ),
       ),
-      decoration: BoxDecoration(
-        color: buttonBackgroundColor,
-        borderRadius: BorderRadius.circular(borderRadiusSize),
-      ),
     ),
   );
 }
 
 //String? gender = 'male';
 enum gender { male, female }
+
+class myImageWidget extends StatelessWidget {
+  String imgUrl;
+  double width;
+  double height;
+
+  myImageWidget({
+    required this.imgUrl,
+    required this.height,
+    required this.width,
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Image.asset(
+      imgUrl,
+      width: width,
+      height: height,
+    );
+  }
+}
+
+Row dashBoardNotificationList(BuildContext context) {
+  return Row(
+    children: [
+      Expanded(
+        child: SizedBox(
+          height: 300,
+          width: double.maxFinite,
+          //width: MediaQuery.of(context).size.width / 14 - 10.10,
+          child: ListView.builder(
+            scrollDirection: Axis.vertical,
+            itemCount: 14,
+            itemBuilder: (context, index) {
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(18.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'LD003171',
+                          style: commonMediumFonts.copyWith(
+                            color: const Color(0xFF00356A),
+                            fontStyle: FontStyle.italic,
+                            fontSize: 19,
+                          ),
+                        ),
+                        Text(
+                          '1234567890',
+                          style: commonMediumFonts.copyWith(
+                            color: const Color(0xFF00356A),
+                            fontStyle: FontStyle.italic,
+                            fontSize: 19,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        top: 18, bottom: 18, left: 18, right: 5),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text(
+                          'Renu Pathak',
+                          style: commonMediumFonts.copyWith(
+                            color: const Color(0xFF00356A),
+                            fontSize: 19,
+                          ),
+                        ),
+                        Text(
+                          'To call back/Follow up',
+                          style: commonMediumFonts.copyWith(
+                            color: const Color(0xFF00356A),
+                            fontSize: 19,
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              );
+            },
+          ),
+        ),
+      ),
+    ],
+  );
+}

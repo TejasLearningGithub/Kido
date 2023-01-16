@@ -16,7 +16,7 @@ class _LeadsScreenState extends State<LeadsScreen> {
   DateTime currentTime = DateTime.now();
   var myColor = Colors.yellow;
   var mydate = formatDate(DateTime.now(), [dd, '/', mm, '/', yyyy]);
-
+  var myColorOfContainer;
   var formattedDate =
       DateFormat('dd MMM yyyy').format(DateTime.now()).toString();
   List<bool> isFav = [];
@@ -85,6 +85,7 @@ class _LeadsScreenState extends State<LeadsScreen> {
                   ),
                 ),
                 '4 years 11 months',
+                myColor = myColorFunction(leadScreeStatus.YTC) as MaterialColor,
               ),
             ],
           );
@@ -93,16 +94,24 @@ class _LeadsScreenState extends State<LeadsScreen> {
     );
   }
 
-  Color myColorFunction() {
-    switch (mstatus) {
-      case 'Lost':
-        // setState(() {
-        //   myColor = Colors.green;
-        // });
-
+  Color myColorFunction([leadScreeStatus? enrolled]) {
+    switch (enrolled) {
+      case leadScreeStatus.ENROLLED:
+        myColorOfContainer = Colors.green;
         break;
+      case leadScreeStatus.Lost:
+        myColorOfContainer = Colors.red;
+        break;
+      case leadScreeStatus.YTC:
+        myColorOfContainer = Colors.blueGrey;
+        break;
+      case leadScreeStatus.Warm:
+        myColorOfContainer = Colors.brown;
+        break;
+      default:
+        myColorOfContainer = Colors.white;
     }
-    return myColor;
+    return myColorOfContainer;
   }
 
   myFunc([leadScreeStatus? enrolled]) {

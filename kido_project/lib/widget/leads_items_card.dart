@@ -1,45 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:kido_project/screen/leads_screen.dart';
 import 'package:kido_project/widget/common_widget.dart';
 
 class CommonListCard extends StatelessWidget {
-  final String leadId;
-  final String status;
-  final bool isFavourite;
-  final String parentName;
-  final String childName;
-  final String gender;
-  final String age;
-  final String callStatus;
-  final String socialMedicalCampaignInfo;
-  // final DateTime ldDate;
-  // final DateTime lastFollowUpDate;
-  // final DateTime nextFollowUpDate;
-  final String ldDate;
-  final String lastFollowUpDate;
-  final String nextFollowUpDate;
-  //final Function(bool) isFavouriteSelected;
+  String leadId;
+  String myLeadStatus;
+  String parentName;
+  String childName;
+  String childAge;
+  String gender;
+  IconButton iconButton;
 
-  const CommonListCard({
-    super.key,
-    required this.leadId,
-    required this.status,
-    required this.isFavourite,
-    required this.parentName,
-    required this.childName,
-    required this.gender,
-    required this.age,
-    required this.callStatus,
-    required this.socialMedicalCampaignInfo,
-    required this.ldDate,
-    required this.lastFollowUpDate,
-    required this.nextFollowUpDate,
-  });
-
+  CommonListCard(
+    this.leadId,
+    this.myLeadStatus,
+    this.parentName,
+    this.childName,
+    this.gender,
+    this.iconButton,
+    this.childAge,
+  );
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-       
         Padding(
           padding: const EdgeInsets.only(
             top: 10,
@@ -48,11 +32,11 @@ class CommonListCard extends StatelessWidget {
             bottom: 2,
           ),
           child: Container(
-            height: MediaQuery.of(context).size.height / 5,
+            height: MediaQuery.of(context).size.height / 7.4,
             width: double.maxFinite,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color:const Color(0xFF00356A),
+              color: const Color.fromARGB(100, 221, 221, 221),
             ),
             child: Stack(
               children: [
@@ -64,7 +48,7 @@ class CommonListCard extends StatelessWidget {
                     bottom: 1,
                   ),
                   child: Container(
-                    height: MediaQuery.of(context).size.height / 5.5,
+                    height: MediaQuery.of(context).size.height / 8.3,
                     width: 6,
                     decoration: BoxDecoration(
                       color: Colors.red,
@@ -95,7 +79,7 @@ class CommonListCard extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.only(top: 8.0),
                               child: Text(
-                                status,
+                                myLeadStatus,
                                 style: commonSmallFonts.copyWith(
                                     color: Colors.red),
                               ),
@@ -105,19 +89,11 @@ class CommonListCard extends StatelessWidget {
                         Row(
                           children: [
                             Padding(
-                              padding: const EdgeInsets.only(
-                                right: 10.0,
-                                top: 10,
-                              ),
-                              child: GestureDetector(
-                                onTap: () {},
-                                child: Image.asset(
-                                  'assets/images/star.png',
-                                  width: 25,
-                                  height: 25,
+                                padding: const EdgeInsets.only(
+                                  right: 10.0,
+                                  top: 10,
                                 ),
-                              ),
-                            ),
+                                child: iconButton),
                           ],
                         ),
                       ],
@@ -129,10 +105,12 @@ class CommonListCard extends StatelessWidget {
                           top: 1,
                           left: 12,
                         ),
-                        child: Text(parentName,
-                            style: commonMediumFonts.copyWith(
-                              color: Colors.white,
-                            )),
+                        child: Text(
+                          '$parentName',
+                          style: commonMediumFonts.copyWith(
+                            color: Colors.white,
+                          ),
+                        ),
                       ),
                     ),
                     Row(
@@ -147,7 +125,7 @@ class CommonListCard extends StatelessWidget {
                           width: 3,
                         ),
                         Text(
-                          childName,
+                          '${childName}',
                           style: commonSmallFonts.copyWith(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -157,117 +135,17 @@ class CommonListCard extends StatelessWidget {
                           width: 3,
                         ),
                         Text(
-                          '($gender)',
+                          '${gender}',
                           style: commonSmallFonts.copyWith(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold),
+                              color: Colors.white, fontWeight: FontWeight.bold),
                         ),
                         const SizedBox(
                           width: 3,
                         ),
                         Text(
-                          age,
+                          '$childAge',
                           style: commonSmallFonts.copyWith(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 8,
-                    ),
-                    Row(
-                      children: [
-                        Align(
-                          alignment: Alignment.bottomLeft,
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 12),
-                            child: Text(
-                              'Status:',
-                              style: commonSmallFonts.copyWith(
-                                  color: Colors.amber),
-                            ),
-                          ),
-                        ),
-                        Text(
-                          callStatus,
-                          style:
-                              commonSmallFonts.copyWith(color: Colors.white),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Align(
-                          alignment: Alignment.bottomLeft,
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 12),
-                            child: Text('Social Medical Campaign:',
-                                style: commonSmallFonts.copyWith(
-                                  color: Colors.amber,
-                                )),
-                          ),
-                        ),
-                        Text(
-                          socialMedicalCampaignInfo,
-                          style: commonSmallFonts.copyWith(
-                            color: Colors.white,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Align(
-                          alignment: Alignment.bottomLeft,
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 12),
-                            child: Text('LD Date:',
-                                style: commonSmallFonts.copyWith(
-                                  color: Colors.amber,
-                                )),
-                          ),
-                        ),
-                        Text(
-                          ldDate,
-                          style: commonSmallFonts.copyWith(
-                            color: Colors.white,
-                          ),
-                        ),
-                        Align(
-                          alignment: Alignment.bottomLeft,
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 4),
-                            child: Text('Last Follow Up:',
-                                style: commonSmallFonts.copyWith(
-                                    color: Colors.amber)),
-                          ),
-                        ),
-                        Text(
-                          lastFollowUpDate.toString(),
-                          style: commonSmallFonts.copyWith(
-                            color: Colors.white,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Align(
-                          alignment: Alignment.bottomLeft,
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 12),
-                            child: Text('Next Follow Up On:',
-                                style: commonSmallFonts.copyWith(
-                                  color: Colors.amber,
-                                )),
-                          ),
-                        ),
-                        Text(
-                          nextFollowUpDate.toString(),
-                          style: commonSmallFonts.copyWith(
-                            color: Colors.white,
-                          ),
+                              color: Colors.white, fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),

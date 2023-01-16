@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:kido_project/widget/common_widget.dart';
 import 'package:kido_project/widget/drop_down_common.dart';
 import 'package:kido_project/widget/radio_gender.dart';

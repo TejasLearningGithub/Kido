@@ -29,9 +29,9 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(
                 height: 30,
               ),
-              Align(
-                alignment: Alignment.topCenter,
-                child: myImageWidget(
+             const Align(
+                alignment:  Alignment.topCenter,
+                child:  myImageWidget(
                   imgUrl: 'assets/images/logo_kido.png',
                   height: 260,
                   width: 260,

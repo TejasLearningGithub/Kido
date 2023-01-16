@@ -47,11 +47,11 @@ class _DashBoardState extends State<DashBoard> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
-                  padding: EdgeInsets.only(left: 25),
+                  padding:const EdgeInsets.only(left: 25),
                   child: Text(
                     'Notifications',
                     style: commonMediumFonts.copyWith(
-                      color: Color(0xFF00356A),
+                      color:const Color(0xFF00356A),
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                       fontStyle: FontStyle.italic,

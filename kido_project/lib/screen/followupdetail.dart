@@ -12,8 +12,11 @@ class Followupdetail extends StatefulWidget {
 class _FollowupdetailState extends State<Followupdetail> {
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
+
     return Scaffold(
-      backgroundColor: Color.fromARGB(100, 249, 249, 249),
+      backgroundColor: const Color.fromARGB(100, 249, 249, 249),
       appBar: AppBar(
         title: const Text('Follow up Detail'),
         leading: const Icon(
@@ -27,266 +30,338 @@ class _FollowupdetailState extends State<Followupdetail> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.only(
-                top: 20,
-                left: 0,
-                bottom: 20,
-                right: 40,
+              padding: EdgeInsets.only(
+                top: height * 0.020,
+                bottom: height * 0.0199,
+                right: width * 0.040,
               ),
-              child: Container(
-                width: 370,
-                height: 230,
-                decoration: const BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.zero,
-                    bottomLeft: Radius.zero,
-                    topRight: Radius.circular(10),
-                    bottomRight: Radius.circular(10),
-                  ),
-                ),
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 20,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Container(
+                    width: width * 0.89,
+                    height: height * 1.51 / 4.3 - 11.9,
+                    decoration: const BoxDecoration(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.zero,
+                        bottomLeft: Radius.zero,
+                        topRight: Radius.circular(10),
+                        bottomRight: Radius.circular(10),
+                      ),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    child: Column(
                       children: [
+                        SizedBox(
+                          height: height * 0.020,
+                        ),
                         Row(
-                          //mainAxisSize: MainAxisSize.min,
-                          //mainAxisAlignment: MainAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.only(left: 8),
-                              child: Text(
-                                'LD003171',
+                            Row(
+                              //mainAxisSize: MainAxisSize.min,
+                              //mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                      left: width * 0.018 - 0.01),
+                                  child: Text(
+                                    'LD003171',
+                                    style: commonMediumFonts.copyWith(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                                const Text('YTC'),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                const Icon(
+                                  Icons.note_add,
+                                  size: 22,
+                                ),
+                                SizedBox(
+                                  width: width * 0.015,
+                                ),
+                                const Icon(
+                                  Icons.edit_note_sharp,
+                                  size: 22,
+                                ),
+                                SizedBox(
+                                  width: width * 0.015,
+                                ),
+                                const Icon(
+                                  Icons.star_border_outlined,
+                                  color: Colors.amber,
+                                  size: 25,
+                                ),
+                                SizedBox(
+                                  width: width * 0.015,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: height * 0.024,
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(left: width * 0.011),
+                          child: Row(
+                            children: [
+                              Text(
+                                'Shikha(LD002320)',
                                 style: commonMediumFonts.copyWith(
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                            ),
-                            Text('YTC'),
-                          ],
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(left: width * 0.011),
+                          child: Row(
+                            children: [
+                              Text(
+                                'Child:',
+                                style: commonSmallFonts.copyWith(
+                                  color: Colors.white,
+                                ),
+                              ),
+                              Text(
+                                'Vinit(M) 2 years 5 months',
+                                style: commonSmallFonts.copyWith(
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: height * 0.01,
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(left: width * 0.01),
+                          child: Row(
+                            children: [
+                              Text(
+                                '1234567890',
+                                style: commonSmallFonts.copyWith(
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(left: width * 0.01),
+                          child: Row(
+                            children: [
+                              Text(
+                                'Shikha@gmail.com',
+                                style: commonSmallFonts.copyWith(
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(left: width * 0.01),
+                          child: Row(
+                            children: [
+                              Text(
+                                'Mumbai,Kandivali',
+                                style: commonSmallFonts.copyWith(
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(left: width * 0.01),
+                          child: Row(
+                            // crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'LD Date:',
+                                style: commonSmallFonts.copyWith(
+                                  color: Colors.white,
+                                ),
+                              ),
+                              Text(
+                                '05 Mar 2022',
+                                style: commonSmallFonts.copyWith(
+                                  color: Colors.white,
+                                ),
+                              ),
+                              Text(
+                                'Last Follow up:',
+                                style: commonSmallFonts.copyWith(
+                                  color: Colors.white,
+                                ),
+                              ),
+                              FittedBox(
+                                child: Text(
+                                  '05 Mar 2022',
+                                  style: commonSmallFonts.copyWith(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                         Row(
-                          children: const [
-                            Icon(
-                              Icons.note_add,
-                              size: 22,
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(
+                                left: width * 0.01,
+                                right: width * 0.01,
+                                top: height * 0.02,
+                              ),
+                              child: Container(
+                                width: 40,
+                                height: 40,
+                                decoration: const BoxDecoration(
+                                  color: Color.fromARGB(100, 249, 249, 249),
+                                  shape: BoxShape.circle,
+                                ),
+                                child: IconButton(
+                                  onPressed: () {},
+                                  icon: const Icon(
+                                    Icons.call,
+                                    size: 19,
+                                    color: Color.fromARGB(100, 189, 83, 25),
+                                  ),
+                                ),
+                              ),
                             ),
-                            SizedBox(
-                              width: 5,
+                            Padding(
+                              padding: EdgeInsets.only(
+                                left: width * 0.01,
+                                right: width * 0.01,
+                                top: height * 0.02,
+                              ),
+                              child: Container(
+                                width: 40,
+                                height: 40,
+                                decoration: const BoxDecoration(
+                                  color: Color.fromARGB(100, 249, 249, 249),
+                                  shape: BoxShape.circle,
+                                ),
+                                child: IconButton(
+                                    onPressed: () {},
+                                    icon: const Icon(Icons.chat_sharp,
+                                        color:
+                                            Color.fromARGB(100, 189, 83, 25))),
+                              ),
                             ),
-                            Icon(
-                              Icons.edit_note_sharp,
-                              size: 22,
+                            Padding(
+                              padding: EdgeInsets.only(
+                                left: width * 0.01,
+                                right: width * 0.01,
+                                top: height * 0.02,
+                              ),
+                              child: Container(
+                                width: 40,
+                                height: 40,
+                                decoration: const BoxDecoration(
+                                  color: Color.fromARGB(100, 249, 249, 249),
+                                  shape: BoxShape.circle,
+                                ),
+                                child: IconButton(
+                                  onPressed: () {},
+                                  icon: const Icon(
+                                      Icons.mark_email_read_outlined,
+                                      color: Color.fromARGB(100, 189, 83, 25)),
+                                ),
+                              ),
                             ),
-                            SizedBox(
-                              width: 5,
-                            ),
-                            Icon(
-                              Icons.star_border_outlined,
-                              color: Colors.amber,
-                              size: 25,
-                            ),
-                            SizedBox(
-                              width: 5,
-                            ),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                left: width * 0.01,
+                                right: width * 0.03,
+                                top: height * 0.02,
+                              ),
+                              child: Container(
+                                width: 40,
+                                height: 40,
+                                decoration: const BoxDecoration(
+                                  color: Color.fromARGB(100, 249, 249, 249),
+                                  shape: BoxShape.circle,
+                                ),
+                                child: IconButton(
+                                  onPressed: () {},
+                                  icon: const Icon(
+                                    Icons.whatsapp,
+                                    color: Color.fromARGB(
+                                      100,
+                                      189,
+                                      83,
+                                      25,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            )
                           ],
-                        ),
+                        )
                       ],
                     ),
-                    SizedBox(
-                      height: 24,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 8.0),
-                      child: Row(
-                        children: [
-                          Text(
-                            'Shikha(LD002320)',
-                            style: commonMediumFonts.copyWith(
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 8.0),
-                      child: Row(
-                        children: [
-                          Text(
-                            'Child:',
-                            style: commonSmallFonts.copyWith(
-                              color: Colors.white,
-                            ),
-                          ),
-                          Text(
-                            'Vinit(M) 2 years 5 months',
-                            style: commonSmallFonts.copyWith(
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 8),
-                      child: Row(
-                        children: [
-                          Text(
-                            '1234567890',
-                            style: commonSmallFonts.copyWith(
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 8),
-                      child: Row(
-                        children: [
-                          Text(
-                            'Shikha@gmail.com',
-                            style: commonSmallFonts.copyWith(
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 8),
-                      child: Row(
-                        children: [
-                          Text(
-                            'Mumbai,Kandivali',
-                            style: commonSmallFonts.copyWith(
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 8.0),
-                      child: Row(
-                        // crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'LD Date:',
-                            style: commonSmallFonts.copyWith(
-                              color: Colors.white,
-                            ),
-                          ),
-                          Text(
-                            '05 Mar 2022',
-                            style: commonSmallFonts.copyWith(
-                              color: Colors.white,
-                            ),
-                          ),
-                          Text(
-                            'Last Follow up:',
-                            style: commonSmallFonts.copyWith(
-                              color: Colors.white,
-                            ),
-                          ),
-                          Text(
-                            '05 Mar 2022',
-                            style: commonSmallFonts.copyWith(
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 8.0),
+              padding: EdgeInsets.only(left: width * 0.03),
               child: Row(
                 children: [
-                  Text('Course'),
-                  SizedBox(
-                    width: 82,
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [
+                      Text("course"),
+                      Text("category"),
+                      Text("source"),
+                      Text("status"),
+                      Text("sub-status"),
+                    ],
                   ),
-                  Text('Prenursery'),
+                  SizedBox(
+                    width: width * 0.195,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Prenursery"),
+                      Text("Social Media Campaign"),
+                      Text("Montana Website"),
+                      FittedBox(
+                        child: Text(
+                          "Not interested/Need mismatch",
+                          style: commonSmallFonts.copyWith(
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
+                      Text('Not eligible')
+                    ],
+                  ),
                 ],
               ),
             ),
             SizedBox(
-              height: 28,
+              height: height * 0.056,
             ),
+            // const SizedBox(
+            //   height: 28,
+            // ),
             Padding(
-              padding: const EdgeInsets.only(left: 8.0),
-              child: Row(
-                children: [
-                  Text('Category'),
-                  SizedBox(
-                    width: 68,
-                  ),
-                  Text('Social Media Campaign'),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 28,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 8.0),
-              child: Row(
-                children: [
-                  Text('Source'),
-                  SizedBox(
-                    width: 74,
-                  ),
-                  Text('Montana Website'),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 28,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 8.0),
-              child: Row(
-                children: [
-                  Text('Status'),
-                  SizedBox(
-                    width: 68,
-                  ),
-                  Text('Not interested/Need mismatch'),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 28,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 8.0),
-              child: Row(
-                children: const [
-                  Text('Sub-status'),
-                  SizedBox(
-                    width: 68,
-                  ),
-                  Text('Not eligible'),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 28,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 8.0),
+              padding: EdgeInsets.only(left: width * 0.02),
               child: Row(
                 children: const [
                   Text(
@@ -300,7 +375,7 @@ class _FollowupdetailState extends State<Followupdetail> {
               height: 38,
             ),
             Padding(
-              padding: const EdgeInsets.only(right: 12),
+              padding: EdgeInsets.only(right: width * 0.012),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -326,21 +401,21 @@ class _FollowupdetailState extends State<Followupdetail> {
                 ],
               ),
             ),
-            const SizedBox(
-              height: 30,
+            SizedBox(
+              height: height * 0.030,
             ),
             Row(
               children: [
                 Container(
-                  width: 410,
-                  height: 45,
+                  width: MediaQuery.of(context).size.width - 0.5,
+                  height: height * 0.055,
                   decoration: const BoxDecoration(color: Colors.blue),
-                  child: const Padding(
+                  child: Padding(
                     padding: EdgeInsets.only(
-                      top: 8.0,
-                      left: 10,
+                      top: height * 0.01,
+                      left: width * 0.0310,
                     ),
-                    child: Text(
+                    child: const Text(
                       'Follow up history',
                       style: TextStyle(
                         fontSize: 19,
@@ -351,17 +426,17 @@ class _FollowupdetailState extends State<Followupdetail> {
                 ),
               ],
             ),
-            const SizedBox(
-              height: 5,
+            SizedBox(
+              height: height * 0.015,
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 18.0),
+              padding: EdgeInsets.only(left: width * 0.050),
               child: TimelineTile(
                 axis: TimelineAxis.vertical,
-                indicatorStyle: const IndicatorStyle(
+                indicatorStyle: IndicatorStyle(
                   color: Colors.blue,
-                  height: 25,
-                  width: 25,
+                  height: height * 0.0425,
+                  width: width * 0.0425,
                 ),
                 isFirst: true,
                 afterLineStyle: const LineStyle(
@@ -375,8 +450,8 @@ class _FollowupdetailState extends State<Followupdetail> {
                     ),
                     Container(
                       margin: const EdgeInsets.only(top: 10, bottom: 30),
-                      height: 110,
-                      width: 280,
+                      height: 115,
+                      width: MediaQuery.of(context).size.width / 1.8 - 0.09,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: const [
@@ -389,13 +464,10 @@ class _FollowupdetailState extends State<Followupdetail> {
                               '17 Aug 2021 01:27 pm',
                             ),
                           ),
-                          Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: FittedBox(
-                              child: Text(
-                                'SMS/WHATS APP/E-Mail Message Sent',
-                                style: TextStyle(fontSize: 16),
-                              ),
+                          Text(
+                            'SMS/WHATSAPP/E-Mail Message Sent',
+                            style: TextStyle(
+                              fontSize: 14,
                             ),
                           )
                         ],
@@ -406,13 +478,13 @@ class _FollowupdetailState extends State<Followupdetail> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 18.0),
+              padding: EdgeInsets.only(left: width * 0.050),
               child: TimelineTile(
                 axis: TimelineAxis.vertical,
-                indicatorStyle: const IndicatorStyle(
+                indicatorStyle: IndicatorStyle(
                   color: Colors.blue,
-                  height: 25,
-                  width: 25,
+                  height: height * 0.0425,
+                  width: width * 0.0425,
                 ),
                 beforeLineStyle: const LineStyle(color: Colors.blue),
                 afterLineStyle: const LineStyle(color: Colors.blue),
@@ -423,9 +495,9 @@ class _FollowupdetailState extends State<Followupdetail> {
                       width: 10,
                     ),
                     Container(
-                      margin: const EdgeInsets.only(top: 10, bottom: 30),
-                      height: 110,
-                      width: 280,
+                      margin: const EdgeInsets.only(top: 10, bottom: 25),
+                      height: 115,
+                      width: MediaQuery.of(context).size.width / 1.8 - 0.09,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: const [
@@ -435,16 +507,14 @@ class _FollowupdetailState extends State<Followupdetail> {
                           Padding(
                             padding: EdgeInsets.only(left: 8.0, top: 8.0),
                             child: Text(
-                              '12 Aug 2021 01:27 pm ',
+                              '12 Aug 2021 01:27 pm',
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: FittedBox(
-                              child: Text(
-                                'SMS/WHATS APP/E-Mail Message Sent',
-                                style: TextStyle(fontSize: 16),
-                              ),
+                            padding: EdgeInsets.only(left: 8.0),
+                            child: Text(
+                              'SMS/WHATS APP/E-Mail Message Sent',
+                              style: TextStyle(fontSize: 14),
                             ),
                           )
                         ],
@@ -455,13 +525,13 @@ class _FollowupdetailState extends State<Followupdetail> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 18.0),
+              padding: EdgeInsets.only(left: width * 0.050),
               child: TimelineTile(
                 axis: TimelineAxis.vertical,
-                indicatorStyle: const IndicatorStyle(
+                indicatorStyle: IndicatorStyle(
                   color: Colors.white,
-                  height: 25,
-                  width: 25,
+                  height: height * 0.0425,
+                  width: width * 0.0425,
                 ),
                 isLast: false,
                 beforeLineStyle: const LineStyle(
@@ -478,23 +548,21 @@ class _FollowupdetailState extends State<Followupdetail> {
                     ),
                     Container(
                       margin: const EdgeInsets.only(top: 10, bottom: 30),
-                      height: 140,
-                      width: 280,
+                      height: 155,
+                      width: MediaQuery.of(context).size.width / 1.8 - 0.09,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
-                          SizedBox(
-                            height: 49,
-                          ),
+                        children: [
                           Padding(
-                            padding: EdgeInsets.only(left: 8.0, top: 8.0),
-                            child: FittedBox(
+                            padding: EdgeInsets.only(
+                                left: width * 0.01, top: height * 0.01),
+                            child: const FittedBox(
                               child: Text(
                                 '11 Aug 2021 08:52 pm',
                               ),
                             ),
                           ),
-                          Padding(
+                          const Padding(
                             padding: EdgeInsets.only(left: 8),
                             child: Text(
                               'YTC',
@@ -502,13 +570,14 @@ class _FollowupdetailState extends State<Followupdetail> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.only(left: 8),
-                            child: FittedBox(
-                              child: Text(
-                                'Nidhi TRF TO ujwala parent didn\'t\n answer my call',
+                            padding: EdgeInsets.only(left: width * 0.018),
+                            child: const Text(
+                              'Nidhi TRF TO ujwala parent didn\'t\nanswer my call',
+                              style: TextStyle(
+                                fontSize: 14,
                               ),
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ),

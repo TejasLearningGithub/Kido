@@ -48,7 +48,7 @@ class DashboardTile extends StatelessWidget {
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(16),
                       border: Border.all(
-                        color: Color.fromARGB(100, 189, 83, 25),
+                        color: const Color.fromARGB(100, 189, 83, 25),
                         width: 2,
                       )),
                   child: Padding(
@@ -57,13 +57,16 @@ class DashboardTile extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Image.asset(imgUrl),
-                        Text(
-                          textString,
-                          style: const TextStyle(
-                              color: Color(0xFF00356A),
-                              fontSize: 28,
-                              fontWeight: FontWeight.bold,
-                              fontStyle: FontStyle.italic),
+                        FittedBox(
+                          fit: BoxFit.contain,
+                          child: Text(
+                            textString,
+                            style: const TextStyle(
+                                color: Color(0xFF00356A),
+                                fontSize: 28,
+                                fontWeight: FontWeight.bold,
+                                fontStyle: FontStyle.italic),
+                          ),
                         ),
                       ],
                     ),

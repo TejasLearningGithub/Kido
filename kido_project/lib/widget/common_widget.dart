@@ -189,11 +189,11 @@ commonSubmitButton({
 enum gender { male, female }
 
 class myImageWidget extends StatelessWidget {
-  String imgUrl;
-  double width;
-  double height;
+  final String imgUrl;
+  final double width;
+  final double height;
 
-  myImageWidget({
+  const myImageWidget({
     required this.imgUrl,
     required this.height,
     required this.width,
@@ -256,18 +256,24 @@ Row dashBoardNotificationList(BuildContext context) {
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        Text(
-                          'Renu Pathak',
-                          style: commonMediumFonts.copyWith(
-                            color: const Color(0xFF00356A),
-                            fontSize: 19,
+                        FittedBox(
+                          fit: BoxFit.contain,
+                          child: Text(
+                            'Renu Pathak',
+                            style: commonMediumFonts.copyWith(
+                              color: const Color(0xFF00356A),
+                              fontSize: 19,
+                            ),
                           ),
                         ),
-                        Text(
-                          'To call back/Follow up',
-                          style: commonMediumFonts.copyWith(
-                            color: const Color(0xFF00356A),
-                            fontSize: 19,
+                        FittedBox(
+                          fit: BoxFit.contain,
+                          child: Text(
+                            'To call back/Follow up',
+                            style: commonMediumFonts.copyWith(
+                              color: const Color(0xFF00356A),
+                              fontSize: 19,
+                            ),
                           ),
                         ),
                       ],

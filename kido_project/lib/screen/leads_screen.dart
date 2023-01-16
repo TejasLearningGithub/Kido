@@ -3,42 +3,117 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:kido_project/widget/leads_items_card.dart';
 
-class LeadsScreen extends StatelessWidget {
+class LeadsScreen extends StatefulWidget {
+  LeadsScreen({super.key});
+
+  @override
+  State<LeadsScreen> createState() => _LeadsScreenState();
+}
+
+enum leadScreeStatus { Lost, Warm, YTC, ENROLLED }
+
+class _LeadsScreenState extends State<LeadsScreen> {
   DateTime currentTime = DateTime.now();
+  var myColor = Colors.yellow;
   var mydate = formatDate(DateTime.now(), [dd, '/', mm, '/', yyyy]);
+
   var formattedDate =
       DateFormat('dd MMM yyyy').format(DateTime.now()).toString();
-  LeadsScreen({super.key});
+  List<bool> isFav = [];
+  List<bool> myFav = [];
+  leadScreeStatus? myLeadStatus;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    myFav = [];
+    for (var i = 0; i < 15; i++) {
+      myFav.add(false);
+    }
+  }
+
+  String? mstatus;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Leads'),
+        leading: const Icon(Icons.arrow_back),
+        title: const Text('LEADS'),
+        actions: [
+          Row(
+            children: [
+              IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.filter_alt_outlined,
+                  size: 27,
+                ),
+              ),
+              IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.search,
+                  size: 27,
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
       body: ListView.builder(
-        itemCount: 9,
+        itemCount: 15,
         itemBuilder: (context, index) {
           return Column(
-            children:  const [
+            children: [
               CommonListCard(
-                leadId: 'LD003171',
-                status: 'Lost',
-                parentName: 'Renu Pathak',
-                childName: 'Rahil',
-                gender: 'M',
-                age: '4 years, 9 months',
-                callStatus: 'To callback/Follow up',
-                socialMedicalCampaignInfo: 'Montana Website',
-                ldDate: '1 jan 2022',
-                lastFollowUpDate: '1 jan 2022',
-                nextFollowUpDate: '1 jan 2022',
-                isFavourite: false,
-              )
+                'LD003171',
+                //leadScreeStatus.ENROLLED.toString(),
+                myFunc(leadScreeStatus.Warm),
+                'Renu Pathak',
+                'Rahil',
+                '(M)',
+                IconButton(
+                  onPressed: () {
+                    setState(() {
+                      myFav[index] = !myFav[index];
+                    });
+                  },
+                  icon: Icon(
+                    myFav[index] ? Icons.star : Icons.star_border,
+                    color: Colors.amber.shade500,
+                  ),
+                ),
+                '4 years 11 months',
+              ),
             ],
           );
         },
       ),
     );
+  }
+
+  Color myColorFunction() {
+    switch (mstatus) {
+      case 'Lost':
+        // setState(() {
+        //   myColor = Colors.green;
+        // });
+
+        break;
+    }
+    return myColor;
+  }
+
+  myFunc([leadScreeStatus? enrolled]) {
+    if (leadScreeStatus.ENROLLED == enrolled) {
+      return 'Enrolled';
+    } else if (leadScreeStatus.Lost == enrolled) {
+      return 'Lost';
+    } else if (leadScreeStatus.Warm == enrolled) {
+      return 'Warm';
+    } else if (leadScreeStatus.YTC == enrolled) {
+      return 'YTC';
+    }
   }
 }

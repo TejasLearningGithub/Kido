@@ -288,3 +288,71 @@ Row dashBoardNotificationList(BuildContext context) {
     ],
   );
 }
+
+class previous_button extends StatelessWidget {
+  VoidCallback? myOnPress;
+  previous_button({
+    required myOnPress,
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 50,
+      width: 110,
+      child: ElevatedButton(
+        onPressed: myOnPress,
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(Colors.blueGrey),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(28.0),
+              side: BorderSide.none,
+            ),
+          ),
+        ),
+        child: const Text(
+          'Previous',
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class save_continue extends StatelessWidget {
+  VoidCallback? myOnPress;
+  save_continue({
+    required myOnPress,
+    Key? key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 50,
+      width: 200,
+      child: ElevatedButton(
+        onPressed: myOnPress,
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(Colors.blue),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(28.0),
+              side: BorderSide.none,
+            ),
+          ),
+        ),
+        child: const Text(
+          'Save & Continue',
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
+      ),
+    );
+  }
+}

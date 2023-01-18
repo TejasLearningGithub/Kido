@@ -25,16 +25,23 @@ enum gender { Male, Female }
 enum preschoolBool { Yes, No }
 
 DateTime? _selectedDate;
+
 var _dateController = TextEditingController();
 
 class _ChildInfoState extends State<ChildInfo> {
   @override
   Widget build(BuildContext context) {
+    DateTime dateTime = DateTime.now();
+
+    var myDay = 0;
+    var myYear = 0;
+    var myMonth = 0;
+    var myController = TextEditingController();
+    var myDate = 'Please select date';
     DateTime _dateTime = DateTime.now();
     var _childKey = GlobalKey<FormState>();
     var _firstNameController = TextEditingController();
     var _secondNameController = TextEditingController();
-    var _dateController = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Child Info'),
@@ -93,19 +100,72 @@ class _ChildInfoState extends State<ChildInfo> {
                 child: commonName('Date Of Birth', true),
               ),
               GestureDetector(
-                onTap: () => _mySelectDate(),
+                onTap: () {
+                  print('=====Tapped=====');
+                },
                 child: commonTextDropDown(
-                  hintText: 'Date of Birth',
-                  backgroundColor: Colors.blueGrey,
-                  hintTextColor: Colors.black,
-                  icon: Icon(Icons.arrow_drop_down),
-                  myController: _dateController,
-                  textColor: Colors.black,
-                  topPadding: 10,
-                  bottomPadding: 0,
-                  rightPadding: 18,
-                  leftPadding: 20,
-                ),
+                    hintText: 'Date of Birth',
+                    backgroundColor: Colors.blueGrey,
+                    hintTextColor: Colors.black,
+                    icon: Icon(Icons.arrow_drop_down),
+                    myController: _dateController,
+                    textColor: Colors.black,
+                    topPadding: 10,
+                    bottomPadding: 0,
+                    rightPadding: 18,
+                    leftPadding: 20,
+                    myTapping: () {
+                      // print('=====TAPPED=====');
+                      showModalBottomSheet(
+                        context: context,
+                        builder: (BuildContext context) => Container(
+                          height: 250,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Container(
+                                height: 190,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(18),
+                                ),
+                                child: CupertinoDatePicker(
+                                  mode: CupertinoDatePickerMode.date,
+                                  onDateTimeChanged: (DateTime date) {
+                                    //dateTime = date;
+                                    if (mounted) {
+                                      print("Your Selected Date: ${date.day}");
+                                      print(
+                                          "your Selected Month: ${date.month}");
+                                      print(
+                                          "Your Selected Year : ${date.year}");
+                                      setState(() {
+                                        dateTime = date;
+                                        myDay = date.day;
+                                        myMonth = date.month;
+                                        myYear = date.year;
+                                        myDate =
+                                            ('$myDay' '$myMonth' '$myYear');
+                                        myDate =
+                                            '$myDay -' ' $myMonth -' ' $myYear';
+                                        _dateController.text = myDate;
+                                      });
+                                    }
+                                  },
+                                ),
+                              ),
+                              ElevatedButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: const Text(
+                                  'close bottom sheet',
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    }),
               ),
               SizedBox(
                 height: 10,
@@ -259,6 +319,7 @@ class _ChildInfoState extends State<ChildInfo> {
     required double rightPadding,
     required double leftPadding,
     required Icon icon,
+    required VoidCallback myTapping,
   }) {
     GoogleFonts.roboto();
 
@@ -308,6 +369,9 @@ class _ChildInfoState extends State<ChildInfo> {
             ),
             suffixIcon: icon),
         keyboardType: TextInputType.none,
+        onTap: () {
+          myTapping();
+        },
       ),
     );
   }
@@ -349,7 +413,6 @@ class _ChildInfoState extends State<ChildInfo> {
                   child: CupertinoDatePicker(
                     mode: CupertinoDatePickerMode.date,
                     onDateTimeChanged: (DateTime dateTime) {
-                    
                       tempPickedDate = dateTime;
                     },
                   ),

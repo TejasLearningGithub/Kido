@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:kido_project/widget/leads_items_card.dart';
 
 class LeadsScreen extends StatefulWidget {
-  LeadsScreen({super.key});
+  const LeadsScreen({super.key});
 
   @override
   State<LeadsScreen> createState() => _LeadsScreenState();
@@ -22,6 +22,7 @@ class _LeadsScreenState extends State<LeadsScreen> {
   List<bool> isFav = [];
   List<bool> myFav = [];
   leadScreeStatus? myLeadStatus;
+  var myFontColor = Colors.blue;
   @override
   void initState() {
     // TODO: implement initState
@@ -45,14 +46,14 @@ class _LeadsScreenState extends State<LeadsScreen> {
             children: [
               IconButton(
                 onPressed: () {},
-                icon: Icon(
+                icon: const Icon(
                   Icons.filter_alt_outlined,
                   size: 27,
                 ),
               ),
               IconButton(
                 onPressed: () {},
-                icon: Icon(
+                icon: const Icon(
                   Icons.search,
                   size: 27,
                 ),
@@ -67,13 +68,13 @@ class _LeadsScreenState extends State<LeadsScreen> {
           return Column(
             children: [
               CommonListCard(
-                'LD003171',
+                leadId: 'LD003171',
                 //leadScreeStatus.ENROLLED.toString(),
-                myFunc(leadScreeStatus.Warm),
-                'Renu Pathak',
-                'Rahil',
-                '(M)',
-                IconButton(
+                myLeadStatus: myLeadStatusPrintText(leadScreeStatus.Warm),
+                childAge: '4 Years 9 months',
+                childName: 'Rahil',
+                gender: '(M)',
+                iconButton: IconButton(
                   onPressed: () {
                     setState(() {
                       myFav[index] = !myFav[index];
@@ -84,8 +85,13 @@ class _LeadsScreenState extends State<LeadsScreen> {
                     color: Colors.amber.shade500,
                   ),
                 ),
-                '4 years 11 months',
-                myColor = myColorFunction(leadScreeStatus.YTC) as MaterialColor,
+
+                myColor: myColorFunction(leadScreeStatus.YTC) as MaterialColor,
+                parentName: 'Renu pathak',
+                programCategory: 'Preschool',
+                myFontColor: myFunc(leadScreeStatus.Warm),
+                myLeadStatusText:
+                    myLeadStatusPrintText(leadScreeStatus.ENROLLED),
               ),
             ],
           );
@@ -116,13 +122,38 @@ class _LeadsScreenState extends State<LeadsScreen> {
 
   myFunc([leadScreeStatus? enrolled]) {
     if (leadScreeStatus.ENROLLED == enrolled) {
-      return 'Enrolled';
+      // setState(() {
+      return myFontColor = Colors.blue;
+      // });
+
+      //return 'Enrolled' ;
     } else if (leadScreeStatus.Lost == enrolled) {
-      return 'Lost';
+      // setState(() {
+      return myFontColor = Colors.red;
+      // });
+      // return 'Lost';
     } else if (leadScreeStatus.Warm == enrolled) {
-      return 'Warm';
+      // setState(() {
+      return myFontColor = Colors.brown;
+      // });
+      // return 'Warm';
     } else if (leadScreeStatus.YTC == enrolled) {
-      return 'YTC';
+      // setState(() {
+      return myFontColor = Colors.blueGrey;
+      // });
+      // return 'YTC';
     }
+  }
+}
+
+myLeadStatusPrintText(leadScreeStatus enrolled) {
+  if (leadScreeStatus.ENROLLED == enrolled) {
+    return 'Enrolled';
+  } else if (leadScreeStatus.Lost == enrolled) {
+    return 'Lost';
+  } else if (leadScreeStatus.Warm == enrolled) {
+    return 'Warm';
+  } else if (leadScreeStatus.YTC == enrolled) {
+    return 'YTC';
   }
 }

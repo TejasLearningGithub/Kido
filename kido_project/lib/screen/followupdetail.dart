@@ -78,13 +78,6 @@ class _FollowupdetailState extends State<Followupdetail> {
                             Row(
                               children: [
                                 const Icon(
-                                  Icons.note_add,
-                                  size: 22,
-                                ),
-                                SizedBox(
-                                  width: width * 0.015,
-                                ),
-                                const Icon(
                                   Icons.edit_note_sharp,
                                   size: 22,
                                 ),
@@ -130,7 +123,7 @@ class _FollowupdetailState extends State<Followupdetail> {
                                 ),
                               ),
                               Text(
-                                'Vinit(M) 2 years 5 months',
+                                'Vinit(M) 2.5 Years',
                                 style: commonSmallFonts.copyWith(
                                   color: Colors.white,
                                 ),
@@ -145,6 +138,31 @@ class _FollowupdetailState extends State<Followupdetail> {
                           padding: EdgeInsets.only(left: width * 0.01),
                           child: Row(
                             children: [
+                              Icon(
+                                Icons.whatsapp,
+                                color: Colors.brown,
+                                size: 15,
+                              ),
+                              Text(
+                                '1234567890',
+                                style: commonSmallFonts.copyWith(
+                                  color: Colors.white,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 4,
+                              ),
+                              Container(
+                                width: 4,
+                                height: 10,
+                                child: VerticalDivider(
+                                  color: Colors.white,
+                                  thickness: 2,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 4,
+                              ),
                               Text(
                                 '1234567890',
                                 style: commonSmallFonts.copyWith(
@@ -172,7 +190,7 @@ class _FollowupdetailState extends State<Followupdetail> {
                           child: Row(
                             children: [
                               Text(
-                                'Mumbai,Kandivali',
+                                'Kandivali,Mumbai,Maharastra  ',
                                 style: commonSmallFonts.copyWith(
                                   color: Colors.white,
                                 ),
@@ -197,20 +215,20 @@ class _FollowupdetailState extends State<Followupdetail> {
                                   color: Colors.white,
                                 ),
                               ),
-                              Text(
-                                'Last Follow up:',
-                                style: commonSmallFonts.copyWith(
-                                  color: Colors.white,
-                                ),
-                              ),
-                              FittedBox(
-                                child: Text(
-                                  '05 Mar 2022',
-                                  style: commonSmallFonts.copyWith(
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
+                              // Text(
+                              //   'Last Follow up:',
+                              //   style: commonSmallFonts.copyWith(
+                              //     color: Colors.white,
+                              //   ),
+                              // ),
+                              // FittedBox(
+                              //   child: Text(
+                              //     '05 Mar 2022',
+                              //     style: commonSmallFonts.copyWith(
+                              //       color: Colors.white,
+                              //     ),
+                              //   ),
+                              // ),
                             ],
                           ),
                         ),
@@ -324,8 +342,7 @@ class _FollowupdetailState extends State<Followupdetail> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: const [
-                      Text("course"),
-                      Text("category"),
+                      Text("Program"),
                       Text("source"),
                       Text("status"),
                       Text("sub-status"),
@@ -337,9 +354,18 @@ class _FollowupdetailState extends State<Followupdetail> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Prenursery"),
-                      Text("Social Media Campaign"),
-                      Text("Montana Website"),
+                      Row(
+                        children: [
+                          Text('Category Name -'),
+                          Text('Program Name'),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Text('Source Category -'),
+                          Text('Source Name'),
+                        ],
+                      ),
                       FittedBox(
                         child: Text(
                           "Not interested/Need mismatch",
@@ -365,8 +391,8 @@ class _FollowupdetailState extends State<Followupdetail> {
               child: Row(
                 children: const [
                   Text(
-                    'No further follow ups required',
-                    style: TextStyle(color: Colors.red),
+                    'Action Plan Taken Will Be Here',
+                    style: TextStyle(color: Colors.black),
                   ),
                 ],
               ),
@@ -434,9 +460,14 @@ class _FollowupdetailState extends State<Followupdetail> {
               child: TimelineTile(
                 axis: TimelineAxis.vertical,
                 indicatorStyle: IndicatorStyle(
-                  color: Colors.blue,
+                  //color: Colors.blue,
                   height: height * 0.0425,
                   width: width * 0.0425,
+                  iconStyle: IconStyle(
+                    fontSize: 30,
+                    color: Colors.white,
+                    iconData: Icons.insert_emoticon,
+                  ),
                 ),
                 isFirst: true,
                 afterLineStyle: const LineStyle(
@@ -449,17 +480,17 @@ class _FollowupdetailState extends State<Followupdetail> {
                       width: 10,
                     ),
                     Container(
-                      margin: const EdgeInsets.only(top: 10, bottom: 30),
-                      height: 115,
+                      margin: const EdgeInsets.only(top: 5, bottom: 20),
+                      height: 75,
                       width: MediaQuery.of(context).size.width / 1.8 - 0.09,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: const [
                           SizedBox(
-                            height: 49,
+                            height: 19,
                           ),
                           Padding(
-                            padding: EdgeInsets.only(left: 8.0, top: 8.0),
+                            padding: EdgeInsets.only(left: 8.0, top: 0.0),
                             child: Text(
                               '17 Aug 2021 01:27 pm',
                             ),
@@ -496,13 +527,13 @@ class _FollowupdetailState extends State<Followupdetail> {
                     ),
                     Container(
                       margin: const EdgeInsets.only(top: 10, bottom: 25),
-                      height: 115,
+                      height: 75,
                       width: MediaQuery.of(context).size.width / 1.8 - 0.09,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: const [
                           SizedBox(
-                            height: 49,
+                            height: 10,
                           ),
                           Padding(
                             padding: EdgeInsets.only(left: 8.0, top: 8.0),
@@ -548,7 +579,7 @@ class _FollowupdetailState extends State<Followupdetail> {
                     ),
                     Container(
                       margin: const EdgeInsets.only(top: 10, bottom: 30),
-                      height: 155,
+                      height: 82,
                       width: MediaQuery.of(context).size.width / 1.8 - 0.09,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -574,7 +605,7 @@ class _FollowupdetailState extends State<Followupdetail> {
                             child: const Text(
                               'Nidhi TRF TO ujwala parent didn\'t\nanswer my call',
                               style: TextStyle(
-                                fontSize: 14,
+                                fontSize: 13,
                               ),
                             ),
                           ),

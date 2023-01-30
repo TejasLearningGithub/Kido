@@ -225,8 +225,8 @@ class _MyFirstWidgetState extends State<MyFirstWidget> {
                 //expandIcon: Icons.arrow_downward,
                 //collapseIcon: Icons.arrow_forward_ios,
                 //hasIcon: false,
-                tapBodyToCollapse: true,
-                tapBodyToExpand: true,
+                tapBodyToCollapse: false,
+                tapBodyToExpand: false,
               ),
 
               // header: Card(

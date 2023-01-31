@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:kido_project/screen/enquiries.dart';
+import 'package:kido_project/screen/follow_up_main.dart';
+import 'package:kido_project/screen/leads_screen.dart';
 import 'package:kido_project/widget/common_widget.dart';
 import 'package:kido_project/widget/dashboard_tile.dart';
 
@@ -10,6 +13,9 @@ class DashBoard extends StatefulWidget {
 }
 
 class _DashBoardState extends State<DashBoard> {
+  int _selectedIndex = 0;
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,11 +53,11 @@ class _DashBoardState extends State<DashBoard> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
-                  padding:const EdgeInsets.only(left: 25),
+                  padding: const EdgeInsets.only(left: 25),
                   child: Text(
                     'Notifications',
                     style: commonMediumFonts.copyWith(
-                      color:const Color(0xFF00356A),
+                      color: const Color(0xFF00356A),
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                       fontStyle: FontStyle.italic,
@@ -84,6 +90,7 @@ class _DashBoardState extends State<DashBoard> {
         ),
       ),
       drawer: const Drawer(),
+      
     );
   }
 }

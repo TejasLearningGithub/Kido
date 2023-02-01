@@ -35,28 +35,38 @@ class _DashBoardMainState extends State<DashBoardMain> {
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
-            // backgroundColor: Colors.green,
           ),
           BottomNavigationBarItem(
-            icon: Image.asset('assets/images/leads.png'),
+            icon: ImageIcon(
+              AssetImage('assets/images/leads.png'),
+            ),
             label: 'Leads',
-            // backgroundColor: Colors.green,
+            activeIcon: const ImageIcon(
+              AssetImage('assets/images/leads.png'),
+            ),
           ),
           BottomNavigationBarItem(
-            icon: Image.asset(
-              'assets/images/srch.png',
+            icon: ImageIcon(
+              AssetImage('assets/images/srch.png'),
             ),
             label: 'Enquiries',
-            //  backgroundColor: Colors.purple,
+            activeIcon: const ImageIcon(
+              AssetImage('assets/images/srch.png'),
+            ),
           ),
           BottomNavigationBarItem(
-            icon: Image.asset('assets/images/follow_up.png'),
-            label: 'Follow up\'s',
-            //  backgroundColor: Colors.blue,
+            icon: ImageIcon(
+              AssetImage('assets/images/follow_up.png'),
+            ),
+            label: 'Enquiries',
+            activeIcon: const ImageIcon(
+              AssetImage('assets/images/follow_up.png'),
+            ),
           ),
         ],
         type: BottomNavigationBarType.fixed,
         selectedItemColor: Colors.orange,
+        //fixedColor: Colors.orange,
         unselectedItemColor: Colors.white,
         backgroundColor: Colors.blue,
         iconSize: 35,

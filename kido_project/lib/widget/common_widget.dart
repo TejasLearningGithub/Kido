@@ -1,3 +1,10 @@
+import 'dart:developer';
+
+import 'package:control_style/control_style.dart';
+import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:flutter/animation.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -100,7 +107,8 @@ commonTextFormField(
     required double topPadding,
     required double bottomPadding,
     required double rightPadding,
-    required double leftPadding}) {
+    required double leftPadding,
+    required TextInputType myInputType}) {
   GoogleFonts.roboto();
 
   return Padding(
@@ -110,6 +118,7 @@ commonTextFormField(
         left: leftPadding,
         right: rightPadding),
     child: TextFormField(
+      keyboardType: myInputType,
       validator: (value) {
         if (value!.isEmpty) {
           return 'please enter $hintText';
@@ -117,36 +126,22 @@ commonTextFormField(
           return null;
         }
       },
-      style: TextStyle(
-        color: textColor,
-      ),
+      style: TextStyle(color: textColor),
       controller: myController,
       decoration: InputDecoration(
+        border: DecoratedInputBorder(
+          child: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          shadow: const [
+            BoxShadow(color: Colors.black, blurRadius: 4, offset: Offset(0, 4))
+          ],
+        ),
+        contentPadding: const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0),
         filled: true,
         fillColor: backgroundColor,
         hintText: hintText,
         hintStyle: TextStyle(color: hintTextColor),
-        enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-            borderSide: const BorderSide(
-              color: Colors.black,
-            )),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: Colors.blue),
-        ),
-        errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(
-            color: Colors.red,
-          ),
-        ),
-        focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(
-            color: Colors.red,
-          ),
-        ),
       ),
     ),
   );
@@ -159,11 +154,10 @@ commonSubmitButton({
   required Color buttonBackgroundColor,
   required double borderRadiusSize,
   required GlobalKey<FormState> globalKey,
+  required VoidCallback myPress,
 }) {
   return GestureDetector(
-    onTap: () {
-      if (globalKey.currentState!.validate()) {}
-    },
+    onTap: myPress,
     child: Container(
       height: height,
       width: width,
@@ -185,7 +179,6 @@ commonSubmitButton({
   );
 }
 
-//String? gender = 'male';
 enum gender { male, female }
 
 class myImageWidget extends StatelessWidget {
@@ -215,9 +208,8 @@ Row dashBoardNotificationList(BuildContext context) {
     children: [
       Expanded(
         child: SizedBox(
-          height: 300,
+          height: 200,
           width: double.maxFinite,
-          //width: MediaQuery.of(context).size.width / 14 - 10.10,
           child: ListView.builder(
             scrollDirection: Axis.vertical,
             itemCount: 14,
@@ -353,6 +345,383 @@ class save_continue extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+Widget myMultiLineTextFormField({required TextEditingController myController}) {
+  return TextFormField(
+    controller: myController,
+    maxLines: 5,
+    decoration: InputDecoration(
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(25),
+        borderSide: const BorderSide(color: Colors.blue),
+      ),
+      focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(25),
+          borderSide: const BorderSide(
+            color: Colors.blue,
+          )),
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(25),
+        borderSide: const BorderSide(
+          color: Colors.red,
+        ),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(25),
+        borderSide: const BorderSide(
+          color: Colors.red,
+        ),
+      ),
+    ),
+    validator: (value) {
+      if (value!.isEmpty) {
+        return 'please enter note';
+      } else {
+        return '';
+      }
+    },
+  );
+}
+
+class MyCustomDropdown extends StatefulWidget {
+  String? selectedValue;
+  String? myText;
+  List<DropdownMenuItem<String>> myDropdownItem;
+
+  MyCustomDropdown({
+    super.key,
+    required this.selectedValue,
+    required this.myDropdownItem,
+    required this.myText,
+  });
+
+  @override
+  State<MyCustomDropdown> createState() => _MyCustomDropdownState();
+}
+
+class _MyCustomDropdownState extends State<MyCustomDropdown> {
+  var myDropDownErrorText;
+  var txtmsg = '';
+  Color myColor = Colors.blue;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        DecoratedBox(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            border: Border.all(color: myColor, width: 2),
+            borderRadius: BorderRadius.circular(50),
+            boxShadow: const <BoxShadow>[
+              BoxShadow(
+                  offset: Offset(0, 4), color: Colors.black, blurRadius: 4),
+            ],
+          ),
+          child: Padding(
+            padding:
+                const EdgeInsets.only(left: 10, right: 10, top: 0, bottom: 0),
+            child: DropdownButtonFormField(
+              decoration: const InputDecoration(border: InputBorder.none),
+              onChanged: (val) {},
+              hint: Text(
+                widget.myText!,
+                style: const TextStyle(fontSize: 16),
+              ),
+              validator: (value) {},
+              items: widget.myDropdownItem,
+              onSaved: (newValue) {
+                setState(() {
+                  if (newValue == null || newValue == '') {
+                    txtmsg = 'Please select value';
+                    print('======$txtmsg');
+                    myColor = Colors.red;
+                  } else {
+                    txtmsg = '';
+                    myColor = Colors.blue;
+                    print('======$txtmsg');
+                  }
+                });
+              },
+              icon: const Icon(Icons.keyboard_arrow_down),
+              iconEnabledColor: Colors.blue,
+              style: const TextStyle(color: Colors.green, fontSize: 20),
+              dropdownColor: Colors.blue,
+              isExpanded: true,
+            ),
+          ),
+        ),
+        const SizedBox(
+          height: 2,
+        ),
+        Align(
+          alignment: Alignment.topLeft,
+          child: Text(
+            '$txtmsg',
+            style: const TextStyle(
+              color: Colors.red,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class KidoTextFormfield extends StatefulWidget {
+  String hintText;
+  Color hintTextColor;
+  TextEditingController myController;
+  Color backGroundColor;
+  Color textColor;
+  TextInputType myType;
+  Icon? icon;
+  VoidCallback? myTapping;
+  TextEditingController myWidgetController;
+  KidoTextFormfield(
+      {super.key,
+      required this.icon,
+      required this.hintText,
+      required this.myController,
+      required this.textColor,
+      required this.backGroundColor,
+      required this.hintTextColor,
+      required this.myTapping,
+      required this.myType,
+      required this.myWidgetController});
+
+  @override
+  State<KidoTextFormfield> createState() => _KidoTextFormfieldState();
+}
+
+class _KidoTextFormfieldState extends State<KidoTextFormfield> {
+  var _formKey = GlobalKey<FormState>();
+  var txtmsg = '';
+  var myColor = Colors.blue;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(top: 5, left: 4, right: 4),
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(18),
+              color: Colors.white,
+              border: Border.all(color: myColor, width: 2),
+            ),
+            child: TextFormField(
+              keyboardType: widget.myType,
+              onSaved: (newValue) {
+                setState(() {
+                  if (newValue!.isEmpty || newValue == null) {
+                    txtmsg = 'Please Enter Value';
+                    myColor = Colors.red;
+                  } else {
+                    txtmsg = '';
+                    myColor = Colors.blue;
+                  }
+                });
+              },
+              style: const TextStyle(
+                color: Colors.black,
+              ),
+              decoration: InputDecoration(
+                focusedErrorBorder: const OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.black,
+                  ),
+                ),
+                disabledBorder: const OutlineInputBorder(
+                    borderSide: BorderSide(
+                  color: Colors.black,
+                )),
+                hintText: widget.hintText,
+                contentPadding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+                border: DecoratedInputBorder(
+                  child: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(25),
+                    borderSide: const BorderSide(color: Colors.red, width: 1),
+                  ),
+                  shadow: const [
+                    BoxShadow(
+                        color: Colors.black,
+                        blurRadius: 4,
+                        offset: Offset(0, 4))
+                  ],
+                ),
+              ),
+              onTap: () {
+                widget.myTapping!();
+              },
+              controller: widget.myWidgetController,
+            ),
+          ),
+        ),
+        Align(
+          alignment: Alignment.topLeft,
+          child: Text(
+            txtmsg,
+            style: const TextStyle(
+              color: Colors.red,
+            ),
+          ),
+        )
+      ],
+    );
+  }
+}
+
+class DateSelector extends StatefulWidget {
+  DateSelector({
+    super.key,
+  });
+
+  @override
+  State<DateSelector> createState() => _DateSelectorState();
+}
+
+class _DateSelectorState extends State<DateSelector> {
+  var myDay = 0;
+  var myYear = 0;
+  var myMonth = 0;
+  var myHour = 0;
+  var myMinute = 0;
+  var mySecond = 0;
+  DateTime? dateTime;
+  var myController = TextEditingController();
+  var myDate = 'select date';
+  @override
+  Widget build(BuildContext context) {
+    return KidoTextFormfield(
+      myType: TextInputType.none,
+      myWidgetController: myController,
+      hintText: 'date of birth',
+      backGroundColor: const Color.fromARGB(255, 221, 221, 221),
+      hintTextColor: Colors.black,
+      icon: const Icon(Icons.keyboard_arrow_down),
+      myController: myController,
+      textColor: Colors.black,
+      myTapping: () {
+        showModalBottomSheet(
+          context: context,
+          builder: (BuildContext context) => Container(
+            height: 250,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Container(
+                  height: 190,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(18),
+                  ),
+                  child: CupertinoDatePicker(
+                    mode: CupertinoDatePickerMode.date,
+                    minimumYear: 1990,
+                    maximumYear: 2220,
+                    initialDateTime: DateTime.now(),
+                    onDateTimeChanged: (DateTime date) {
+                      if (mounted) {
+                        print("Your Selected Date: ${date.day}");
+                        log("your Selected Month: ${date.month}");
+                        log("Your Selected Year : ${date.year}");
+                        setState(() {
+                          dateTime = dateTime;
+                          myDay = date.day;
+                          myMonth = date.month;
+                          myYear = date.year;
+                          myDate = ('$myDay' '$myMonth' '$myYear');
+                          myDate = '$myDay -' ' $myMonth -' ' $myYear';
+                          myController.text = myDate;
+                        });
+                      }
+                    },
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text(
+                    'close bottom sheet',
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class MyMultiLine extends StatefulWidget {
+  const MyMultiLine({super.key});
+
+  @override
+  State<MyMultiLine> createState() => _MyMultiLineState();
+}
+
+class _MyMultiLineState extends State<MyMultiLine> {
+  var txtmsg = '';
+  var myColor = Colors.blue;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: Colors.white,
+                border: Border.all(color: myColor, width: 2)),
+            child: TextFormField(
+              maxLines: 5,
+              onSaved: (newValue) {
+                setState(() {
+                  if (newValue!.isEmpty || newValue == null) {
+                    txtmsg = 'Please Enter Value';
+                    myColor = Colors.red;
+                  } else {
+                    txtmsg = '';
+                    myColor = Colors.blue;
+                  }
+                });
+              },
+              decoration: InputDecoration(
+                contentPadding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+                border: DecoratedInputBorder(
+                  child: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(25),
+                    borderSide: const BorderSide(color: Colors.red, width: 1),
+                  ),
+                  shadow: const [
+                    BoxShadow(
+                        color: Colors.black,
+                        blurRadius: 4,
+                        offset: Offset(0, 4))
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 19.0),
+          child: Align(
+            alignment: Alignment.topLeft,
+            child: Text(
+              '$txtmsg',
+              style: const TextStyle(
+                color: Colors.red,
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

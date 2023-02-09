@@ -5,21 +5,28 @@ import 'package:kido_project/widget/common_widget.dart';
 class CommonListCard extends StatelessWidget {
   String leadId;
   String myLeadStatus;
+  String myLeadStatusText;
   String parentName;
   String childName;
   String childAge;
   String gender;
   IconButton iconButton;
+  Color myColor;
+  String programCategory;
+  Color myFontColor;
 
   CommonListCard(
-    this.leadId,
-    this.myLeadStatus,
-    this.parentName,
-    this.childName,
-    this.gender,
-    this.iconButton,
-    this.childAge,
-  );
+      {required this.leadId,
+      required this.myLeadStatus,
+      required this.parentName,
+      required this.childName,
+      required this.gender,
+      required this.iconButton,
+      required this.childAge,
+      required this.myColor,
+      required this.programCategory,
+      required this.myFontColor,
+      required this.myLeadStatusText});
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -32,11 +39,22 @@ class CommonListCard extends StatelessWidget {
             bottom: 2,
           ),
           child: Container(
-            height: MediaQuery.of(context).size.height / 7.4,
+            height: MediaQuery.of(context).size.height / 6.0,
             width: double.maxFinite,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: const Color.fromARGB(100, 221, 221, 221),
+              borderRadius: BorderRadius.circular(20),
+              color: Color.fromARGB(255, 221, 221, 221),
+              boxShadow: const [
+                BoxShadow(
+                  color: Colors.grey,
+                  blurRadius: 10,
+                  spreadRadius: 5,
+                  offset: Offset(
+                    5.0,
+                    5.0,
+                  ),
+                ),
+              ],
             ),
             child: Stack(
               children: [
@@ -51,7 +69,7 @@ class CommonListCard extends StatelessWidget {
                     height: MediaQuery.of(context).size.height / 8.3,
                     width: 6,
                     decoration: BoxDecoration(
-                      color: Colors.red,
+                      color: myColor,
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
@@ -73,17 +91,17 @@ class CommonListCard extends StatelessWidget {
                               child: Text(
                                 leadId,
                                 style: commonLargeFonts.copyWith(
-                                    color: Colors.white),
+                                    color: Color(0xFF00356A)),
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(top: 8.0),
-                              child: Text(
-                                myLeadStatus,
-                                style: commonSmallFonts.copyWith(
-                                    color: Colors.red),
-                              ),
-                            ),
+                                padding: const EdgeInsets.only(top: 8.0),
+                                child: Text(
+                                  myLeadStatusText,
+                                  style: TextStyle(
+                                    color: myFontColor,
+                                  ),
+                                )),
                           ],
                         ),
                         Row(
@@ -105,50 +123,53 @@ class CommonListCard extends StatelessWidget {
                           top: 1,
                           left: 12,
                         ),
-                        child: Text(
-                          '$parentName',
-                          style: commonMediumFonts.copyWith(
-                            color: Colors.white,
-                          ),
+                        child: Row(
+                          children: [
+                            Text(
+                              '$parentName',
+                              style: commonMediumFonts.copyWith(
+                                color: Color(0xFF00356A),
+                              ),
+                            ),
+                            Container(
+                              height: 22,
+                              child: VerticalDivider(
+                                width: 10,
+                                thickness: 3,
+                                color: Colors.black,
+                              ),
+                            ),
+                            SizedBox(
+                              width: 3,
+                            ),
+                            Text('$childName'),
+                            SizedBox(
+                              width: 3,
+                            ),
+                            Text('$gender'),
+                            SizedBox(
+                              width: 3,
+                            ),
+                            Text('$childAge'),
+                          ],
                         ),
                       ),
                     ),
+                    Align(
+                      child: Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Text('$programCategory'),
+                      ),
+                      alignment: Alignment.topLeft,
+                    ),
                     Row(
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 12.0),
-                          child: Text('Child:',
-                              style: commonSmallFonts.copyWith(
-                                  color: Colors.amber)),
+                        SizedBox(
+                          width: 10,
                         ),
-                        const SizedBox(
-                          width: 3,
-                        ),
-                        Text(
-                          '${childName}',
-                          style: commonSmallFonts.copyWith(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 3,
-                        ),
-                        Text(
-                          '${gender}',
-                          style: commonSmallFonts.copyWith(
-                              color: Colors.white, fontWeight: FontWeight.bold),
-                        ),
-                        const SizedBox(
-                          width: 3,
-                        ),
-                        Text(
-                          '$childAge',
-                          style: commonSmallFonts.copyWith(
-                              color: Colors.white, fontWeight: FontWeight.bold),
-                        ),
+                        Text('Status:$myLeadStatus')
                       ],
-                    ),
+                    )
                   ],
                 ),
               ],

@@ -138,7 +138,7 @@ class _FollowupdetailState extends State<Followupdetail> {
                           padding: EdgeInsets.only(left: width * 0.01),
                           child: Row(
                             children: [
-                              Icon(
+                              const Icon(
                                 Icons.whatsapp,
                                 color: Colors.brown,
                                 size: 15,
@@ -149,18 +149,18 @@ class _FollowupdetailState extends State<Followupdetail> {
                                   color: Colors.white,
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 4,
                               ),
                               Container(
                                 width: 4,
                                 height: 10,
-                                child: VerticalDivider(
+                                child: const VerticalDivider(
                                   color: Colors.white,
                                   thickness: 2,
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 4,
                               ),
                               Text(
@@ -215,20 +215,6 @@ class _FollowupdetailState extends State<Followupdetail> {
                                   color: Colors.white,
                                 ),
                               ),
-                              // Text(
-                              //   'Last Follow up:',
-                              //   style: commonSmallFonts.copyWith(
-                              //     color: Colors.white,
-                              //   ),
-                              // ),
-                              // FittedBox(
-                              //   child: Text(
-                              //     '05 Mar 2022',
-                              //     style: commonSmallFonts.copyWith(
-                              //       color: Colors.white,
-                              //     ),
-                              //   ),
-                              // ),
                             ],
                           ),
                         ),
@@ -355,13 +341,13 @@ class _FollowupdetailState extends State<Followupdetail> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
-                        children: [
+                        children: const [
                           Text('Category Name -'),
                           Text('Program Name'),
                         ],
                       ),
                       Row(
-                        children: [
+                        children: const [
                           Text('Source Category -'),
                           Text('Source Name'),
                         ],
@@ -374,7 +360,7 @@ class _FollowupdetailState extends State<Followupdetail> {
                           ),
                         ),
                       ),
-                      Text('Not eligible')
+                      const Text('Not eligible')
                     ],
                   ),
                 ],
@@ -383,9 +369,6 @@ class _FollowupdetailState extends State<Followupdetail> {
             SizedBox(
               height: height * 0.056,
             ),
-            // const SizedBox(
-            //   height: 28,
-            // ),
             Padding(
               padding: EdgeInsets.only(left: width * 0.02),
               child: Row(

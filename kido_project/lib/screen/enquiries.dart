@@ -14,20 +14,21 @@ class _EnquiriesState extends State<Enquiries> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Enquiries'),
+        title: const Text('Enquiries'),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {},
         ),
         actions: [
           Row(
             children: [
-              IconButton(onPressed: () {}, icon: Icon(Icons.filter_alt)),
-              IconButton(onPressed: () {}, icon: Icon(Icons.search))
+              IconButton(onPressed: () {}, icon: const Icon(Icons.filter_alt)),
+              IconButton(onPressed: () {}, icon: const Icon(Icons.search))
             ],
           )
         ],
       ),
+      backgroundColor: const Color.fromARGB(255, 221, 221, 221),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -45,20 +46,20 @@ class _EnquiriesState extends State<Enquiries> {
               ),
             ),
             Container(
-              height: 450,
+              height: 700,
               width: double.maxFinite,
               child: ListView.builder(
                   itemCount: 5,
                   itemBuilder: (context, index) {
                     return CommonListCard(
                         leadId: 'LD003171',
-                        myLeadStatus: 'Lost',
+                        myLeadStatus: 'New Lead - YTC / No Response',
                         parentName: 'Renu Pathak',
                         childName: 'Rahil',
                         gender: '(M)',
                         iconButton: IconButton(
                           onPressed: () {},
-                          icon: Icon(Icons.star_outline),
+                          icon: const Icon(Icons.star_outline),
                         ),
                         childAge: '4.4 Years',
                         myColor: myColorFunction(leadScreeStatus.ENROLLED)
@@ -66,7 +67,7 @@ class _EnquiriesState extends State<Enquiries> {
                         programCategory: 'Preschool',
                         myFontColor: myFontColor,
                         myLeadStatusText:
-                            myLeadStatusPrintText(leadScreeStatus.Lost));
+                            myLeadStatusPrintText(leadScreeStatus.ENROLLED));
                   }),
             )
           ],

@@ -15,7 +15,6 @@ class _FollowUpMainState extends State<FollowUpMain> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     isVisible = [];
     for (var i = 0; i < 10; i++) {
@@ -28,7 +27,7 @@ class _FollowUpMainState extends State<FollowUpMain> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('FOLLOW UPS'),
-        leading: Icon(Icons.arrow_back),
+        leading: const Icon(Icons.arrow_back),
         actions: [
           IconButton(onPressed: () {}, icon: Icon(Icons.filter_alt)),
           IconButton(onPressed: () {}, icon: Icon(Icons.search))
@@ -36,7 +35,7 @@ class _FollowUpMainState extends State<FollowUpMain> {
       ),
       body: SingleChildScrollView(
         child: Column(
-          children: [MyFirstWidget()],
+          children: const [MyFirstWidget()],
         ),
       ),
     );
@@ -59,7 +58,6 @@ class _MyFirstWidgetState extends State<MyFirstWidget> {
   var myColorOfContainer;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     isVisible = [];
     for (var i = 0; i < 10; i++) {
@@ -72,39 +70,17 @@ class _MyFirstWidgetState extends State<MyFirstWidget> {
     return ExpandableNotifier(
       child: Column(
         children: [
-          // CommonListCard(
-          //     '1',
-          //     'myLeadStatus',
-          //     'parentName',
-          //     'childName',
-          //     'gender',
-          //     IconButton(onPressed: () {}, icon: Icon(Icons.person)),
-          //     '1',
-          //     Colors.blue),
           ScrollOnExpand(
             child: ExpandablePanel(
               theme: const ExpandableThemeData(
-                //expandIcon: Icons.arrow_downward,
-                //collapseIcon: Icons.arrow_forward_ios,
-                //hasIcon: false,
                 tapBodyToCollapse: true,
                 tapBodyToExpand: true,
               ),
-
-              // header: Card(
-              //   child: Row(
-              //     children: const [
-              //       Text('see data'),
-              //       //Icon(Icons.arrow_downward)
-              //     ],
-              //   ),
-              // ),
               collapsed: Card(
                 elevation: 10,
                 child: Container(
                   width: double.maxFinite,
                   height: 50,
-                  // decoration: BoxDecoration(color: Colors.blue),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -140,10 +116,6 @@ class _MyFirstWidgetState extends State<MyFirstWidget> {
                   ),
                 ),
               ),
-              // expanded: Container(
-              //     width: double.maxFinite,
-              //     height: double.maxFinite,
-              //     child: MyTextListWidget()),
               expanded: Column(
                 children: [
                   Card(
@@ -212,70 +184,18 @@ class _MyFirstWidgetState extends State<MyFirstWidget> {
           const SizedBox(
             height: 28,
           ),
-          const Text(
-            'Second Overdue',
-            style: TextStyle(
-              color: Colors.blue,
-              fontSize: 25,
-            ),
-          ),
           ScrollOnExpand(
             child: ExpandablePanel(
               theme: const ExpandableThemeData(
-                //expandIcon: Icons.arrow_downward,
-                //collapseIcon: Icons.arrow_forward_ios,
-                //hasIcon: false,
                 tapBodyToCollapse: false,
                 tapBodyToExpand: false,
               ),
-
-              // header: Card(
-              //   child: Row(
-              //     children: const [
-              //       Text('see data'),
-              //       //Icon(Icons.arrow_downward)
-              //     ],
-              //   ),
-              // ),
               collapsed: Card(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    // Row(
-                    //   children: const [
-                    //     SizedBox(
-                    //       width: 20,
-                    //     ),
-                    //     Text(
-                    //       'Overdue',
-                    //       style: TextStyle(
-                    //         color: Colors.red,
-                    //         fontSize: 18,
-                    //         fontWeight: FontWeight.bold,
-                    //       ),
-                    //     ),
-                    //   ],
-                    // ),
-                    // Row(
-                    //   mainAxisAlignment: MainAxisAlignment.start,
-                    //   children: [
-                    //     Text('$count'),
-                    //     const SizedBox(
-                    //       width: 8,
-                    //     ),
-                    //     const Icon(
-                    //       Icons.arrow_forward_ios,
-                    //       size: 21,
-                    //     ),
-                    //   ],
-                    // ),
-                  ],
+                  children: const [],
                 ),
               ),
-              // expanded: Container(
-              //     width: double.maxFinite,
-              //     height: double.maxFinite,
-              //     child: MyTextListWidget()),
               expanded: Column(
                 children: [
                   Row(
@@ -313,7 +233,7 @@ class _MyFirstWidgetState extends State<MyFirstWidget> {
                         padding: const EdgeInsets.only(bottom: 10),
                         child: CommonListCard(
                             leadId: 'LD003171',
-                            myLeadStatus: 'Lost',
+                            myLeadStatus: 'New Lead - YTC / No Response',
                             parentName: 'Renu Pathak',
                             childName: 'Rahil',
                             gender: '(M)',
@@ -343,25 +263,6 @@ class _MyFirstWidgetState extends State<MyFirstWidget> {
     );
   }
 
-  // Widget MyTextListWidget() {
-  //   return ListView.builder(
-  //     shrinkWrap: true,
-  //     itemCount: 15,
-  //     itemBuilder: (context, index) {
-  //       return CommonListCard(
-  //         '${index + 1}',
-  //         'Warm',
-  //         'Abc',
-  //         'Child Name',
-  //         'Male',
-  //         IconButton(onPressed: () {}, icon: Icon(Icons.star)),
-  //         '15',
-  //         Colors.blue,
-  //       );
-  //     },
-  //   );
-  // }
-
   Color myColorFunction([leadScreeStatus? enrolled]) {
     switch (enrolled) {
       case leadScreeStatus.ENROLLED:
@@ -384,26 +285,13 @@ class _MyFirstWidgetState extends State<MyFirstWidget> {
 
   myFunc([leadScreeStatus? enrolled]) {
     if (leadScreeStatus.ENROLLED == enrolled) {
-      // setState(() {
       return myFontColor = Colors.blue;
-      // });
-
-      //return 'Enrolled' ;
     } else if (leadScreeStatus.Lost == enrolled) {
-      // setState(() {
       return myFontColor = Colors.red;
-      // });
-      // return 'Lost';
     } else if (leadScreeStatus.Warm == enrolled) {
-      // setState(() {
       return myFontColor = Colors.brown;
-      // });
-      // return 'Warm';
     } else if (leadScreeStatus.YTC == enrolled) {
-      // setState(() {
       return myFontColor = Colors.blueGrey;
-      // });
-      // return 'YTC';
     }
   }
 }

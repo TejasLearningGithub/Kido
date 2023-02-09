@@ -14,11 +14,11 @@ class DashBoard extends StatefulWidget {
 
 class _DashBoardState extends State<DashBoard> {
   int _selectedIndex = 0;
-  
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 221, 221, 221),
       appBar: AppBar(
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -32,7 +32,7 @@ class _DashBoardState extends State<DashBoard> {
             ),
           ],
         ),
-        backgroundColor: const Color(0xFF00356A),
+        
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -90,7 +90,6 @@ class _DashBoardState extends State<DashBoard> {
         ),
       ),
       drawer: const Drawer(),
-      
     );
   }
 }

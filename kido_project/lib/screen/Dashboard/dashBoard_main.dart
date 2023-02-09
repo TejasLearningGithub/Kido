@@ -31,7 +31,7 @@ class _DashBoardMainState extends State<DashBoardMain> {
     return Scaffold(
       body: _dashBoardList.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
-        items: <BottomNavigationBarItem>[
+        items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
@@ -41,7 +41,7 @@ class _DashBoardMainState extends State<DashBoardMain> {
               AssetImage('assets/images/leads.png'),
             ),
             label: 'Leads',
-            activeIcon: const ImageIcon(
+            activeIcon: ImageIcon(
               AssetImage('assets/images/leads.png'),
             ),
           ),
@@ -50,7 +50,7 @@ class _DashBoardMainState extends State<DashBoardMain> {
               AssetImage('assets/images/srch.png'),
             ),
             label: 'Enquiries',
-            activeIcon: const ImageIcon(
+            activeIcon: ImageIcon(
               AssetImage('assets/images/srch.png'),
             ),
           ),
@@ -59,7 +59,7 @@ class _DashBoardMainState extends State<DashBoardMain> {
               AssetImage('assets/images/follow_up.png'),
             ),
             label: 'Enquiries',
-            activeIcon: const ImageIcon(
+            activeIcon: ImageIcon(
               AssetImage('assets/images/follow_up.png'),
             ),
           ),

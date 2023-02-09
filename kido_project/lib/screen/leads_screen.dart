@@ -38,6 +38,8 @@ class _LeadsScreenState extends State<LeadsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 221, 221, 221),
+      //backgroundColor: const Color(0xFF00356A),
       appBar: AppBar(
         leading: const Icon(Icons.arrow_back),
         title: const Text('LEADS'),
@@ -62,40 +64,67 @@ class _LeadsScreenState extends State<LeadsScreen> {
           ),
         ],
       ),
-      body: ListView.builder(
-        itemCount: 15,
-        itemBuilder: (context, index) {
-          return Column(
-            children: [
-              CommonListCard(
-                leadId: 'LD003171',
-                //leadScreeStatus.ENROLLED.toString(),
-                myLeadStatus: myLeadStatusPrintText(leadScreeStatus.Warm),
-                childAge: '4 Years 9 months',
-                childName: 'Rahil',
-                gender: '(M)',
-                iconButton: IconButton(
-                  onPressed: () {
-                    setState(() {
-                      myFav[index] = !myFav[index];
-                    });
-                  },
-                  icon: Icon(
-                    myFav[index] ? Icons.star : Icons.star_border,
-                    color: Colors.amber.shade500,
-                  ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            const Padding(
+              padding: EdgeInsets.only(left: 18.0, top: 10.0),
+              child: Align(
+                alignment: Alignment.topLeft,
+                child: Text(
+                  'Today',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold),
                 ),
-
-                myColor: myColorFunction(leadScreeStatus.YTC) as MaterialColor,
-                parentName: 'Renu pathak',
-                programCategory: 'Preschool',
-                myFontColor: myFunc(leadScreeStatus.Warm),
-                myLeadStatusText:
-                    myLeadStatusPrintText(leadScreeStatus.ENROLLED),
               ),
-            ],
-          );
-        },
+            ),
+            Container(
+              height: 700,
+              width: double.maxFinite,
+              child: ListView.builder(
+                itemCount: 15,
+                itemBuilder: (context, index) {
+                  return Column(
+                    children: [
+                      CommonListCard(
+                        leadId: 'LD003171',
+                        //leadScreeStatus.ENROLLED.toString(),
+                        myLeadStatus: 'New Lead - YTC / No Response',
+                        childAge: '4.9 years',
+                        childName: 'Rahil',
+                        gender: '(M)',
+                        iconButton: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              myFav[index] = !myFav[index];
+                            });
+                          },
+                          icon: Icon(
+                            myFav[index] ? Icons.star : Icons.star_border,
+                            color: Colors.amber.shade500,
+                          ),
+                        ),
+
+                        myColor: myColorFunction(leadScreeStatus.ENROLLED)
+                            as MaterialColor,
+                        parentName: 'Renu pathak',
+                        programCategory: 'Preschool',
+                        myFontColor: myFunc(leadScreeStatus.ENROLLED),
+                        myLeadStatusText:
+                            myLeadStatusPrintText(leadScreeStatus.YTC),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                    ],
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -122,26 +151,13 @@ class _LeadsScreenState extends State<LeadsScreen> {
 
   myFunc([leadScreeStatus? enrolled]) {
     if (leadScreeStatus.ENROLLED == enrolled) {
-      // setState(() {
       return myFontColor = Colors.blue;
-      // });
-
-      //return 'Enrolled' ;
     } else if (leadScreeStatus.Lost == enrolled) {
-      // setState(() {
       return myFontColor = Colors.red;
-      // });
-      // return 'Lost';
     } else if (leadScreeStatus.Warm == enrolled) {
-      // setState(() {
       return myFontColor = Colors.brown;
-      // });
-      // return 'Warm';
     } else if (leadScreeStatus.YTC == enrolled) {
-      // setState(() {
       return myFontColor = Colors.blueGrey;
-      // });
-      // return 'YTC';
     }
   }
 }

@@ -10,26 +10,26 @@ class LeadForm extends StatefulWidget {
 }
 
 class _LeadFormState extends State<LeadForm> {
-  var _leadFormGlobalKey = GlobalKey<FormState>();
-  var _firstNameController = TextEditingController();
-  var _secondNameController = TextEditingController();
-  var _parentName = TextEditingController();
-  var _parentContactNumber = TextEditingController();
-  var _parentAlternateContactNumber = TextEditingController();
+  final _leadFormGlobalKey = GlobalKey<FormState>();
+  final _firstNameController = TextEditingController();
+  final _secondNameController = TextEditingController();
+  final _parentName = TextEditingController();
+  final _parentContactNumber = TextEditingController();
+  final _parentAlternateContactNumber = TextEditingController();
   var myDropDownItem = <DropdownMenuItem<String>>[
-    DropdownMenuItem(child: Text('Select Mode'), value: ''),
-    DropdownMenuItem(child: Text("Mode - 1"), value: "mode1"),
-    DropdownMenuItem(child: Text("Mode - 2"), value: "mode2"),
-    DropdownMenuItem(child: Text("Mode - 3"), value: "mode3"),
-    DropdownMenuItem(child: Text("Mode - 4"), value: "mode4"),
+    const DropdownMenuItem(value: '', child: Text('Select Mode')),
+    const DropdownMenuItem(value: "mode1", child: Text("Mode - 1")),
+    const DropdownMenuItem(value: "mode2", child: Text("Mode - 2")),
+    const DropdownMenuItem(value: "mode3", child: Text("Mode - 3")),
+    const DropdownMenuItem(value: "mode4", child: Text("Mode - 4")),
   ];
 
   var myDropDownItemForCourse = <DropdownMenuItem<String>>[
-    DropdownMenuItem(child: Text('Select Course'), value: ''),
-    DropdownMenuItem(child: Text("Course - 1"), value: "c1"),
-    DropdownMenuItem(child: Text("Course - 2"), value: "c2"),
-    DropdownMenuItem(child: Text("Course - 3"), value: "c3"),
-    DropdownMenuItem(child: Text("Course - 4"), value: "c4"),
+    const DropdownMenuItem(value: '', child: Text('Select Course')),
+    const DropdownMenuItem(value: "c1", child: Text("Course - 1")),
+    const DropdownMenuItem(value: "c2", child: Text("Course - 2")),
+    const DropdownMenuItem(value: "c3", child: Text("Course - 3")),
+    const DropdownMenuItem(value: "c4", child: Text("Course - 4")),
   ];
   var selectedValue = '';
   var selectedValueForCourse = '';
@@ -38,7 +38,7 @@ class _LeadFormState extends State<LeadForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(Icons.arrow_back),
+        leading: const Icon(Icons.arrow_back),
         title: const Text('Lead Form'),
       ),
       body: SingleChildScrollView(
@@ -49,7 +49,7 @@ class _LeadFormState extends State<LeadForm> {
               Padding(
                 padding: const EdgeInsets.only(left: 16.0, top: 10.0),
                 child: Row(
-                  children: [
+                  children: const [
                     Text(
                       '3137',
                       style: TextStyle(
@@ -61,22 +61,15 @@ class _LeadFormState extends State<LeadForm> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(top: 10.0, left: 16.0),
+                padding: const EdgeInsets.only(top: 10.0, left: 16.0),
                 child: commonName(
                   'Academic Year',
                   true,
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: MyCustomDropdown(
-                    selectedValue: selectedValue,
-                    myDropdownItem: myDropDownItem,
-                    myText: 'Please Select Mode'),
-              ),
               Row(
-                children: [
-                  const Padding(
+                children: const [
+                  Padding(
                     padding: EdgeInsets.only(
                       top: 8.0,
                       left: 13,
@@ -127,8 +120,8 @@ class _LeadFormState extends State<LeadForm> {
                   rightPadding: 8,
                   topPadding: 8,
                   bottomPadding: 8),
-              Padding(
-                padding: const EdgeInsets.all(12.0),
+              const Padding(
+                padding: EdgeInsets.all(12.0),
                 child: StatefulRadioGenderWidget(),
               ),
               Padding(
@@ -149,16 +142,9 @@ class _LeadFormState extends State<LeadForm> {
                 ),
                 child: commonName('Course Interested In', true),
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: MyCustomDropdown(
-                    selectedValue: selectedValueForCourse,
-                    myDropdownItem: myDropDownItemForCourse,
-                    myText: 'Please Select Mode'),
-              ),
               Row(
-                children: [
-                  const Padding(
+                children: const [
+                  Padding(
                     padding: EdgeInsets.only(
                       top: 8.0,
                       left: 13,
@@ -227,7 +213,7 @@ class _LeadFormState extends State<LeadForm> {
                   rightPadding: 8,
                   topPadding: 8,
                   bottomPadding: 8),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               commonSubmitButton(
@@ -241,7 +227,7 @@ class _LeadFormState extends State<LeadForm> {
                 },
                 textbtn: 'save',
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
             ],

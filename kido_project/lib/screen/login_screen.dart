@@ -29,15 +29,16 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(
                 height: 30,
               ),
-             const Align(
-                alignment:  Alignment.topCenter,
-                child:  myImageWidget(
+              const Align(
+                alignment: Alignment.topCenter,
+                child: myImageWidget(
                   imgUrl: 'assets/images/logo_kido.png',
                   height: 260,
                   width: 260,
                 ),
               ),
               commonTextFormField(
+                myInputType: TextInputType.name,
                 topPadding: 30,
                 leftPadding: 30,
                 rightPadding: 30,
@@ -64,7 +65,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   width: 250,
                   textbtn: 'Sign In',
                   borderRadiusSize: 8,
-                  buttonBackgroundColor: const Color.fromARGB(100, 189, 83, 25))
+                  buttonBackgroundColor: const Color.fromARGB(100, 189, 83, 25),
+                  myPress: () {
+                    if(_globalKey.currentState!.validate()){}
+                  },
+                  )
+                  
             ],
           ),
         ),

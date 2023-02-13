@@ -17,7 +17,9 @@ class _EnquiriesState extends State<Enquiries> {
         title: const Text('Enquiries'),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
         actions: [
           Row(

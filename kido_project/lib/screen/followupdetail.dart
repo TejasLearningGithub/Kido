@@ -3,7 +3,32 @@ import 'package:kido_project/widget/common_widget.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
 class Followupdetail extends StatefulWidget {
-  const Followupdetail({super.key});
+  final String leadNumber;
+  final String parentName;
+  final String childName;
+  final String gender;
+  final String age;
+  final String mobParennt;
+  final String mobParentAlternate;
+  final String email;
+  final String address;
+  final String ldDate;
+  final String program;
+
+  Followupdetail({
+    super.key,
+    required this.leadNumber,
+    required this.parentName,
+    required this.childName,
+    required this.gender,
+    required this.age,
+    required this.mobParennt,
+    required this.mobParentAlternate,
+    required this.email,
+    required this.address,
+    required this.ldDate,
+    required this.program,
+  });
 
   @override
   State<Followupdetail> createState() => _FollowupdetailState();
@@ -19,10 +44,15 @@ class _FollowupdetailState extends State<Followupdetail> {
       backgroundColor: const Color.fromARGB(100, 249, 249, 249),
       appBar: AppBar(
         title: const Text('Follow up Detail'),
-        leading: const Icon(
-          Icons.arrow_back,
-          color: Colors.white,
-          size: 35,
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+            size: 35,
+          ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
       ),
       body: SingleChildScrollView(
@@ -66,13 +96,14 @@ class _FollowupdetailState extends State<Followupdetail> {
                                   padding: EdgeInsets.only(
                                       left: width * 0.018 - 0.01),
                                   child: Text(
-                                    'LD003171',
+                                    //'LD003171',
+                                    widget.leadNumber,
                                     style: commonMediumFonts.copyWith(
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                 ),
-                                const Text('YTC'),
+                                Text('YTC'),
                               ],
                             ),
                             Row(
@@ -104,7 +135,7 @@ class _FollowupdetailState extends State<Followupdetail> {
                           child: Row(
                             children: [
                               Text(
-                                'Shikha(LD002320)',
+                                widget.parentName,
                                 style: commonMediumFonts.copyWith(
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -123,7 +154,7 @@ class _FollowupdetailState extends State<Followupdetail> {
                                 ),
                               ),
                               Text(
-                                'Vinit(M) 2.5 Years',
+                                widget.childName,
                                 style: commonSmallFonts.copyWith(
                                   color: Colors.white,
                                 ),
@@ -144,7 +175,7 @@ class _FollowupdetailState extends State<Followupdetail> {
                                 size: 15,
                               ),
                               Text(
-                                '1234567890',
+                                widget.mobParennt,
                                 style: commonSmallFonts.copyWith(
                                   color: Colors.white,
                                 ),
@@ -164,7 +195,7 @@ class _FollowupdetailState extends State<Followupdetail> {
                                 width: 4,
                               ),
                               Text(
-                                '1234567890',
+                                widget.mobParentAlternate,
                                 style: commonSmallFonts.copyWith(
                                   color: Colors.white,
                                 ),
@@ -177,7 +208,7 @@ class _FollowupdetailState extends State<Followupdetail> {
                           child: Row(
                             children: [
                               Text(
-                                'Shikha@gmail.com',
+                                widget.email,
                                 style: commonSmallFonts.copyWith(
                                   color: Colors.white,
                                 ),
@@ -190,7 +221,7 @@ class _FollowupdetailState extends State<Followupdetail> {
                           child: Row(
                             children: [
                               Text(
-                                'Kandivali,Mumbai,Maharastra  ',
+                                widget.address,
                                 style: commonSmallFonts.copyWith(
                                   color: Colors.white,
                                 ),
@@ -210,7 +241,7 @@ class _FollowupdetailState extends State<Followupdetail> {
                                 ),
                               ),
                               Text(
-                                '05 Mar 2022',
+                                widget.ldDate,
                                 style: commonSmallFonts.copyWith(
                                   color: Colors.white,
                                 ),

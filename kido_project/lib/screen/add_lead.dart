@@ -14,13 +14,13 @@ class _AddLeadState extends State<AddLead> {
   List<DropdownMenuItem<String>> get dropdownItemsForCommunication {
     List<DropdownMenuItem<String>> menuItems = const [
       DropdownMenuItem(value: "mode1", child: Text("Mode - 1")),
-       DropdownMenuItem(value: "mode2", child: Text("Mode - 2")),
-       DropdownMenuItem(value: "mode3", child: Text("Mode - 3")),
-       DropdownMenuItem(value: "mode4", child: Text("Mode - 4")),
-       DropdownMenuItem(value: "mode5", child: Text("Mode - 5")),
-       DropdownMenuItem(value: "mode6", child: Text("Mode - 6")),
-       DropdownMenuItem(value: "mode7", child: Text("Mode - 7")),
-       DropdownMenuItem(value: "mode8", child: Text("Mode - 8")),
+      DropdownMenuItem(value: "mode2", child: Text("Mode - 2")),
+      DropdownMenuItem(value: "mode3", child: Text("Mode - 3")),
+      DropdownMenuItem(value: "mode4", child: Text("Mode - 4")),
+      DropdownMenuItem(value: "mode5", child: Text("Mode - 5")),
+      DropdownMenuItem(value: "mode6", child: Text("Mode - 6")),
+      DropdownMenuItem(value: "mode7", child: Text("Mode - 7")),
+      DropdownMenuItem(value: "mode8", child: Text("Mode - 8")),
     ];
     return menuItems;
   }
@@ -66,7 +66,7 @@ class _AddLeadState extends State<AddLead> {
                       borderRadius: BorderRadius.circular(15),
                       color: const Color.fromARGB(255, 221, 221, 221),
                       boxShadow: const [
-                         BoxShadow(blurRadius: 3),
+                        BoxShadow(blurRadius: 3),
                       ],
                     ),
                     child: Padding(
@@ -85,7 +85,7 @@ class _AddLeadState extends State<AddLead> {
                             myDropdownItem: dropdownItemsForCommunication,
                           ),
                           const SizedBox(
-                            height: 20,
+                            height: 17,
                           ),
                         ],
                       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kido_project/screen/add_lead.dart';
 import 'package:kido_project/screen/enquiries.dart';
 import 'package:kido_project/screen/follow_up_main.dart';
 import 'package:kido_project/screen/leads_screen.dart';
@@ -32,20 +33,43 @@ class _DashBoardState extends State<DashBoard> {
             ),
           ],
         ),
-        
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const DashboardTile(
+            DashboardTile(
               imgUrl: 'assets/images/recrument.png',
               textString: 'LEADS',
+              myPress: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AddLead(),
+                  ),
+                );
+              },
             ),
-            const DashboardTile(
+            DashboardTile(
+              myPress: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Enquiries(),
+                  ),
+                );
+              },
               imgUrl: 'assets/images/enquiry.png',
               textString: 'ENQUERY',
             ),
-            const DashboardTile(
+            DashboardTile(
+              myPress: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => FollowUpMain(),
+                  ),
+                );
+              },
               imgUrl: 'assets/images/followup.png',
               textString: 'FOLLOW UPS',
             ),

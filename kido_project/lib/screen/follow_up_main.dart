@@ -1,6 +1,9 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
+import 'package:kido_project/screen/followupdetail.dart';
+import 'package:kido_project/widget/common_widget.dart';
 import 'package:kido_project/widget/leads_items_card.dart';
+import 'dart:math' as math;
 
 class FollowUpMain extends StatefulWidget {
   const FollowUpMain({super.key});
@@ -27,7 +30,11 @@ class _FollowUpMainState extends State<FollowUpMain> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('FOLLOW UPS'),
-        leading: const Icon(Icons.arrow_back),
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(Icons.arrow_back)),
         actions: [
           IconButton(onPressed: () {}, icon: Icon(Icons.filter_alt)),
           IconButton(onPressed: () {}, icon: Icon(Icons.search))
@@ -73,8 +80,8 @@ class _MyFirstWidgetState extends State<MyFirstWidget> {
           ScrollOnExpand(
             child: ExpandablePanel(
               theme: const ExpandableThemeData(
-                tapBodyToCollapse: true,
-                tapBodyToExpand: true,
+                tapBodyToCollapse: false,
+                tapBodyToExpand: false,
               ),
               collapsed: Card(
                 elevation: 10,
@@ -151,23 +158,50 @@ class _MyFirstWidgetState extends State<MyFirstWidget> {
                     ),
                   ),
                   for (var i in Iterable.generate(5))
-                    CommonListCard(
-                      leadId: 'LD003171',
-                      myLeadStatus: myLeadStatusPrintText(leadScreeStatus.Warm),
-                      parentName: 'Renu Pathak',
-                      childName: 'Rahil',
-                      gender: '(M)',
-                      iconButton: IconButton(
-                          onPressed: () {},
-                          icon: const Icon(Icons.star_border_rounded)),
-                      childAge: '4.9 years',
-                      myColor: myColorFunction(leadScreeStatus.ENROLLED)
-                          as MaterialColor,
-                      programCategory: 'Pre School',
-                      myFontColor: myFunc(leadScreeStatus.Warm),
-                      myLeadStatusText:
-                          myLeadStatusPrintText(leadScreeStatus.ENROLLED),
-                    )
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 10.0),
+                      child: GestureDetector(
+                        onTap: () {
+                          print('=====Pressed=====');
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Followupdetail(
+                                leadNumber: 'LD003171',
+                                parentName: 'Renu Pathak',
+                                childName: 'Rahil',
+                                gender: '(M)',
+                                age: '4.4 years',
+                                mobParennt: '1234567890',
+                                mobParentAlternate: '1234567890',
+                                email: 'abc@gmail.com',
+                                address: 'Kandavili, Mumbai, Maharastra',
+                                ldDate: '05 Mar 2022',
+                                program: 'Nursery',
+                              ),
+                            ),
+                          );
+                        },
+                        child: CommonListCard(
+                          leadId: 'LD003171',
+                          myLeadStatus:
+                              myLeadStatusPrintText(leadScreeStatus.Warm),
+                          parentName: 'Renu Pathak',
+                          childName: 'Rahil',
+                          gender: '(M)',
+                          iconButton: IconButton(
+                              onPressed: () {},
+                              icon: const Icon(Icons.star_border_rounded)),
+                          childAge: '4.9 years',
+                          myColor: myColorFunction(leadScreeStatus.ENROLLED)
+                              as MaterialColor,
+                          programCategory: 'Pre School',
+                          myFontColor: myFunc(leadScreeStatus.Warm),
+                          myLeadStatusText:
+                              myLeadStatusPrintText(leadScreeStatus.ENROLLED),
+                        ),
+                      ),
+                    ),
                 ],
               ),
               builder: (_, collapsed, expanded) {
@@ -179,6 +213,36 @@ class _MyFirstWidgetState extends State<MyFirstWidget> {
                   ),
                 );
               },
+              header: Container(
+                color: Colors.indigoAccent,
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Row(
+                    children: [
+                      ExpandableIcon(
+                        theme: const ExpandableThemeData(
+                          expandIcon: Icons.arrow_right,
+                          collapseIcon: Icons.arrow_drop_down,
+                          iconColor: Colors.white,
+                          iconSize: 28.0,
+                          iconRotationAngle: math.pi / 2,
+                          iconPadding: EdgeInsets.only(right: 5),
+                          hasIcon: false,
+                        ),
+                      ),
+                      Expanded(
+                        child: Text(
+                          "Items",
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText1!
+                              .copyWith(color: Colors.white),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ),
           ),
           const SizedBox(
@@ -230,7 +294,29 @@ class _MyFirstWidgetState extends State<MyFirstWidget> {
                   ),
                   for (var i in Iterable.generate(5))
                     Padding(
-                        padding: const EdgeInsets.only(bottom: 10),
+                      padding: const EdgeInsets.only(bottom: 10),
+                      child: GestureDetector(
+                        onTap: () {
+                          print('=====Pressed=====');
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Followupdetail(
+                                leadNumber: 'LD003171',
+                                parentName: 'Renu Pathak',
+                                childName: 'Rahil',
+                                gender: '(M)',
+                                age: '4.4 years',
+                                mobParennt: '1234567890',
+                                mobParentAlternate: '1234567890',
+                                email: 'abc@gmail.com',
+                                address: 'Kandavili, Mumbai, Maharastra',
+                                ldDate: '05 Mar 2022',
+                                program: 'Nursery',
+                              ),
+                            ),
+                          );
+                        },
                         child: CommonListCard(
                             leadId: 'LD003171',
                             myLeadStatus: 'New Lead - YTC / No Response',
@@ -244,7 +330,9 @@ class _MyFirstWidgetState extends State<MyFirstWidget> {
                             myColor: Colors.blue,
                             programCategory: 'My Cat',
                             myFontColor: Colors.blue,
-                            myLeadStatusText: '')),
+                            myLeadStatusText: ''),
+                      ),
+                    ),
                 ],
               ),
               builder: (_, collapsed, expanded) {

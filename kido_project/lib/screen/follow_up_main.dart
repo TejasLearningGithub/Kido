@@ -45,6 +45,7 @@ class _FollowUpMainState extends State<FollowUpMain> {
           children: const [MyFirstWidget()],
         ),
       ),
+      backgroundColor: Colors.white,
     );
   }
 }
@@ -75,6 +76,7 @@ class _MyFirstWidgetState extends State<MyFirstWidget> {
   @override
   Widget build(BuildContext context) {
     return ExpandableNotifier(
+      initialExpanded: true,
       child: Column(
         children: [
           ScrollOnExpand(
@@ -83,80 +85,82 @@ class _MyFirstWidgetState extends State<MyFirstWidget> {
                 tapBodyToCollapse: false,
                 tapBodyToExpand: false,
               ),
-              collapsed: Card(
-                elevation: 10,
-                child: Container(
-                  width: double.maxFinite,
-                  height: 50,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: const [
-                          SizedBox(
-                            width: 20,
-                          ),
-                          Text(
-                            'Overdue',
-                            style: TextStyle(
-                              color: Colors.red,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text('$count'),
-                          const SizedBox(
-                            width: 8,
-                          ),
-                          const Icon(
-                            Icons.arrow_forward_ios,
-                            size: 21,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              collapsed: Container(),
+
+              //Card(
+              //   elevation: 10,
+              //   child: Container(
+              //     width: double.maxFinite,
+              //     height: 50,
+              //     child: Row(
+              //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //       children: [
+              //         Row(
+              //           children: const [
+              //             SizedBox(
+              //               width: 20,
+              //             ),
+              //             Text(
+              //               'Overdue',
+              //               style: TextStyle(
+              //                 color: Colors.red,
+              //                 fontSize: 18,
+              //                 fontWeight: FontWeight.bold,
+              //               ),
+              //             ),
+              //           ],
+              //         ),
+              //         Row(
+              //           mainAxisAlignment: MainAxisAlignment.start,
+              //           children: [
+              //             Text('$count'),
+              //             const SizedBox(
+              //               width: 8,
+              //             ),
+              //             const Icon(
+              //               Icons.arrow_forward_ios,
+              //               size: 21,
+              //             ),
+              //           ],
+              //         ),
+              //       ],
+              //     ),
+              //   ),
+              // ),
               expanded: Column(
                 children: [
-                  Card(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: const [
-                            SizedBox(
-                              width: 20,
-                            ),
-                            Text(
-                              'Overdue',
-                              style: TextStyle(
-                                color: Colors.red,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Text('$count'),
-                            const Icon(
-                              Icons.keyboard_arrow_down_sharp,
-                              size: 33,
-                            )
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
+                  // Card(
+                  //   child: Row(
+                  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //     children: [
+                  //       Row(
+                  //         children: const [
+                  //           SizedBox(
+                  //             width: 20,
+                  //           ),
+                  //           Text(
+                  //             'Overdue',
+                  //             style: TextStyle(
+                  //               color: Colors.red,
+                  //               fontSize: 18,
+                  //               fontWeight: FontWeight.bold,
+                  //             ),
+                  //           ),
+                  //         ],
+                  //       ),
+                  //       Row(
+                  //         mainAxisAlignment: MainAxisAlignment.start,
+                  //         children: [
+                  //           Text('$count'),
+                  //           const Icon(
+                  //             Icons.keyboard_arrow_down_sharp,
+                  //             size: 33,
+                  //           )
+                  //         ],
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
                   for (var i in Iterable.generate(5))
                     Padding(
                       padding: const EdgeInsets.only(bottom: 10.0),
@@ -214,15 +218,18 @@ class _MyFirstWidgetState extends State<MyFirstWidget> {
                 );
               },
               header: Container(
-                color: Colors.indigoAccent,
+                //color: Colors.indigoAccent,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                ),
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Row(
                     children: [
                       ExpandableIcon(
                         theme: const ExpandableThemeData(
-                          expandIcon: Icons.arrow_right,
-                          collapseIcon: Icons.arrow_drop_down,
+                          //expandIcon: Icons.arrow_drop_down,
+                          //collapseIcon: Icons.arrow_back,
                           iconColor: Colors.white,
                           iconSize: 28.0,
                           iconRotationAngle: math.pi / 2,
@@ -232,13 +239,14 @@ class _MyFirstWidgetState extends State<MyFirstWidget> {
                       ),
                       Expanded(
                         child: Text(
-                          "Items",
+                          "Overdue",
                           style: Theme.of(context)
                               .textTheme
                               .bodyText1!
-                              .copyWith(color: Colors.white),
+                              .copyWith(color: Colors.red),
                         ),
                       ),
+                      Text('3'),
                     ],
                   ),
                 ),
@@ -280,16 +288,16 @@ class _MyFirstWidgetState extends State<MyFirstWidget> {
                           ),
                         ],
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text('${count + 2}'),
-                          const Icon(
-                            Icons.keyboard_arrow_down_sharp,
-                            size: 33,
-                          )
-                        ],
-                      ),
+                      // Row(
+                      //   mainAxisAlignment: MainAxisAlignment.start,
+                      //   children: [
+                      //     Text('${count + 2}'),
+                      //     const Icon(
+                      //       Icons.keyboard_arrow_down_sharp,
+                      //       size: 33,
+                      //     )
+                      //   ],
+                      // ),
                     ],
                   ),
                   for (var i in Iterable.generate(5))

@@ -68,7 +68,7 @@ class _ExpandableParentState extends State<ExpandableParent> {
                 padding: const EdgeInsets.all(10.0),
                 child: Container(
                   height: 350,
-                  width: 450,
+                  width: 430,
                   //color: Colors.blue.shade100,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(16),

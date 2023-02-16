@@ -34,44 +34,66 @@ class _EnquiriesState extends State<Enquiries> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const Padding(
-              padding: EdgeInsets.only(left: 18.0, top: 10.0),
-              child: Align(
-                alignment: Alignment.topLeft,
-                child: Text(
-                  'Today',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-            ),
+            //Text('Today'),
             Container(
               height: 700,
               width: double.maxFinite,
-              child: ListView.builder(
-                  itemCount: 5,
-                  itemBuilder: (context, index) {
-                    return CommonListCard(
-                        leadId: 'LD003171',
-                        myLeadStatus: 'New Lead - YTC / No Response',
-                        parentName: 'Renu Pathak',
-                        childName: 'Rahil',
-                        gender: '(M)',
-                        iconButton: IconButton(
-                          onPressed: () {},
-                          icon: const Icon(Icons.star_outline),
-                        ),
-                        childAge: '4.4 Years',
-                        myColor: myColorFunction(leadScreeStatus.ENROLLED)
-                            as MaterialColor,
-                        programCategory: 'Preschool',
-                        myFontColor: myFontColor,
-                        myLeadStatusText:
-                            myLeadStatusPrintText(leadScreeStatus.ENROLLED));
-                  }),
-            )
+              child: Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(left: 18.0, top: 10.0),
+                    child: Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        'Today',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: 500,
+                    width: 400,
+                    child: ListView.builder(
+                        itemCount: 5,
+                        itemBuilder: (context, index) {
+                          return CommonListCard(
+                              leadId: 'LD003171',
+                              myLeadStatus: 'New Lead - YTC / No Response',
+                              parentName: 'Renu Pathak',
+                              childName: 'Rahil',
+                              gender: '(M)',
+                              iconButton: IconButton(
+                                onPressed: () {},
+                                icon: const Icon(Icons.star_outline),
+                              ),
+                              childAge: '4.4 Years',
+                              myColor: myColorFunction(leadScreeStatus.ENROLLED)
+                                  as MaterialColor,
+                              programCategory: 'Preschool',
+                              myFontColor: myFontColor,
+                              myLeadStatusText: myLeadStatusPrintText(
+                                  leadScreeStatus.ENROLLED));
+                        }),
+                  ),
+                ],
+              ),
+            ),
+            // const Padding(
+            //   padding: EdgeInsets.only(left: 18.0, top: 10.0),
+            //   child: Align(
+            //     alignment: Alignment.topLeft,
+            //     child: Text(
+            //       'Today',
+            //       style: TextStyle(
+            //           color: Colors.black,
+            //           fontSize: 20,
+            //           fontWeight: FontWeight.bold),
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       ),

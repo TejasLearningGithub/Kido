@@ -20,7 +20,7 @@ class _StatefulRadioGenderWidgetState extends State<StatefulRadioGenderWidget> {
       children: <Widget>[
         commonName('Gender', true),
         SizedBox(
-          width: 140,
+          width: 127,
           child: RadioListTile<gender>(
             title: const Text('Male'),
             value: gender.Male,
@@ -34,8 +34,8 @@ class _StatefulRadioGenderWidgetState extends State<StatefulRadioGenderWidget> {
             },
           ),
         ),
-        SizedBox(
-          width: 150,
+        Container(
+          width: 147,
           child: RadioListTile<gender>(
             title: const Text('Female'),
             value: gender.Female,

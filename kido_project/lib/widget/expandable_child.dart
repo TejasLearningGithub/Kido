@@ -12,21 +12,21 @@ class ExpandableChild extends StatefulWidget {
 
 class _ExpandableChildState extends State<ExpandableChild> {
   List<DropdownMenuItem<String>> get dropdownItemsForCourse {
-    List<DropdownMenuItem<String>> menuItems = [
-      DropdownMenuItem(child: Text("Mode - 1"), value: "mode1"),
-      DropdownMenuItem(child: Text("Mode - 2"), value: "mode2"),
-      DropdownMenuItem(child: Text("Mode - 3"), value: "mode3"),
-      DropdownMenuItem(child: Text("Mode - 4"), value: "mode4"),
-      DropdownMenuItem(child: Text("Mode - 5"), value: "mode5"),
-      DropdownMenuItem(child: Text("Mode - 6"), value: "mode6"),
-      DropdownMenuItem(child: Text("Mode - 7"), value: "mode7"),
-      DropdownMenuItem(child: Text("Mode - 8"), value: "mode8"),
+    List<DropdownMenuItem<String>> menuItems = const [
+      DropdownMenuItem(value: "mode1", child: Text("Mode - 1")),
+      DropdownMenuItem(value: "mode2", child: Text("Mode - 2")),
+      DropdownMenuItem(value: "mode3", child: Text("Mode - 3")),
+      DropdownMenuItem(value: "mode4", child: Text("Mode - 4")),
+      DropdownMenuItem(value: "mode5", child: Text("Mode - 5")),
+      DropdownMenuItem(value: "mode6", child: Text("Mode - 6")),
+      DropdownMenuItem(value: "mode7", child: Text("Mode - 7")),
+      DropdownMenuItem(value: "mode8", child: Text("Mode - 8")),
     ];
     return menuItems;
   }
 
-  var _firstNameController = TextEditingController();
-  var _secondNameController = TextEditingController();
+  final _firstNameController = TextEditingController();
+  final _secondNameController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return ExpandableNotifier(
@@ -50,7 +50,7 @@ class _ExpandableChildState extends State<ExpandableChild> {
               //     ],
               //   ),
               // ),
-              theme: ExpandableThemeData(
+              theme: const ExpandableThemeData(
                 hasIcon: true,
                 expandIcon: Icons.arrow_downward_rounded,
                 collapseIcon: Icons.abc,
@@ -89,11 +89,11 @@ class _ExpandableChildState extends State<ExpandableChild> {
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        const SizedBox(
+                      children: const [
+                        SizedBox(
                           width: 8,
                         ),
-                        const Icon(
+                        Icon(
                           Icons.arrow_forward_ios,
                           size: 23,
                         ),
@@ -110,14 +110,14 @@ class _ExpandableChildState extends State<ExpandableChild> {
                   //color: Colors.blue.shade100,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(16),
-                      boxShadow: [
+                      boxShadow: const [
                         BoxShadow(
                           blurRadius: 0,
                           //spreadRadius: 10,
                           color: Colors.grey,
                         ),
                       ],
-                      color: Color.fromARGB(255, 221, 221, 221)),
+                      color: const Color.fromARGB(255, 221, 221, 221)),
                   child: Column(
                     children: [
                       Row(
@@ -141,7 +141,8 @@ class _ExpandableChildState extends State<ExpandableChild> {
                         hintText: 'First Name',
                         hintTextColor: Colors.black,
                         myController: _firstNameController,
-                        backGroundColor: Color.fromARGB(255, 221, 221, 221),
+                        backGroundColor:
+                            const Color.fromARGB(255, 221, 221, 221),
                         textColor: Colors.black,
                         myWidgetController: _firstNameController,
                         myType: TextInputType.name,
@@ -157,13 +158,14 @@ class _ExpandableChildState extends State<ExpandableChild> {
                         hintText: 'Second Name',
                         hintTextColor: Colors.black,
                         myController: _secondNameController,
-                        backGroundColor: Color.fromARGB(255, 221, 221, 221),
+                        backGroundColor:
+                            const Color.fromARGB(255, 221, 221, 221),
                         textColor: Colors.black,
                         myWidgetController: _firstNameController,
                         myType: TextInputType.name,
                         myTapping: () {},
                       ),
-                      StatefulRadioGenderWidget(),
+                      const StatefulRadioGenderWidget(),
                       commonName('Date Of Birth', false),
                       DateSelector(),
                       commonName('Course Interested In', false),

@@ -529,6 +529,15 @@ class _KidoTextFormfieldState extends State<KidoTextFormfield> {
                 color: Colors.black,
               ),
               decoration: InputDecoration(
+                //suffixIcon: widget.icon,
+                //iconColor: Colors.blue,
+                //suffixIconColor: Colors.blue,
+                suffixIcon: widget.icon,
+                // suffixIcon: IconTheme(
+                //   data: IconThemeData(color: Colors.blue),
+                //   child: widget.icon!,
+                // ),
+
                 focusedErrorBorder: const OutlineInputBorder(
                   borderSide: BorderSide(
                     color: Colors.black,
@@ -692,6 +701,7 @@ class _MyMultiLineState extends State<MyMultiLine> {
                 });
               },
               decoration: InputDecoration(
+                hintText: 'Please Enter Description',
                 contentPadding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
                 border: DecoratedInputBorder(
                   child: OutlineInputBorder(

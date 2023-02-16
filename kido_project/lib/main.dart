@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kido_project/screen/Dashboard/dashBoard_main.dart';
+import 'package:kido_project/screen/Dashboard/navigation/my_nav.dart';
 import 'package:kido_project/screen/add_lead.dart';
 import 'package:kido_project/screen/dash_board.dart';
 import 'package:kido_project/screen/enquiries.dart';
@@ -27,6 +28,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const Followupdetail());
+        home: MyNav());
   }
 }

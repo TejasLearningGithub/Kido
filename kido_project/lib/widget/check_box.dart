@@ -16,7 +16,7 @@ class _MyCheckboxFirstState extends State<MyCheckboxFirst> {
       children: [
         Container(
           height: 100,
-          width: 190,
+          width: 130,
           child: CheckboxListTile(
             controlAffinity: ListTileControlAffinity.leading,
             title: const Text('No Follow Up'),
@@ -34,7 +34,7 @@ class _MyCheckboxFirstState extends State<MyCheckboxFirst> {
         ),
         Container(
           height: 100,
-          width: 170,
+          width: 150,
           child: CheckboxListTile(
             controlAffinity: ListTileControlAffinity.leading,
             title: const Text('Follow Up Some Day'),

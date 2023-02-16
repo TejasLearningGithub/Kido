@@ -1,33 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:kido_project/screen/Tab/tab_data_screens/add_followup.dart';
 import 'package:kido_project/widget/common_widget.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
 class Followupdetail extends StatefulWidget {
-  final String leadNumber;
-  final String parentName;
-  final String childName;
-  final String gender;
-  final String age;
-  final String mobParennt;
-  final String mobParentAlternate;
-  final String email;
-  final String address;
-  final String ldDate;
-  final String program;
+  final String? leadNumber;
+  final String? parentName;
+  final String? childName;
+  final String? gender;
+  final String? age;
+  final String? mobParennt;
+  final String? mobParentAlternate;
+  final String? email;
+  final String? address;
+  final String? ldDate;
+  final String? program;
 
-  Followupdetail({
+  const Followupdetail({
     super.key,
-    required this.leadNumber,
-    required this.parentName,
-    required this.childName,
-    required this.gender,
-    required this.age,
-    required this.mobParennt,
-    required this.mobParentAlternate,
-    required this.email,
-    required this.address,
-    required this.ldDate,
-    required this.program,
+    this.leadNumber,
+    this.parentName,
+    this.childName,
+    this.gender,
+    this.age,
+    this.mobParennt,
+    this.mobParentAlternate,
+    this.email,
+    this.address,
+    this.ldDate,
+    this.program,
   });
 
   @override
@@ -51,7 +52,7 @@ class _FollowupdetailState extends State<Followupdetail> {
             size: 35,
           ),
           onPressed: () {
-            Navigator.pop(context);
+            //Navigator.of(context).pop();
           },
         ),
       ),
@@ -97,7 +98,7 @@ class _FollowupdetailState extends State<Followupdetail> {
                                       left: width * 0.018 - 0.01),
                                   child: Text(
                                     //'LD003171',
-                                    widget.leadNumber,
+                                    widget.leadNumber ?? '',
                                     style: commonMediumFonts.copyWith(
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -135,7 +136,7 @@ class _FollowupdetailState extends State<Followupdetail> {
                           child: Row(
                             children: [
                               Text(
-                                widget.parentName,
+                                widget.parentName ?? '',
                                 style: commonMediumFonts.copyWith(
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -154,7 +155,7 @@ class _FollowupdetailState extends State<Followupdetail> {
                                 ),
                               ),
                               Text(
-                                widget.childName,
+                                widget.childName ?? '',
                                 style: commonSmallFonts.copyWith(
                                   color: Colors.white,
                                 ),
@@ -175,7 +176,7 @@ class _FollowupdetailState extends State<Followupdetail> {
                                 size: 15,
                               ),
                               Text(
-                                widget.mobParennt,
+                                widget.mobParennt ?? '',
                                 style: commonSmallFonts.copyWith(
                                   color: Colors.white,
                                 ),
@@ -195,7 +196,7 @@ class _FollowupdetailState extends State<Followupdetail> {
                                 width: 4,
                               ),
                               Text(
-                                widget.mobParentAlternate,
+                                widget.mobParentAlternate ?? '',
                                 style: commonSmallFonts.copyWith(
                                   color: Colors.white,
                                 ),
@@ -208,7 +209,7 @@ class _FollowupdetailState extends State<Followupdetail> {
                           child: Row(
                             children: [
                               Text(
-                                widget.email,
+                                widget.email ?? '',
                                 style: commonSmallFonts.copyWith(
                                   color: Colors.white,
                                 ),
@@ -221,7 +222,7 @@ class _FollowupdetailState extends State<Followupdetail> {
                           child: Row(
                             children: [
                               Text(
-                                widget.address,
+                                widget.address ?? '',
                                 style: commonSmallFonts.copyWith(
                                   color: Colors.white,
                                 ),
@@ -241,7 +242,7 @@ class _FollowupdetailState extends State<Followupdetail> {
                                 ),
                               ),
                               Text(
-                                widget.ldDate,
+                                widget.ldDate ?? '',
                                 style: commonSmallFonts.copyWith(
                                   color: Colors.white,
                                 ),
@@ -419,22 +420,32 @@ class _FollowupdetailState extends State<Followupdetail> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Container(
-                    height: 50,
-                    width: 180,
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(
-                        100,
-                        189,
-                        83,
-                        25,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => AddFollowup(),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      height: 50,
+                      width: 180,
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(
+                          100,
+                          189,
+                          83,
+                          25,
+                        ),
+                        borderRadius: BorderRadius.circular(30),
                       ),
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    child: const Align(
-                      alignment: Alignment.center,
-                      child: Text(
-                        'Add Follow Up',
+                      child: const Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          'Add Follow Up',
+                        ),
                       ),
                     ),
                   ),

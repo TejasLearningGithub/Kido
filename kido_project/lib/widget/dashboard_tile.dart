@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 class DashboardTile extends StatelessWidget {
   final String imgUrl;
   final String textString;
+  final VoidCallback myPress;
 
   const DashboardTile({
     super.key,
     required this.imgUrl,
     required this.textString,
+    required this.myPress,
   });
 
   @override
@@ -22,7 +24,7 @@ class DashboardTile extends StatelessWidget {
         right: 10,
       ),
       child: GestureDetector(
-        onTap: () {},
+        onTap: myPress,
         child: Column(
           children: [
             Row(

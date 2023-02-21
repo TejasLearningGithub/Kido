@@ -30,12 +30,14 @@ class _ExpandableChildState extends State<ExpandableChild> {
   @override
   Widget build(BuildContext context) {
     return ExpandableNotifier(
+      initialExpanded: true,
       child: Column(
         children: [
           ScrollOnExpand(
             //scrollOnCollapse: true,
             //scrollOnExpand: true,
             child: ExpandablePanel(
+              //collapsed: Container(),
               // header: Container(
               //   decoration: BoxDecoration(
               //     color: Colors.blue,
@@ -54,7 +56,7 @@ class _ExpandableChildState extends State<ExpandableChild> {
                 hasIcon: true,
                 expandIcon: Icons.arrow_downward_rounded,
                 collapseIcon: Icons.abc,
-                // tapHeaderToExpand: true,
+                tapHeaderToExpand: true,
 
                 // collapseIcon: Icons.forward,
                 // expandIcon: Icons.keyboard_arrow_down_sharp,
@@ -62,10 +64,10 @@ class _ExpandableChildState extends State<ExpandableChild> {
                 //collapseIcon: Icons.arrow_forward_ios,
                 //hasIcon: false,
 
-                tapBodyToCollapse: false,
+                tapBodyToCollapse: true,
                 tapBodyToExpand: true,
               ),
-              collapsed: Container(
+              collapsed: SizedBox(
                 width: double.maxFinite,
                 height: 50,
                 //decoration: BoxDecoration(color: Colors.blue),
@@ -105,7 +107,7 @@ class _ExpandableChildState extends State<ExpandableChild> {
               expanded: Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Container(
-                  height: 449,
+                  height: 455,
                   width: 450,
                   //color: Colors.blue.shade100,
                   decoration: BoxDecoration(
@@ -117,7 +119,8 @@ class _ExpandableChildState extends State<ExpandableChild> {
                           color: Colors.grey,
                         ),
                       ],
-                      color: const Color.fromARGB(255, 221, 221, 221)),
+                      //color: const Color.fromARGB(255, 221, 221, 221)),
+                      color: Colors.white),
                   child: Column(
                     children: [
                       Row(
@@ -135,48 +138,77 @@ class _ExpandableChildState extends State<ExpandableChild> {
                           ),
                         ],
                       ),
-                      commonName('First Name', false),
-                      KidoTextFormfield(
-                        icon: null,
-                        hintText: 'First Name',
-                        hintTextColor: Colors.black,
-                        myController: _firstNameController,
-                        backGroundColor:
-                            const Color.fromARGB(255, 221, 221, 221),
-                        textColor: Colors.black,
-                        myWidgetController: _firstNameController,
-                        myType: TextInputType.name,
-                        myTapping: () {},
-                        //   icon: Icon(
-                        //     Icons.abc,
-                        //     color: Colors.black,
-                        //   ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10, right: 10),
+                        child: commonName('First Name', false),
                       ),
-                      commonName('Second Name', false),
-                      KidoTextFormfield(
-                        icon: null,
-                        hintText: 'Second Name',
-                        hintTextColor: Colors.black,
-                        myController: _secondNameController,
-                        backGroundColor:
-                            const Color.fromARGB(255, 221, 221, 221),
-                        textColor: Colors.black,
-                        myWidgetController: _firstNameController,
-                        myType: TextInputType.name,
-                        myTapping: () {},
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            left: 10, right: 10, bottom: 5),
+                        child: KidoTextFormfield(
+                          icon: null,
+                          hintText: 'First Name',
+                          hintTextColor: Colors.black,
+                          myController: _firstNameController,
+                          backGroundColor:
+                              const Color.fromARGB(255, 221, 221, 221),
+                          textColor: Colors.black,
+                          myWidgetController: _firstNameController,
+                          myType: TextInputType.name,
+                          myTapping: () {},
+                          //   icon: Icon(
+                          //     Icons.abc,
+                          //     color: Colors.black,
+                          //   ),
+                        ),
                       ),
-                      const StatefulRadioGenderWidget(),
-                      commonName('Date Of Birth', false),
-                      DateSelector(),
-                      commonName('Course Interested In', false),
-                      MyCustomDropdown(
-                          selectedValue: '',
-                          myDropdownItem: dropdownItemsForCourse,
-                          myText: 'Select Course')
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10, right: 10),
+                        child: commonName('Second Name', false),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10, right: 10),
+                        child: KidoTextFormfield(
+                          icon: null,
+                          hintText: 'Second Name',
+                          hintTextColor: Colors.black,
+                          myController: _secondNameController,
+                          backGroundColor:
+                              const Color.fromARGB(255, 221, 221, 221),
+                          textColor: Colors.black,
+                          myWidgetController: _firstNameController,
+                          myType: TextInputType.name,
+                          myTapping: () {},
+                        ),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(left: 10.0),
+                        child: StatefulRadioGenderWidget(),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10, right: 10),
+                        child: commonName('Date Of Birth', false),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(left: 10, right: 10),
+                        child: DateSelector(),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10, right: 10),
+                        child: commonName('Course Interested In', false),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10, right: 10),
+                        child: MyCustomDropdown(
+                            selectedValue: '',
+                            myDropdownItem: dropdownItemsForCourse,
+                            myText: 'Select Course'),
+                      )
                     ],
                   ),
                 ),
               ),
+
               builder: (_, collapsed, expanded) {
                 return Expandable(
                   collapsed: collapsed,

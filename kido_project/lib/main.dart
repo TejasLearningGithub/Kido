@@ -1,19 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kido_project/screen/Dashboard/dashBoard_main.dart';
-import 'package:kido_project/screen/Dashboard/navigation/my_nav.dart';
-import 'package:kido_project/screen/add_lead.dart';
-import 'package:kido_project/screen/dash_board.dart';
-import 'package:kido_project/screen/enquiries.dart';
-import 'package:kido_project/screen/follow_up_main.dart';
-import 'package:kido_project/screen/followupdetail.dart';
-import 'package:kido_project/screen/lead_form.dart';
-import 'package:kido_project/screen/leads_screen.dart';
-import 'package:kido_project/screen/login_screen.dart';
-import 'package:kido_project/widget/dashboard_tile.dart';
-import 'package:kido_project/widget/leads_items_card.dart';
-import 'package:kido_project/widget/radio_gender.dart';
-
-import 'screen/Tab/tab_data_screens/add_followup.dart';
+import 'carousel_slider/pages/carousel_slider_main/slider_main.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,6 +14,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: MyNav());
+        home: const SliderMain());
   }
 }

@@ -1,11 +1,10 @@
 import 'dart:developer';
 
 import 'package:control_style/control_style.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
-import 'package:flutter/animation.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 
 TextStyle leadIdStyle = GoogleFonts.roboto(
@@ -133,9 +132,6 @@ commonTextFormField(
           child: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
           ),
-          shadow: const [
-            BoxShadow(color: Colors.black, blurRadius: 4, offset: Offset(0, 4))
-          ],
         ),
         contentPadding: const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0),
         filled: true,
@@ -179,29 +175,7 @@ commonSubmitButton({
   );
 }
 
-enum gender { male, female }
-
-class myImageWidget extends StatelessWidget {
-  final String imgUrl;
-  final double width;
-  final double height;
-
-  const myImageWidget({
-    required this.imgUrl,
-    required this.height,
-    required this.width,
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Image.asset(
-      imgUrl,
-      width: width,
-      height: height,
-    );
-  }
-}
+enum GGender { male, female }
 
 Row dashBoardNotificationList(BuildContext context) {
   return Row(
@@ -281,74 +255,6 @@ Row dashBoardNotificationList(BuildContext context) {
   );
 }
 
-class previous_button extends StatelessWidget {
-  VoidCallback? myOnPress;
-  previous_button({
-    required myOnPress,
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 50,
-      width: 110,
-      child: ElevatedButton(
-        onPressed: myOnPress,
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(Colors.blueGrey),
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(28.0),
-              side: BorderSide.none,
-            ),
-          ),
-        ),
-        child: const Text(
-          'Previous',
-          style: TextStyle(
-            color: Colors.black,
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class save_continue extends StatelessWidget {
-  VoidCallback? myOnPress;
-  save_continue({
-    required myOnPress,
-    Key? key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 50,
-      width: 200,
-      child: ElevatedButton(
-        onPressed: myOnPress,
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(Colors.blue),
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(28.0),
-              side: BorderSide.none,
-            ),
-          ),
-        ),
-        child: const Text(
-          'Save & Continue',
-          style: TextStyle(
-            color: Colors.white,
-          ),
-        ),
-      ),
-    );
-  }
-}
-
 Widget myMultiLineTextFormField({required TextEditingController myController}) {
   return TextFormField(
     controller: myController,
@@ -388,6 +294,7 @@ Widget myMultiLineTextFormField({required TextEditingController myController}) {
 
 class MyCustomDropdown extends StatefulWidget {
   String? selectedValue;
+  //final selectedValue;
   String? myText;
   List<DropdownMenuItem<String>> myDropdownItem;
 
@@ -403,7 +310,7 @@ class MyCustomDropdown extends StatefulWidget {
 }
 
 class _MyCustomDropdownState extends State<MyCustomDropdown> {
-  var myDropDownErrorText;
+  var myDropDownErrorText = '';
   var txtmsg = '';
   Color myColor = Colors.blue;
   @override
@@ -430,18 +337,18 @@ class _MyCustomDropdownState extends State<MyCustomDropdown> {
                 widget.myText!,
                 style: const TextStyle(fontSize: 16),
               ),
-              validator: (value) {},
+              //validator: (value) {},
               items: widget.myDropdownItem,
               onSaved: (newValue) {
                 setState(() {
                   if (newValue == null || newValue == '') {
                     txtmsg = 'Please select value';
-                    print('======$txtmsg');
+                    log('======$txtmsg');
                     myColor = Colors.red;
                   } else {
                     txtmsg = '';
                     myColor = Colors.blue;
-                    print('======$txtmsg');
+                    //print('======$txtmsg');
                   }
                 });
               },
@@ -459,7 +366,7 @@ class _MyCustomDropdownState extends State<MyCustomDropdown> {
         Align(
           alignment: Alignment.topLeft,
           child: Text(
-            '$txtmsg',
+            txtmsg,
             style: const TextStyle(
               color: Colors.red,
             ),
@@ -473,18 +380,18 @@ class _MyCustomDropdownState extends State<MyCustomDropdown> {
 class KidoTextFormfield extends StatefulWidget {
   String hintText;
   Color hintTextColor;
-  TextEditingController myController;
+  TextEditingController? myController;
   Color backGroundColor;
   Color textColor;
   TextInputType myType;
   Icon? icon;
   VoidCallback? myTapping;
-  TextEditingController myWidgetController;
+  TextEditingController? myWidgetController;
   KidoTextFormfield(
       {super.key,
       required this.icon,
       required this.hintText,
-      required this.myController,
+      this.myController,
       required this.textColor,
       required this.backGroundColor,
       required this.hintTextColor,
@@ -497,7 +404,6 @@ class KidoTextFormfield extends StatefulWidget {
 }
 
 class _KidoTextFormfieldState extends State<KidoTextFormfield> {
-  var _formKey = GlobalKey<FormState>();
   var txtmsg = '';
   var myColor = Colors.blue;
   @override
@@ -516,7 +422,7 @@ class _KidoTextFormfieldState extends State<KidoTextFormfield> {
               keyboardType: widget.myType,
               onSaved: (newValue) {
                 setState(() {
-                  if (newValue!.isEmpty || newValue == null) {
+                  if (newValue!.isEmpty) {
                     txtmsg = 'Please Enter Value';
                     myColor = Colors.red;
                   } else {
@@ -584,7 +490,7 @@ class _KidoTextFormfieldState extends State<KidoTextFormfield> {
 }
 
 class DateSelector extends StatefulWidget {
-  DateSelector({
+  const DateSelector({
     super.key,
   });
 
@@ -610,13 +516,16 @@ class _DateSelectorState extends State<DateSelector> {
       hintText: 'date of birth',
       backGroundColor: const Color.fromARGB(255, 221, 221, 221),
       hintTextColor: Colors.black,
-      icon: const Icon(Icons.keyboard_arrow_down),
+      icon: const Icon(
+        Icons.keyboard_arrow_down,
+        color: Colors.blue,
+      ),
       myController: myController,
       textColor: Colors.black,
       myTapping: () {
         showModalBottomSheet(
           context: context,
-          builder: (BuildContext context) => Container(
+          builder: (BuildContext context) => SizedBox(
             height: 250,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
@@ -633,7 +542,7 @@ class _DateSelectorState extends State<DateSelector> {
                     initialDateTime: DateTime.now(),
                     onDateTimeChanged: (DateTime date) {
                       if (mounted) {
-                        print("Your Selected Date: ${date.day}");
+                        //print("Your Selected Date: ${date.day}");
                         log("your Selected Month: ${date.month}");
                         log("Your Selected Year : ${date.year}");
                         setState(() {
@@ -691,7 +600,7 @@ class _MyMultiLineState extends State<MyMultiLine> {
               maxLines: 5,
               onSaved: (newValue) {
                 setState(() {
-                  if (newValue!.isEmpty || newValue == null) {
+                  if (newValue!.isEmpty) {
                     txtmsg = 'Please Enter Value';
                     myColor = Colors.red;
                   } else {
@@ -724,7 +633,7 @@ class _MyMultiLineState extends State<MyMultiLine> {
           child: Align(
             alignment: Alignment.topLeft,
             child: Text(
-              '$txtmsg',
+              txtmsg,
               style: const TextStyle(
                 color: Colors.red,
               ),

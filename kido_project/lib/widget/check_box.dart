@@ -14,7 +14,7 @@ class _MyCheckboxFirstState extends State<MyCheckboxFirst> {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Container(
+        SizedBox(
           height: 100,
           width: 130,
           child: CheckboxListTile(
@@ -32,7 +32,7 @@ class _MyCheckboxFirstState extends State<MyCheckboxFirst> {
             },
           ),
         ),
-        Container(
+        SizedBox(
           height: 100,
           width: 150,
           child: CheckboxListTile(

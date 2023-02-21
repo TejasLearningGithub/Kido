@@ -30,18 +30,19 @@ class _EnquiriesState extends State<Enquiries> {
           )
         ],
       ),
-      backgroundColor: const Color.fromARGB(255, 221, 221, 221),
+      //backgroundColor: const Color.fromARGB(255, 221, 221, 221),
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
           children: [
             //Text('Today'),
-            Container(
-              height: 700,
+            SizedBox(
+              height: 718,
               width: double.maxFinite,
               child: Column(
                 children: [
-                  Padding(
-                    padding: EdgeInsets.only(left: 18.0, top: 10.0),
+                  const Padding(
+                    padding: EdgeInsets.only(left: 18.0, top: 7.0),
                     child: Align(
                       alignment: Alignment.topLeft,
                       child: Text(
@@ -53,11 +54,12 @@ class _EnquiriesState extends State<Enquiries> {
                       ),
                     ),
                   ),
-                  Container(
-                    height: 500,
+                  SizedBox(
+                    height: 685,
                     width: 400,
                     child: ListView.builder(
-                        itemCount: 5,
+                        shrinkWrap: true,
+                        itemCount: 6,
                         itemBuilder: (context, index) {
                           return CommonListCard(
                               leadId: 'LD003171',
@@ -70,12 +72,12 @@ class _EnquiriesState extends State<Enquiries> {
                                 icon: const Icon(Icons.star_outline),
                               ),
                               childAge: '4.4 Years',
-                              myColor: myColorFunction(leadScreeStatus.ENROLLED)
+                              myColor: myColorFunction(LeadScreeStatus.enrolled)
                                   as MaterialColor,
                               programCategory: 'Preschool',
                               myFontColor: myFontColor,
                               myLeadStatusText: myLeadStatusPrintText(
-                                  leadScreeStatus.ENROLLED));
+                                  LeadScreeStatus.enrolled));
                         }),
                   ),
                 ],

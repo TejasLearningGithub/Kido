@@ -29,7 +29,8 @@ class _AddLeadState extends State<AddLead> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(225, 221, 221, 221),
+      //backgroundColor: const Color.fromARGB(225, 221, 221, 221),
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text(
           'Add Leads',
@@ -64,7 +65,7 @@ class _AddLeadState extends State<AddLead> {
                     //color: Color.fromARGB(255, 221, 221, 221),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
-                      color: const Color.fromARGB(255, 221, 221, 221),
+                      color: Colors.white,
                       boxShadow: const [
                         BoxShadow(blurRadius: 3),
                       ],

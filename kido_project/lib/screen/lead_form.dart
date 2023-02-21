@@ -131,8 +131,8 @@ class _LeadFormState extends State<LeadForm> {
                 ),
                 child: commonName('Date Of Birth', true),
               ),
-              Padding(
-                padding: const EdgeInsets.all(0),
+              const Padding(
+                padding: EdgeInsets.all(0),
                 child: DateSelector(),
               ),
               Padding(

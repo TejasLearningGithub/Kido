@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:kido_project/screen/add_lead.dart';
 import 'package:kido_project/screen/enquiries.dart';
 import 'package:kido_project/screen/follow_up_main.dart';
-import 'package:kido_project/screen/leads_screen.dart';
 import 'package:kido_project/widget/common_widget.dart';
 import 'package:kido_project/widget/dashboard_tile.dart';
 
@@ -14,12 +13,13 @@ class DashBoard extends StatefulWidget {
 }
 
 class _DashBoardState extends State<DashBoard> {
-  int _selectedIndex = 0;
+  //final int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 221, 221, 221),
+      //backgroundColor: Color.fromARGB(255, 221, 221, 221),
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -44,7 +44,7 @@ class _DashBoardState extends State<DashBoard> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => AddLead(),
+                    builder: (context) => const AddLead(),
                   ),
                 );
               },
@@ -54,7 +54,7 @@ class _DashBoardState extends State<DashBoard> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => Enquiries(),
+                    builder: (context) => const Enquiries(),
                   ),
                 );
               },
@@ -66,7 +66,7 @@ class _DashBoardState extends State<DashBoard> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => FollowUpMain(),
+                    builder: (context) => const FollowUpMain(),
                   ),
                 );
               },

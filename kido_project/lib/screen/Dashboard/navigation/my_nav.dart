@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kido_project/screen/Dashboard/dashBoard_main.dart';
+import 'package:kido_project/screen/Dashboard/dash_board_main.dart';
 import 'package:kido_project/screen/Dashboard/enum_screen.dart';
 import 'package:kido_project/screen/Dashboard/tab_navigator.dart';
 
@@ -12,7 +12,7 @@ class MyNav extends StatefulWidget {
 
 class _MyNavState extends State<MyNav> {
   var _currentTab = BottomNavItem.home;
-  var _navigatorKeys = {
+  final _navigatorKeys = {
     BottomNavItem.home: GlobalKey<NavigatorState>(),
     BottomNavItem.leadsScreen: GlobalKey<NavigatorState>(),
     BottomNavItem.enquiries: GlobalKey<NavigatorState>(),

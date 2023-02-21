@@ -9,10 +9,10 @@ class StatefulRadioGenderWidget extends StatefulWidget {
       _StatefulRadioGenderWidgetState();
 }
 
-enum gender { Male, Female }
+enum Gender { male, female }
 
 class _StatefulRadioGenderWidgetState extends State<StatefulRadioGenderWidget> {
-  gender? _character = gender.Male;
+  Gender? _character = Gender.male;
 
   @override
   Widget build(BuildContext context) {
@@ -21,31 +21,31 @@ class _StatefulRadioGenderWidgetState extends State<StatefulRadioGenderWidget> {
         commonName('Gender', true),
         SizedBox(
           width: 127,
-          child: RadioListTile<gender>(
-            title: const Text('Male'),
-            value: gender.Male,
+          child: RadioListTile<Gender>(
+            title: const Text('male'),
+            value: Gender.male,
             groupValue: _character,
-            onChanged: (gender? value) {
+            onChanged: (Gender? value) {
               setState(() {
                 _character = value;
               });
               ScaffoldMessenger.of(context)
-                  .showSnackBar(const SnackBar(content: Text('Male Selected')));
+                  .showSnackBar(const SnackBar(content: Text('male Selected')));
             },
           ),
         ),
-        Container(
+        SizedBox(
           width: 147,
-          child: RadioListTile<gender>(
-            title: const Text('Female'),
-            value: gender.Female,
+          child: RadioListTile<Gender>(
+            title: const Text('female'),
+            value: Gender.female,
             groupValue: _character,
-            onChanged: (gender? value) {
+            onChanged: (Gender? value) {
               setState(() {
                 _character = value;
               });
               ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Female Selected')));
+                  const SnackBar(content: Text('female Selected')));
             },
           ),
         ),

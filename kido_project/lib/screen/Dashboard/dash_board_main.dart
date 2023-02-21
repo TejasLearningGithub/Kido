@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:kido_project/screen/Dashboard/enum_screen.dart';
-import 'package:kido_project/screen/Dashboard/tab_navigator.dart';
-import 'package:kido_project/screen/dash_board.dart';
-import 'package:kido_project/screen/enquiries.dart';
-import 'package:kido_project/screen/follow_up_main.dart';
-import 'package:kido_project/screen/followupdetail.dart';
-import 'package:kido_project/screen/leads_screen.dart';
+
 
 class DashBoardMain extends StatelessWidget {
   //const DashBoardMain({super.key});
   final BottomNavItem currentTab;
-  final ValueChanged<BottomNavItem> onSelectTab;
-  DashBoardMain({
+  final ValueChanged<BottomNavItem>? onSelectTab;
+  const DashBoardMain({
     super.key,
     required this.currentTab,
     required this.onSelectTab,
@@ -24,11 +19,11 @@ class DashBoardMain extends StatelessWidget {
   ) {
     return BottomNavigationBarItem(
       icon: ImageIcon(
-        AssetImage('$imgpath'),
+        AssetImage(imgpath),
       ),
       label: label,
       activeIcon: ImageIcon(
-        AssetImage('$imgpath'),
+        AssetImage(imgpath),
       ),
     );
   }
@@ -50,7 +45,7 @@ class DashBoardMain extends StatelessWidget {
             'assets/images/follow_up.png'),
       ],
       onTap: (index) {
-        onSelectTab(BottomNavItem.values[index]);
+        onSelectTab!(BottomNavItem.values[index]);
       },
       currentIndex: currentTab.index,
       selectedItemColor: Colors.orange,

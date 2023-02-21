@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 
-enum leadScreeStatus { Lost, Warm, YTC, ENROLLED }
+enum LeadScreeStatus { lost, warm, ytc, enrolled }
 
-var myColorOfContainer;
+var myColorOfContainer = Colors.white;
 var myFontColor = Colors.blue;
-Color myColorFunction([leadScreeStatus? enrolled]) {
+Color myColorFunction([LeadScreeStatus? enrolled]) {
   switch (enrolled) {
-    case leadScreeStatus.ENROLLED:
+    case LeadScreeStatus.enrolled:
       myColorOfContainer = Colors.green;
       break;
-    case leadScreeStatus.Lost:
+    case LeadScreeStatus.lost:
       myColorOfContainer = Colors.red;
       break;
-    case leadScreeStatus.YTC:
+    case LeadScreeStatus.ytc:
       myColorOfContainer = Colors.blueGrey;
       break;
-    case leadScreeStatus.Warm:
+    case LeadScreeStatus.warm:
       myColorOfContainer = Colors.brown;
       break;
     default:
@@ -24,26 +24,26 @@ Color myColorFunction([leadScreeStatus? enrolled]) {
   return myColorOfContainer;
 }
 
-myFunc([leadScreeStatus? enrolled]) {
-  if (leadScreeStatus.ENROLLED == enrolled) {
+myFunc([LeadScreeStatus? enrolled]) {
+  if (LeadScreeStatus.enrolled == enrolled) {
     return myFontColor = Colors.blue;
-  } else if (leadScreeStatus.Lost == enrolled) {
+  } else if (LeadScreeStatus.lost == enrolled) {
     return myFontColor = Colors.red;
-  } else if (leadScreeStatus.Warm == enrolled) {
+  } else if (LeadScreeStatus.warm == enrolled) {
     return myFontColor = Colors.brown;
-  } else if (leadScreeStatus.YTC == enrolled) {
+  } else if (LeadScreeStatus.ytc == enrolled) {
     return myFontColor = Colors.blueGrey;
   }
 }
 
-myLeadStatusPrintText(leadScreeStatus enrolled) {
-  if (leadScreeStatus.ENROLLED == enrolled) {
-    return 'Enrolled';
-  } else if (leadScreeStatus.Lost == enrolled) {
-    return 'Lost';
-  } else if (leadScreeStatus.Warm == enrolled) {
-    return 'Warm';
-  } else if (leadScreeStatus.YTC == enrolled) {
-    return 'YTC';
+myLeadStatusPrintText(LeadScreeStatus enrolled) {
+  if (LeadScreeStatus.enrolled == enrolled) {
+    return 'enrolled';
+  } else if (LeadScreeStatus.lost == enrolled) {
+    return 'lost';
+  } else if (LeadScreeStatus.warm == enrolled) {
+    return 'warm';
+  } else if (LeadScreeStatus.ytc == enrolled) {
+    return 'ytc';
   }
 }

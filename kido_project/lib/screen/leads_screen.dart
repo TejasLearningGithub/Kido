@@ -10,22 +10,21 @@ class LeadsScreen extends StatefulWidget {
   State<LeadsScreen> createState() => _LeadsScreenState();
 }
 
-enum leadScreeStatus { Lost, Warm, YTC, ENROLLED }
+enum LeadScreenStatus { lost, warm, ytc, enrolled }
 
 class _LeadsScreenState extends State<LeadsScreen> {
   DateTime currentTime = DateTime.now();
   var myColor = Colors.yellow;
   var mydate = formatDate(DateTime.now(), [dd, '/', mm, '/', yyyy]);
-  var myColorOfContainer;
+  var myColorOfContainer = Colors.white;
   var formattedDate =
       DateFormat('dd MMM yyyy').format(DateTime.now()).toString();
   List<bool> isFav = [];
   List<bool> myFav = [];
-  leadScreeStatus? myLeadStatus;
+  LeadScreenStatus? myLeadStatus;
   var myFontColor = Colors.blue;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     myFav = [];
     for (var i = 0; i < 15; i++) {
@@ -38,8 +37,9 @@ class _LeadsScreenState extends State<LeadsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 221, 221, 221),
+      //backgroundColor: Color.fromARGB(255, 221, 221, 221),
       //backgroundColor: const Color(0xFF00356A),
+      backgroundColor: Colors.white,
       appBar: AppBar(
         leading: const Icon(Icons.arrow_back),
         title: const Text('LEADS'),
@@ -80,7 +80,7 @@ class _LeadsScreenState extends State<LeadsScreen> {
                 ),
               ),
             ),
-            Container(
+            SizedBox(
               height: 700,
               width: double.maxFinite,
               child: ListView.builder(
@@ -90,7 +90,7 @@ class _LeadsScreenState extends State<LeadsScreen> {
                     children: [
                       CommonListCard(
                         leadId: 'LD003171',
-                        //leadScreeStatus.ENROLLED.toString(),
+                        //LeadScreenStatus.ENROLLED.toString(),
                         myLeadStatus: 'New Lead - YTC / No Response',
                         childAge: '4.9 years',
                         childName: 'Rahil',
@@ -107,13 +107,13 @@ class _LeadsScreenState extends State<LeadsScreen> {
                           ),
                         ),
 
-                        myColor: myColorFunction(leadScreeStatus.ENROLLED)
+                        myColor: myColorFunction(LeadScreenStatus.enrolled)
                             as MaterialColor,
                         parentName: 'Renu pathak',
                         programCategory: 'Preschool',
-                        myFontColor: myFunc(leadScreeStatus.ENROLLED),
+                        myFontColor: myFunc(LeadScreenStatus.enrolled),
                         myLeadStatusText:
-                            myLeadStatusPrintText(leadScreeStatus.YTC),
+                            myLeadStatusPrintText(LeadScreenStatus.ytc),
                       ),
                       const SizedBox(
                         height: 10,
@@ -129,18 +129,18 @@ class _LeadsScreenState extends State<LeadsScreen> {
     );
   }
 
-  Color myColorFunction([leadScreeStatus? enrolled]) {
+  Color myColorFunction([LeadScreenStatus? enrolled]) {
     switch (enrolled) {
-      case leadScreeStatus.ENROLLED:
+      case LeadScreenStatus.enrolled:
         myColorOfContainer = Colors.green;
         break;
-      case leadScreeStatus.Lost:
+      case LeadScreenStatus.lost:
         myColorOfContainer = Colors.red;
         break;
-      case leadScreeStatus.YTC:
+      case LeadScreenStatus.ytc:
         myColorOfContainer = Colors.blueGrey;
         break;
-      case leadScreeStatus.Warm:
+      case LeadScreenStatus.warm:
         myColorOfContainer = Colors.brown;
         break;
       default:
@@ -149,27 +149,27 @@ class _LeadsScreenState extends State<LeadsScreen> {
     return myColorOfContainer;
   }
 
-  myFunc([leadScreeStatus? enrolled]) {
-    if (leadScreeStatus.ENROLLED == enrolled) {
+  myFunc([LeadScreenStatus? enrolled]) {
+    if (LeadScreenStatus.enrolled == enrolled) {
       return myFontColor = Colors.blue;
-    } else if (leadScreeStatus.Lost == enrolled) {
+    } else if (LeadScreenStatus.lost == enrolled) {
       return myFontColor = Colors.red;
-    } else if (leadScreeStatus.Warm == enrolled) {
+    } else if (LeadScreenStatus.warm == enrolled) {
       return myFontColor = Colors.brown;
-    } else if (leadScreeStatus.YTC == enrolled) {
+    } else if (LeadScreenStatus.ytc == enrolled) {
       return myFontColor = Colors.blueGrey;
     }
   }
 }
 
-myLeadStatusPrintText(leadScreeStatus enrolled) {
-  if (leadScreeStatus.ENROLLED == enrolled) {
+myLeadStatusPrintText(LeadScreenStatus enrolled) {
+  if (LeadScreenStatus.enrolled == enrolled) {
     return 'Enrolled';
-  } else if (leadScreeStatus.Lost == enrolled) {
+  } else if (LeadScreenStatus.lost == enrolled) {
     return 'Lost';
-  } else if (leadScreeStatus.Warm == enrolled) {
+  } else if (LeadScreenStatus.warm == enrolled) {
     return 'Warm';
-  } else if (leadScreeStatus.YTC == enrolled) {
+  } else if (LeadScreenStatus.ytc == enrolled) {
     return 'YTC';
   }
 }

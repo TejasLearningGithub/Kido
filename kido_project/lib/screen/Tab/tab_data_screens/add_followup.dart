@@ -1,4 +1,6 @@
-import 'package:flutter/cupertino.dart';
+
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:kido_project/widget/check_box.dart';
@@ -16,7 +18,7 @@ enum FollowUp { yes, no }
 class _AddFollowupState extends State<AddFollowup> {
   final _myFollowUpKey = GlobalKey<FormState>();
 
-  final _dateController = TextEditingController();
+ // final _dateController = TextEditingController();
   final _timeController = TextEditingController();
   var myDay = 0;
   var myYear = 0;
@@ -30,7 +32,7 @@ class _AddFollowupState extends State<AddFollowup> {
 
   var myTime = '';
   Duration initialTimer = const Duration();
-  var time;
+  var time = '';
 
   List<DropdownMenuItem<String>> get dropdownItemsForCommunication {
     List<DropdownMenuItem<String>> menuItems = [
@@ -181,7 +183,7 @@ class _AddFollowupState extends State<AddFollowup> {
                 const SizedBox(
                   height: 15,
                 ),
-                DateSelector(),
+               const DateSelector(),
                 const SizedBox(
                   height: 20,
                 ),
@@ -200,7 +202,7 @@ class _AddFollowupState extends State<AddFollowup> {
                   myPress: () {
                     //if (_myFollowUpKey.currentState!.validate()) {
                     _myFollowUpKey.currentState!.save();
-                    print('=====Done=====');
+                    //print('=====Done=====');
                     // }
                   },
                 ),
@@ -257,7 +259,7 @@ class _AddFollowupState extends State<AddFollowup> {
 
   TimeOfDay? _selectedTime;
   DateTime? tempDate;
-  Future<Null> _selectTime(BuildContext context) async {
+  Future<void> _selectTime(BuildContext context) async {
     final TimeOfDay? timePicked = await showTimePicker(
         context: context,
         initialTime: TimeOfDay.now(),
@@ -267,16 +269,15 @@ class _AddFollowupState extends State<AddFollowup> {
                   MediaQuery.of(context).copyWith(alwaysUse24HourFormat: false),
               child: child!);
         });
-    if (timePicked != null)
+    if (timePicked != null) {
       setState(() {
         _selectedTime = timePicked;
       });
+    }
 
-    tempDate = DateFormat("hh:mm").parse(_selectedTime!.hour.toString() +
-        ":" +
-        _selectedTime!.minute.toString());
+    tempDate = DateFormat("hh:mm").parse("${_selectedTime!.hour}:${_selectedTime!.minute}");
     var dateFormat = DateFormat("h:mm a"); // you can change the format here
-    print(dateFormat.format(tempDate!));
+    log(dateFormat.format(tempDate!));
     setState(() {
       _timeController.text = dateFormat.format(tempDate!);
     });

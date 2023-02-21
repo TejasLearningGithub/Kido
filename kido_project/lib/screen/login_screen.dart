@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import 'package:kido_project/screen/Dashboard/navigation/my_nav.dart';
 import 'package:kido_project/widget/common_widget.dart';
+
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -17,65 +20,99 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Login Screen'),
-      ),
-      body: Form(
-        key: _globalKey,
-        child: SingleChildScrollView(
+      // appBar: AppBar(
+      //   title: Text('Login Screen'),
+      // ),
+      body: SingleChildScrollView(
+        child: Form(
+          key: _globalKey,
           child: Column(
-            mainAxisSize: MainAxisSize.min,
             children: [
-              const SizedBox(
-                height: 30,
-              ),
-              const Align(
-                alignment: Alignment.topCenter,
-                child: myImageWidget(
-                  imgUrl: 'assets/images/logo_kido.png',
-                  height: 260,
-                  width: 260,
+              Container(
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage(
+                        "assets/images/splash_screen_first.png",
+                      ),
+                      fit: BoxFit.fill),
+                ),
+                child: Stack(
+                  children: [
+                    Positioned(
+                      top: -60,
+                      right: 35,
+                      child: Image.asset(
+                        'assets/images/logo_kido.png',
+                      ),
+                    ),
+                    Column(
+                      // mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const SizedBox(
+                          height: 445,
+                        ),
+                        SizedBox(
+                          height: 102,
+                          width: 400,
+                          child: commonTextFormField(
+                            myInputType: TextInputType.name,
+                            topPadding: 10,
+                            leftPadding: 28,
+                            rightPadding: 28,
+                            bottomPadding: 10,
+                            textColor: Colors.black,
+                            hintTextColor: Colors.black,
+                            backgroundColor: Colors.white,
+                            hintText: 'User Name',
+                            myController: _userNameController,
+                          ),
+                        ),
+                        
+                        SizedBox(
+                          height: 122,
+                          width: 499,
+                          child: Padding(
+                            padding:
+                                const EdgeInsets.only(left: 3.0, right: 3.0),
+                            child: commonTextPasswordField(
+                                backgroundColor: Colors.white,
+                                hintText: 'Password',
+                                hintTextColor: Colors.black,
+                                myController: _userPasswordController,
+                                textColor: Colors.black),
+                          ),
+                        ),
+                        
+                        commonSubmitButton(
+                          globalKey: _globalKey,
+                          height: 55,
+                          width: 270,
+                          textbtn: 'SIGN IN',
+                          borderRadiusSize: 8,
+                          buttonBackgroundColor:
+                              const Color.fromARGB(255, 146, 53, 2),
+                          myPress: () {
+                            if (_globalKey.currentState!.validate()) {
+                              //_globalKey.currentState!.save();
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const MyNav()),
+                              );
+                            }
+                          },
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
-              commonTextFormField(
-                myInputType: TextInputType.name,
-                topPadding: 30,
-                leftPadding: 30,
-                rightPadding: 30,
-                bottomPadding: 30,
-                textColor: Colors.black,
-                hintTextColor: Colors.black,
-                backgroundColor: Colors.white,
-                hintText: 'User Name',
-                myController: _userNameController,
-              ),
-              commonTextPasswordField(
-                hintTextColor: Colors.black,
-                textColor: Colors.black,
-                backgroundColor: Colors.white,
-                hintText: 'Password',
-                myController: _userPasswordController,
-              ),
-              const SizedBox(
-                height: 90,
-              ),
-              commonSubmitButton(
-                  globalKey: _globalKey,
-                  height: 60,
-                  width: 250,
-                  textbtn: 'Sign In',
-                  borderRadiusSize: 8,
-                  buttonBackgroundColor: const Color.fromARGB(100, 189, 83, 25),
-                  myPress: () {
-                    if(_globalKey.currentState!.validate()){}
-                  },
-                  )
-                  
             ],
           ),
         ),
       ),
-      backgroundColor: const Color.fromARGB(100, 0, 53, 107),
     );
   }
 

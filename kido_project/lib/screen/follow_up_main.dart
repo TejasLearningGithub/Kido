@@ -1,7 +1,6 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:kido_project/screen/followupdetail.dart';
-import 'package:kido_project/widget/common_widget.dart';
 import 'package:kido_project/widget/leads_items_card.dart';
 import 'dart:math' as math;
 
@@ -34,10 +33,10 @@ class _FollowUpMainState extends State<FollowUpMain> {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: Icon(Icons.arrow_back)),
+            icon: const Icon(Icons.arrow_back)),
         actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.filter_alt)),
-          IconButton(onPressed: () {}, icon: Icon(Icons.search))
+          IconButton(onPressed: () {}, icon: const Icon(Icons.filter_alt)),
+          IconButton(onPressed: () {}, icon: const Icon(Icons.search))
         ],
       ),
       body: SingleChildScrollView(
@@ -60,10 +59,10 @@ class MyFirstWidget extends StatefulWidget {
 class _MyFirstWidgetState extends State<MyFirstWidget> {
   List<bool> isVisible = [];
   var count = 3;
-  leadScreeStatus? myLeadStatus;
+  LeadScreeStatus? myLeadStatus;
   var myFontColor = Colors.blue;
   var myColor = Colors.yellow;
-  var myColorOfContainer;
+  var myColorOfContainer = Colors.white;
   @override
   void initState() {
     super.initState();
@@ -161,51 +160,51 @@ class _MyFirstWidgetState extends State<MyFirstWidget> {
                   //     ],
                   //   ),
                   // ),
-                  for (var i in Iterable.generate(5))
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 10.0),
-                      child: GestureDetector(
-                        onTap: () {
-                          print('=====Pressed=====');
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => Followupdetail(
-                                leadNumber: 'LD003171',
-                                parentName: 'Renu Pathak',
-                                childName: 'Rahil',
-                                gender: '(M)',
-                                age: '4.4 years',
-                                mobParennt: '1234567890',
-                                mobParentAlternate: '1234567890',
-                                email: 'abc@gmail.com',
-                                address: 'Kandavili, Mumbai, Maharastra',
-                                ldDate: '05 Mar 2022',
-                                program: 'Nursery',
-                              ),
+                  //for (var i in Iterable.generate(5))
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 10.0),
+                    child: GestureDetector(
+                      onTap: () {
+                        //print('=====Pressed=====');
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const Followupdetail(
+                              leadNumber: 'LD003171',
+                              parentName: 'Renu Pathak',
+                              childName: 'Rahil',
+                              gender: '(M)',
+                              age: '4.4 years',
+                              mobParennt: '1234567890',
+                              mobParentAlternate: '1234567890',
+                              email: 'abc@gmail.com',
+                              address: 'Kandavili, Mumbai, Maharastra',
+                              ldDate: '05 Mar 2022',
+                              program: 'Nursery',
                             ),
-                          );
-                        },
-                        child: CommonListCard(
-                          leadId: 'LD003171',
-                          myLeadStatus:
-                              myLeadStatusPrintText(leadScreeStatus.Warm),
-                          parentName: 'Renu Pathak',
-                          childName: 'Rahil',
-                          gender: '(M)',
-                          iconButton: IconButton(
-                              onPressed: () {},
-                              icon: const Icon(Icons.star_border_rounded)),
-                          childAge: '4.9 years',
-                          myColor: myColorFunction(leadScreeStatus.ENROLLED)
-                              as MaterialColor,
-                          programCategory: 'Pre School',
-                          myFontColor: myFunc(leadScreeStatus.Warm),
-                          myLeadStatusText:
-                              myLeadStatusPrintText(leadScreeStatus.ENROLLED),
-                        ),
+                          ),
+                        );
+                      },
+                      child: CommonListCard(
+                        leadId: 'LD003171',
+                        myLeadStatus:
+                            myLeadStatusPrintText(LeadScreeStatus.warm),
+                        parentName: 'Renu Pathak',
+                        childName: 'Rahil',
+                        gender: '(M)',
+                        iconButton: IconButton(
+                            onPressed: () {},
+                            icon: const Icon(Icons.star_border_rounded)),
+                        childAge: '4.9 years',
+                        myColor: myColorFunction(LeadScreeStatus.enrolled)
+                            as MaterialColor,
+                        programCategory: 'Pre School',
+                        myFontColor: myFunc(LeadScreeStatus.warm),
+                        myLeadStatusText:
+                            myLeadStatusPrintText(LeadScreeStatus.enrolled),
                       ),
                     ),
+                  ),
                 ],
               ),
               builder: (_, collapsed, expanded) {
@@ -219,7 +218,7 @@ class _MyFirstWidgetState extends State<MyFirstWidget> {
               },
               header: Container(
                 //color: Colors.indigoAccent,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.white,
                 ),
                 child: Padding(
@@ -246,7 +245,7 @@ class _MyFirstWidgetState extends State<MyFirstWidget> {
                               .copyWith(color: Colors.red),
                         ),
                       ),
-                      Text('3'),
+                      const Text('3'),
                     ],
                   ),
                 ),
@@ -300,47 +299,47 @@ class _MyFirstWidgetState extends State<MyFirstWidget> {
                       // ),
                     ],
                   ),
-                  for (var i in Iterable.generate(5))
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 10),
-                      child: GestureDetector(
-                        onTap: () {
-                          print('=====Pressed=====');
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => Followupdetail(
-                                leadNumber: 'LD003171',
-                                parentName: 'Renu Pathak',
-                                childName: 'Rahil',
-                                gender: '(M)',
-                                age: '4.4 years',
-                                mobParennt: '1234567890',
-                                mobParentAlternate: '1234567890',
-                                email: 'abc@gmail.com',
-                                address: 'Kandavili, Mumbai, Maharastra',
-                                ldDate: '05 Mar 2022',
-                                program: 'Nursery',
-                              ),
+                  //for (var i in Iterable.generate(5))
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 10),
+                    child: GestureDetector(
+                      onTap: () {
+                        //print('=====Pressed=====');
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const Followupdetail(
+                              leadNumber: 'LD003171',
+                              parentName: 'Renu Pathak',
+                              childName: 'Rahil',
+                              gender: '(M)',
+                              age: '4.4 years',
+                              mobParennt: '1234567890',
+                              mobParentAlternate: '1234567890',
+                              email: 'abc@gmail.com',
+                              address: 'Kandavili, Mumbai, Maharastra',
+                              ldDate: '05 Mar 2022',
+                              program: 'Nursery',
                             ),
-                          );
-                        },
-                        child: CommonListCard(
-                            leadId: 'LD003171',
-                            myLeadStatus: 'New Lead - YTC / No Response',
-                            parentName: 'Renu Pathak',
-                            childName: 'Rahil',
-                            gender: '(M)',
-                            iconButton: IconButton(
-                                onPressed: () {},
-                                icon: const Icon(Icons.star_border_rounded)),
-                            childAge: '4.9 years',
-                            myColor: Colors.blue,
-                            programCategory: 'My Cat',
-                            myFontColor: Colors.blue,
-                            myLeadStatusText: ''),
-                      ),
+                          ),
+                        );
+                      },
+                      child: CommonListCard(
+                          leadId: 'LD003171',
+                          myLeadStatus: 'New Lead - ytc / No Response',
+                          parentName: 'Renu Pathak',
+                          childName: 'Rahil',
+                          gender: '(M)',
+                          iconButton: IconButton(
+                              onPressed: () {},
+                              icon: const Icon(Icons.star_border_rounded)),
+                          childAge: '4.9 years',
+                          myColor: Colors.blue,
+                          programCategory: 'My Cat',
+                          myFontColor: Colors.blue,
+                          myLeadStatusText: ''),
                     ),
+                  ),
                 ],
               ),
               builder: (_, collapsed, expanded) {
@@ -359,18 +358,18 @@ class _MyFirstWidgetState extends State<MyFirstWidget> {
     );
   }
 
-  Color myColorFunction([leadScreeStatus? enrolled]) {
+  Color myColorFunction([LeadScreeStatus? enrolled]) {
     switch (enrolled) {
-      case leadScreeStatus.ENROLLED:
+      case LeadScreeStatus.enrolled:
         myColorOfContainer = Colors.green;
         break;
-      case leadScreeStatus.Lost:
+      case LeadScreeStatus.lost:
         myColorOfContainer = Colors.red;
         break;
-      case leadScreeStatus.YTC:
+      case LeadScreeStatus.ytc:
         myColorOfContainer = Colors.blueGrey;
         break;
-      case leadScreeStatus.Warm:
+      case LeadScreeStatus.warm:
         myColorOfContainer = Colors.brown;
         break;
       default:
@@ -379,29 +378,29 @@ class _MyFirstWidgetState extends State<MyFirstWidget> {
     return myColorOfContainer;
   }
 
-  myFunc([leadScreeStatus? enrolled]) {
-    if (leadScreeStatus.ENROLLED == enrolled) {
+  myFunc([LeadScreeStatus? enrolled]) {
+    if (LeadScreeStatus.enrolled == enrolled) {
       return myFontColor = Colors.blue;
-    } else if (leadScreeStatus.Lost == enrolled) {
+    } else if (LeadScreeStatus.lost == enrolled) {
       return myFontColor = Colors.red;
-    } else if (leadScreeStatus.Warm == enrolled) {
+    } else if (LeadScreeStatus.warm == enrolled) {
       return myFontColor = Colors.brown;
-    } else if (leadScreeStatus.YTC == enrolled) {
+    } else if (LeadScreeStatus.ytc == enrolled) {
       return myFontColor = Colors.blueGrey;
     }
   }
 }
 
-myLeadStatusPrintText(leadScreeStatus enrolled) {
-  if (leadScreeStatus.ENROLLED == enrolled) {
-    return 'Enrolled';
-  } else if (leadScreeStatus.Lost == enrolled) {
-    return 'Lost';
-  } else if (leadScreeStatus.Warm == enrolled) {
-    return 'Warm';
-  } else if (leadScreeStatus.YTC == enrolled) {
-    return 'YTC';
+myLeadStatusPrintText(LeadScreeStatus enrolled) {
+  if (LeadScreeStatus.enrolled == enrolled) {
+    return 'enrolled';
+  } else if (LeadScreeStatus.lost == enrolled) {
+    return 'lost';
+  } else if (LeadScreeStatus.warm == enrolled) {
+    return 'w';
+  } else if (LeadScreeStatus.ytc == enrolled) {
+    return 'ytc';
   }
 }
 
-enum leadScreeStatus { Lost, Warm, YTC, ENROLLED }
+enum LeadScreeStatus { lost, warm, ytc, enrolled }

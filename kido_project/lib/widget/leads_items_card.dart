@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:kido_project/screen/leads_screen.dart';
 import 'package:kido_project/widget/common_widget.dart';
 
 class CommonListCard extends StatelessWidget {
@@ -16,7 +15,8 @@ class CommonListCard extends StatelessWidget {
   Color myFontColor;
 
   CommonListCard(
-      {required this.leadId,
+      {super.key,
+      required this.leadId,
       required this.myLeadStatus,
       required this.parentName,
       required this.childName,
@@ -39,11 +39,13 @@ class CommonListCard extends StatelessWidget {
             bottom: 2,
           ),
           child: Container(
-            height: MediaQuery.of(context).size.height / 6.0,
+            height: (MediaQuery.of(context).size.height * 133.0) /
+                MediaQuery.of(context).size.height,
             width: double.maxFinite,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: Color.fromARGB(255, 221, 221, 221),
+              //color: Color.fromARGB(255, 221, 221, 221),
+              color: Colors.white,
               boxShadow: const [
                 BoxShadow(
                   color: Colors.grey,
@@ -91,17 +93,18 @@ class CommonListCard extends StatelessWidget {
                               child: Text(
                                 leadId,
                                 style: commonLargeFonts.copyWith(
-                                    color: Color(0xFF00356A)),
+                                    color: const Color(0xFF00356A)),
                               ),
                             ),
                             Padding(
-                                padding: const EdgeInsets.only(top: 8.0),
-                                child: Text(
-                                  myLeadStatusText,
-                                  style: TextStyle(
-                                    color: myFontColor,
-                                  ),
-                                )),
+                              padding: const EdgeInsets.only(top: 8.0),
+                              child: Text(
+                                myLeadStatusText,
+                                style: TextStyle(
+                                  color: myFontColor,
+                                ),
+                              ),
+                            ),
                           ],
                         ),
                         Row(
@@ -126,12 +129,12 @@ class CommonListCard extends StatelessWidget {
                         child: Row(
                           children: [
                             Text(
-                              '$parentName',
+                              parentName,
                               style: commonMediumFonts.copyWith(
-                                color: Color(0xFF00356A),
+                                color: const Color(0xFF00356A),
                               ),
                             ),
-                            Container(
+                            const SizedBox(
                               height: 22,
                               child: VerticalDivider(
                                 width: 10,
@@ -139,32 +142,32 @@ class CommonListCard extends StatelessWidget {
                                 color: Colors.black,
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 3,
                             ),
-                            Text('$childName'),
-                            SizedBox(
+                            Text(childName),
+                            const SizedBox(
                               width: 3,
                             ),
-                            Text('$gender'),
-                            SizedBox(
+                            Text(gender),
+                            const SizedBox(
                               width: 3,
                             ),
-                            Text('$childAge'),
+                            Text(childAge),
                           ],
                         ),
                       ),
                     ),
                     Align(
-                      child: Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Text('$programCategory'),
-                      ),
                       alignment: Alignment.topLeft,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(programCategory),
+                      ),
                     ),
                     Row(
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                         Text('Status:$myLeadStatus')

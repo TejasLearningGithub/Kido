@@ -42,11 +42,12 @@ class _FollowupdetailState extends State<Followupdetail> {
     var width = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      backgroundColor: const Color.fromARGB(100, 249, 249, 249),
+      //backgroundColor: const Color.fromARGB(100, 249, 249, 249),
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text('Follow up Detail'),
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back,
             color: Colors.white,
             size: 35,
@@ -71,7 +72,7 @@ class _FollowupdetailState extends State<Followupdetail> {
                 children: [
                   Container(
                     width: width * 0.89,
-                    height: height * 1.51 / 4.3 - 11.9,
+                    height: height * 236.11 / height,
                     decoration: const BoxDecoration(
                       color: Colors.blue,
                       borderRadius: BorderRadius.only(
@@ -98,13 +99,13 @@ class _FollowupdetailState extends State<Followupdetail> {
                                       left: width * 0.018 - 0.01),
                                   child: Text(
                                     //'LD003171',
-                                    widget.leadNumber ?? '',
+                                    widget.leadNumber ?? 'LD003171',
                                     style: commonMediumFonts.copyWith(
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                 ),
-                                Text('YTC'),
+                                const Text('YTC'),
                               ],
                             ),
                             Row(
@@ -136,7 +137,7 @@ class _FollowupdetailState extends State<Followupdetail> {
                           child: Row(
                             children: [
                               Text(
-                                widget.parentName ?? '',
+                                widget.parentName ?? 'Renu Pathak',
                                 style: commonMediumFonts.copyWith(
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -155,7 +156,8 @@ class _FollowupdetailState extends State<Followupdetail> {
                                 ),
                               ),
                               Text(
-                                widget.childName ?? '',
+                                widget.childName ??
+                                    'Vinit Pathak (M) 2.5 years',
                                 style: commonSmallFonts.copyWith(
                                   color: Colors.white,
                                 ),
@@ -176,7 +178,7 @@ class _FollowupdetailState extends State<Followupdetail> {
                                 size: 15,
                               ),
                               Text(
-                                widget.mobParennt ?? '',
+                                widget.mobParennt ?? '1234567890',
                                 style: commonSmallFonts.copyWith(
                                   color: Colors.white,
                                 ),
@@ -184,10 +186,10 @@ class _FollowupdetailState extends State<Followupdetail> {
                               const SizedBox(
                                 width: 4,
                               ),
-                              Container(
+                             const SizedBox(
                                 width: 4,
                                 height: 10,
-                                child: const VerticalDivider(
+                                child:  VerticalDivider(
                                   color: Colors.white,
                                   thickness: 2,
                                 ),
@@ -196,7 +198,7 @@ class _FollowupdetailState extends State<Followupdetail> {
                                 width: 4,
                               ),
                               Text(
-                                widget.mobParentAlternate ?? '',
+                                widget.mobParentAlternate ?? '0123456789',
                                 style: commonSmallFonts.copyWith(
                                   color: Colors.white,
                                 ),
@@ -209,7 +211,7 @@ class _FollowupdetailState extends State<Followupdetail> {
                           child: Row(
                             children: [
                               Text(
-                                widget.email ?? '',
+                                widget.email ?? 'shikha@gmail.com',
                                 style: commonSmallFonts.copyWith(
                                   color: Colors.white,
                                 ),
@@ -222,7 +224,7 @@ class _FollowupdetailState extends State<Followupdetail> {
                           child: Row(
                             children: [
                               Text(
-                                widget.address ?? '',
+                                widget.address ?? 'Kandivali Mumbai Maharastra',
                                 style: commonSmallFonts.copyWith(
                                   color: Colors.white,
                                 ),
@@ -242,7 +244,7 @@ class _FollowupdetailState extends State<Followupdetail> {
                                 ),
                               ),
                               Text(
-                                widget.ldDate ?? '',
+                                widget.ldDate ?? '05 Mar 2022 ',
                                 style: commonSmallFonts.copyWith(
                                   color: Colors.white,
                                 ),
@@ -425,7 +427,7 @@ class _FollowupdetailState extends State<Followupdetail> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => AddFollowup(),
+                          builder: (context) => const AddFollowup(),
                         ),
                       );
                     },
@@ -486,7 +488,7 @@ class _FollowupdetailState extends State<Followupdetail> {
                 axis: TimelineAxis.vertical,
                 indicatorStyle: IndicatorStyle(
                   //color: Colors.blue,
-                  height: height * 0.0425,
+                  height: height * 0.010,
                   width: width * 0.0425,
                   iconStyle: IconStyle(
                     fontSize: 30,
@@ -506,7 +508,7 @@ class _FollowupdetailState extends State<Followupdetail> {
                     ),
                     Container(
                       margin: const EdgeInsets.only(top: 5, bottom: 20),
-                      height: 75,
+                      height: 76,
                       width: MediaQuery.of(context).size.width / 1.8 - 0.09,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -604,7 +606,7 @@ class _FollowupdetailState extends State<Followupdetail> {
                     ),
                     Container(
                       margin: const EdgeInsets.only(top: 10, bottom: 30),
-                      height: 82,
+                      height: 100.7,
                       width: MediaQuery.of(context).size.width / 1.8 - 0.09,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,

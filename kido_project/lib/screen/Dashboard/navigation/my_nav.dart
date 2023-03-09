@@ -4,7 +4,8 @@ import 'package:kido_project/screen/Dashboard/enum_screen.dart';
 import 'package:kido_project/screen/Dashboard/tab_navigator.dart';
 
 class MyNav extends StatefulWidget {
-  const MyNav({super.key});
+  // String? token;
+ MyNav({super.key,});
 
   @override
   State<MyNav> createState() => _MyNavState();
@@ -27,6 +28,11 @@ class _MyNavState extends State<MyNav> {
         _currentTab = tabItem;
       });
     }
+  }
+
+  @override
+  void initState() {
+    super.initState();
   }
 
   @override

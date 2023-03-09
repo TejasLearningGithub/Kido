@@ -1,38 +1,37 @@
 import 'package:flutter/material.dart';
-
-enum LeadScreeStatus { lost, warm, ytc, enrolled }
+import 'package:kido_project/utils/constants.dart';
 
 var myColorOfContainer = Colors.white;
-var myFontColor = Colors.blue;
+Color myFontColor = Colors.blue;
 Color myColorFunction([LeadScreeStatus? enrolled]) {
   switch (enrolled) {
     case LeadScreeStatus.enrolled:
-      myColorOfContainer = Colors.green;
+      myColorOfContainer = greenColor;
       break;
     case LeadScreeStatus.lost:
-      myColorOfContainer = Colors.red;
+      myColorOfContainer = redColor;
       break;
     case LeadScreeStatus.ytc:
-      myColorOfContainer = Colors.blueGrey;
+      myColorOfContainer = blueGreyColor;
       break;
     case LeadScreeStatus.warm:
-      myColorOfContainer = Colors.brown;
+      myColorOfContainer = brownColor;
       break;
     default:
-      myColorOfContainer = Colors.white;
+      myColorOfContainer = whiteColor;
   }
   return myColorOfContainer;
 }
 
 myFunc([LeadScreeStatus? enrolled]) {
   if (LeadScreeStatus.enrolled == enrolled) {
-    return myFontColor = Colors.blue;
+    return myFontColor = blueColor;
   } else if (LeadScreeStatus.lost == enrolled) {
-    return myFontColor = Colors.red;
+    return myFontColor = redColor;
   } else if (LeadScreeStatus.warm == enrolled) {
-    return myFontColor = Colors.brown;
+    return myFontColor = brownColor;
   } else if (LeadScreeStatus.ytc == enrolled) {
-    return myFontColor = Colors.blueGrey;
+    return myFontColor = blueGreyColor;
   }
 }
 

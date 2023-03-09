@@ -182,7 +182,7 @@ class _ExpandableChildState extends State<ExpandableChild> {
                         ),
                       ),
                       const Padding(
-                        padding: EdgeInsets.only(left: 10.0),
+                        padding: EdgeInsets.only(left: 5.0),
                         child: StatefulRadioGenderWidget(),
                       ),
                       Padding(

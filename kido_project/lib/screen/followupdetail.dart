@@ -46,16 +46,16 @@ class _FollowupdetailState extends State<Followupdetail> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text('Follow up Detail'),
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back,
-            color: Colors.white,
-            size: 35,
-          ),
-          onPressed: () {
-            //Navigator.of(context).pop();
-          },
-        ),
+        // leading: IconButton(
+        //   icon: const Icon(
+        //     Icons.arrow_back,
+        //     color: Colors.white,
+        //     size: 35,
+        //   ),
+        //   onPressed: () {
+        //     //Navigator.of(context).pop();
+        //   },
+        // ),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -186,10 +186,10 @@ class _FollowupdetailState extends State<Followupdetail> {
                               const SizedBox(
                                 width: 4,
                               ),
-                             const SizedBox(
+                              const SizedBox(
                                 width: 4,
                                 height: 10,
-                                child:  VerticalDivider(
+                                child: VerticalDivider(
                                   color: Colors.white,
                                   thickness: 2,
                                 ),

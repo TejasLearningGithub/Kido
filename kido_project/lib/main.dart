@@ -7,6 +7,7 @@ import 'package:kido_project/login/provider/login_provider.dart';
 import 'package:kido_project/screen/Dashboard/navigation/my_nav.dart';
 import 'package:kido_project/screen/add_lead.dart';
 import 'package:kido_project/screen/dash_board.dart';
+import 'package:kido_project/screen/enquiries.dart';
 import 'package:kido_project/screen/follow_up_main.dart';
 import 'package:kido_project/screen/lead_form.dart';
 import 'package:kido_project/screen/leads_screen.dart';
@@ -100,7 +101,7 @@ class _MyAppState extends State<MyApp> {
             create: (_) => LeadsProvider(),
           ),
         ],
-        child: const MaterialApp(home: AddLead()
+        child: const MaterialApp(home: DashBoard()
 
             //getBool() == false ? LoginScreen() : MyNav(),
             )

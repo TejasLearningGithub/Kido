@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:kido_project/login/model/login_model.dart';
 import 'package:http/http.dart' as http;
@@ -14,6 +15,7 @@ class Repository {
   String get userId => _userId;
 
   var loginModel = LoginModel();
+
   var res;
   var resLogout;
   var resBoolUser;
@@ -27,7 +29,7 @@ class Repository {
         return res;
       }
     } catch (e) {
-      print('===error In Login:===' + e.toString());
+      log('===error In Login:===${e.toString()}');
     }
 
     throw Exception('Unexpected Error Occured');

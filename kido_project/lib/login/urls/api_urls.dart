@@ -6,3 +6,7 @@ String baseUrlLeadsYesterday =
     'http://45.79.123.102:49005/api/leads/all/yesterday/1';
 String baseUrlWeek = 'http://45.79.123.102:49005/api/leads/all/week/1';
 String baseUrlToday = 'http://45.79.123.102:49005/api/leads/all/today/1';
+String baseEnquiryUrlToday =
+    'http://45.79.123.102:49005/api/leads/all/enquiry/today/1';
+String baseEnquiryUrlYesterday =
+    'http://45.79.123.102:49005/api/leads/all/enquiry/yesterday/1';

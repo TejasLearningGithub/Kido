@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:kido_project/leads/leads/model/leads_model.dart';
 import 'package:http/http.dart' as http;
@@ -20,13 +21,13 @@ class LeadsRepository {
         headers: {'Authorization': userToken},
       );
       if (response.statusCode == 200 || response.statusCode == 400) {
-        print('Success Part Status Code = ${response.statusCode}');
+        log('Success Part Status Code = ${response.statusCode}');
         yesterdayLeadsResponse = LeadsModel.fromJson(jsonDecode(response.body));
       } else {
-        print('Else Part Status Code = ${response.statusCode}');
+        log('Else Part Status Code = ${response.statusCode}');
       }
     } catch (e) {
-      print(e.toString());
+      log(e.toString());
     }
     return yesterdayLeadsResponse;
   }
@@ -37,13 +38,13 @@ class LeadsRepository {
         'Authorization': userToken,
       });
       if (response.statusCode == 200 || response.statusCode == 400) {
-        print('Success Part Status Code = ${response.statusCode}');
+        log('Success Part Status Code = ${response.statusCode}');
         todayLeadsResponse = LeadsModel.fromJson(jsonDecode(response.body));
       } else {
-        print('Else Part Status Code = ${response.statusCode}');
+        log('Else Part Status Code = ${response.statusCode}');
       }
     } catch (e) {
-      print('Error In Getting Todays Data = ${e.toString()}');
+      log('Error In Getting Todays Data = ${e.toString()}');
     }
     return todayLeadsResponse;
   }
@@ -55,13 +56,13 @@ class LeadsRepository {
         headers: {'Authorization': userToken},
       );
       if (response.statusCode == 200 || response.statusCode == 400) {
-        print('Success part Status Code = ${response.statusCode}');
+        log('Success part Status Code = ${response.statusCode}');
         weekLeadsRespponse = LeadsModel.fromJson(jsonDecode(response.body));
       } else {
-        print('Else Part Status Code = ${response.statusCode}');
+        log('Else Part Status Code = ${response.statusCode}');
       }
     } catch (e) {
-      print('Error In Getting Weeks Data = ${e.toString()}');
+      log('Error In Getting Weeks Data = ${e.toString()}');
     }
     return weekLeadsRespponse;
   }

@@ -20,21 +20,21 @@ class LeadsProvider with ChangeNotifier {
   Future<LeadsModel> getYesterdaysData(String token) async {
     yesterdaysLeads = await repo.getYesterdaysData(token);
     notifyListeners();
-    print('Provider Called');
+    log('Yesterdays Provider Called');
     return yesterdaysLeads!;
   }
 
   Future<LeadsModel> getTodaysData(String token) async {
     todaysLeads = await repo.getTodaysData(token);
     notifyListeners();
-    print('Todays Provider Called');
+    log('Todays Provider Called');
     return todaysLeads!;
   }
 
   Future<LeadsModel> getWeeksData(String token) async {
     weekLeads = await repo.getWeeksData(token);
     notifyListeners();
-    print('Week Provider Called');
+    log('Week Provider Called');
     return weekLeads!;
   }
 }

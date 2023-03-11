@@ -91,7 +91,7 @@ class _LeadsScreenState extends State<LeadsScreen> {
       //backgroundColor: const Color(0xFF00356A),
       backgroundColor: Colors.white,
       appBar: AppBar(
-        leading: const Icon(Icons.arrow_back),
+        //leading: const Icon(Icons.arrow_back),
         title: const Text('LEADS'),
         actions: [
           Row(
@@ -270,7 +270,7 @@ class _MyFirstWidgetState extends State<MyFirstWidget> {
                         height: 200,
                         width: double.maxFinite,
                         child: ListView.builder(
-                            itemCount: value.myTodaysLeads?.data?.length ?? 1,
+                            itemCount: value.myTodaysLeads?.data?.length ?? 0,
                             itemBuilder: (context, index) {
                               return CommonListCard(
                                 leadId:
@@ -278,8 +278,12 @@ class _MyFirstWidgetState extends State<MyFirstWidget> {
                                         'Abc',
                                 myLeadStatus: myLeadStatusPrintText(
                                     LeadScreenStatus.warm),
-                                parentName: 'Renu Pathak',
-                                childName: 'Rahil',
+                                parentName: value.myTodaysLeads?.data?[index]
+                                        .parentName ??
+                                    'no load',
+                                childName: value.myTodaysLeads?.data?[index]
+                                        .childFirstName ??
+                                    'no load',
                                 gender: '(M)',
                                 iconButton: IconButton(
                                     onPressed: () {},
@@ -289,7 +293,9 @@ class _MyFirstWidgetState extends State<MyFirstWidget> {
                                 myColor:
                                     myColorFunction(LeadScreeStatus.enrolled)
                                         as MaterialColor,
-                                programCategory: 'Pre School',
+                                programCategory: value.myTodaysLeads
+                                        ?.data?[index].statusId.name ??
+                                    'no load',
                                 myFontColor: myFunc(LeadScreeStatus.warm),
                                 myLeadStatusText: myLeadStatusPrintText(
                                     LeadScreenStatus.enrolled),
@@ -338,7 +344,7 @@ class _MyFirstWidgetState extends State<MyFirstWidget> {
                               .copyWith(color: Colors.red),
                         ),
                       ),
-                      const Text('3'),
+                      //const Text('3'),
                     ],
                   ),
                 ),
@@ -480,8 +486,12 @@ class _MyFirstWidgetState extends State<MyFirstWidget> {
                                       value.myWeekLeads?.data?[index].leadNo ??
                                           'not available',
                                   myLeadStatus: 'New Lead - ytc / No Response',
-                                  parentName: 'Renu Pathak',
-                                  childName: 'Rahil',
+                                  parentName: value.myWeekLeads?.data?[index]
+                                          .parentName ??
+                                      'no load',
+                                  childName: value.myWeekLeads?.data?[index]
+                                          .childFirstName ??
+                                      'no load',
                                   gender: '(M)',
                                   iconButton: IconButton(
                                       onPressed: () {},
@@ -539,7 +549,7 @@ class _MyFirstWidgetState extends State<MyFirstWidget> {
                               .copyWith(color: Colors.red),
                         ),
                       ),
-                      const Text('3'),
+                      //const Text('3'),
                     ],
                   ),
                 ),

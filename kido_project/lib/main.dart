@@ -101,7 +101,7 @@ class _MyAppState extends State<MyApp> {
             create: (_) => LeadsProvider(),
           ),
         ],
-        child: const MaterialApp(home: DashBoard()
+        child: MaterialApp(home: DashBoard()
 
             //getBool() == false ? LoginScreen() : MyNav(),
             )

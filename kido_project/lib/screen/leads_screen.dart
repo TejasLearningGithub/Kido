@@ -4,8 +4,10 @@ import 'package:date_format/date_format.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:intl/intl.dart';
 import 'package:kido_project/MyScreens/shared_pref.dart';
+import 'package:kido_project/leads/leads/model/leads_model.dart';
 import 'package:kido_project/leads/provider/leads_provider.dart';
 import 'package:kido_project/login/provider/login_provider.dart';
 //import 'package:kido_project/utils/my_shareprefrence.dart';
@@ -196,6 +198,8 @@ class _MyFirstWidgetState extends State<MyFirstWidget> {
   var yesterdayLeadsProvider;
   var yesterday;
   var kidoLoginToken;
+  final PagingController<int, LeadsModel> pagingController =
+      PagingController(firstPageKey: 0);
   // @override
   void initState() {
     super.initState();
@@ -233,6 +237,9 @@ class _MyFirstWidgetState extends State<MyFirstWidget> {
     print('Token named spToken = $spToken');
     print('widget binding called');
     getTokenFromSF();
+    // pagingController.addPageRequestListener((pageKey) {
+    //   Provider.of<LeadsProvider>(context).getTodaysData(spToken);
+    // });
   }
 
   // printToken() async {
@@ -267,41 +274,80 @@ class _MyFirstWidgetState extends State<MyFirstWidget> {
                     child: Consumer<LeadsProvider>(
                         builder: (context, value, child) {
                       return SizedBox(
-                        height: 200,
-                        width: double.maxFinite,
-                        child: ListView.builder(
-                            itemCount: value.myTodaysLeads?.data?.length ?? 0,
-                            itemBuilder: (context, index) {
-                              return CommonListCard(
-                                leadId:
-                                    value.myTodaysLeads?.data?[index].leadNo ??
-                                        'Abc',
-                                myLeadStatus: myLeadStatusPrintText(
-                                    LeadScreenStatus.warm),
-                                parentName: value.myTodaysLeads?.data?[index]
-                                        .parentName ??
-                                    'no load',
-                                childName: value.myTodaysLeads?.data?[index]
-                                        .childFirstName ??
-                                    'no load',
-                                gender: '(M)',
-                                iconButton: IconButton(
-                                    onPressed: () {},
-                                    icon:
-                                        const Icon(Icons.star_border_rounded)),
-                                childAge: '4.9 years',
-                                myColor:
-                                    myColorFunction(LeadScreeStatus.enrolled)
-                                        as MaterialColor,
-                                programCategory: value.myTodaysLeads
-                                        ?.data?[index].statusId.name ??
-                                    'no load',
-                                myFontColor: myFunc(LeadScreeStatus.warm),
-                                myLeadStatusText: myLeadStatusPrintText(
-                                    LeadScreenStatus.enrolled),
-                              );
+                          height: 200,
+                          width: double.maxFinite,
+                          child: RefreshIndicator(
+                            onRefresh: () => Future.sync(() {
+                              pagingController.refresh();
                             }),
-                      );
+                            child: PagedListView(
+                              pagingController: pagingController,
+                              builderDelegate:
+                                  PagedChildBuilderDelegate<LeadsModel>(
+                                      itemBuilder: (context, item, index) {
+                                return CommonListCard(
+                                    leadId: value.myTodaysLeads?.data?[index].leadNo ??
+                                        'no load',
+                                    myLeadStatus: value.myTodaysLeads
+                                            ?.data?[index].statusId.name ??
+                                        'no load',
+                                    parentName: value.myTodaysLeads
+                                            ?.data?[index].parentName ??
+                                        'no load',
+                                    childName: value.myTodaysLeads?.data?[index]
+                                            .childFirstName ??
+                                        'no load',
+                                    gender: value.myTodaysLeads?.data?[index].childGender ??
+                                        'no load',
+                                    iconButton: IconButton(
+                                        onPressed: () {},
+                                        icon: const Icon(
+                                            Icons.star_border_rounded)),
+                                    childAge:
+                                        value.myTodaysLeads?.data?[index].childDob ??
+                                            'no load',
+                                    myColor: myColor,
+                                    programCategory:
+                                        value.myTodaysLeads?.data?[index].stage ?? 'no load',
+                                    myFontColor: myFontColor,
+                                    myLeadStatusText: value.myTodaysLeads?.data?[index].substatusId.name ?? 'no load');
+                              }),
+                            ),
+                          )
+
+                          // ListView.builder(
+                          //     itemCount: value.myTodaysLeads?.data?.length ?? 50,
+                          //     itemBuilder: (context, index) {
+                          //       return CommonListCard(
+                          //         leadId:
+                          //             value.myTodaysLeads?.data?[index].leadNo ??
+                          //                 'Abc',
+                          //         myLeadStatus: myLeadStatusPrintText(
+                          //             LeadScreenStatus.warm),
+                          //         parentName: value.myTodaysLeads?.data?[index]
+                          //                 .parentName ??
+                          //             'no load',
+                          //         childName: value.myTodaysLeads?.data?[index]
+                          //                 .childFirstName ??
+                          //             'no load',
+                          //         gender: '(M)',
+                          //         iconButton: IconButton(
+                          //             onPressed: () {},
+                          //             icon:
+                          //                 const Icon(Icons.star_border_rounded)),
+                          //         childAge: '4.9 years',
+                          //         myColor:
+                          //             myColorFunction(LeadScreeStatus.enrolled)
+                          //                 as MaterialColor,
+                          //         programCategory: value.myTodaysLeads
+                          //                 ?.data?[index].statusId.name ??
+                          //             'no load',
+                          //         myFontColor: myFunc(LeadScreeStatus.warm),
+                          //         myLeadStatusText: myLeadStatusPrintText(
+                          //             LeadScreenStatus.enrolled),
+                          //       );
+                          //     }),
+                          );
                     }),
                   ),
                 ],

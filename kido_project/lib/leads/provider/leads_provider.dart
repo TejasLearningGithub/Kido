@@ -8,6 +8,7 @@ import 'package:kido_project/login/repository/repo_login.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LeadsProvider with ChangeNotifier {
+  int pageKey = 0;
   LeadsModel? yesterdaysLeads;
   LeadsModel? todaysLeads;
   LeadsModel? weekLeads;
@@ -25,7 +26,7 @@ class LeadsProvider with ChangeNotifier {
   }
 
   Future<LeadsModel> getTodaysData(String token) async {
-    todaysLeads = await repo.getTodaysData(token);
+    todaysLeads = await repo.getTodaysData(token,pageKey);
     notifyListeners();
     log('Todays Provider Called');
     return todaysLeads!;
